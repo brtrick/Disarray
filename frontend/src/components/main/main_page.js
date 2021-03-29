@@ -1,11 +1,12 @@
 import React from 'react';
+import '../../stylesheets/main.css';
 
 class MainPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Disarray</h1>
+            <div className='splash-wrapper'>
+                <h1>Splash</h1>
             </div>
         );
     }
