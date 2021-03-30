@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../stylesheets/board.css'
+import '../../stylesheets/reset.css';
 
 class Board extends React.Component {
     constructor(props) {

@@ -3,13 +3,18 @@
     justify-content: center;
     justify-content: space-between;
     align-items: center;
+    margin: auto;
     color: whitesmoke;
     background-color: rgb(47,49,54);
 }
 
+/* .nav-wrapper > * {
+    display: flex;
+    margin: auto;
+} */
+
 .session-links > * {
     display: flex;
-    justify-content: center;
     text-decoration: none;
     color: whitesmoke;
     border-radius: 5px;
@@ -18,8 +23,14 @@
 
 .session-links-wrapper {
     display: flex;
-    justify-content: center;
     width: 100px;
     border-radius: 5px;
     background-color: tomato;
+}
+
+.game-header {
+    display: flex;
+    font-size: 35px;
+    text-transform: uppercase;
+    background-color: teal;
 }
