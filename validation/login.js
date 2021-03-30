@@ -11,7 +11,7 @@ module.exports = function validateLoginInput(data){
     }
     
     if (Validator.isEmpty(data.password)) {
-        errors.username = "Password is required";
+        errors.password = "Password is required";
     }
 
     return {
