@@ -1,20 +1,25 @@
 .nav-wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: rgb(47,49,54);
     color: whitesmoke;
+    background-color: rgb(47,49,54);
 }
 
-.nav-header {
-    position: relative;
-    opacity: 0;
-    animation: move-text 0.75s forwards;
+.session-links > * {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: whitesmoke;
+    border-radius: 5px;
+    background-color: thistle;
 }
 
-@keyframes move-text {
-    0% { bottom: -0.2em; opacity: 1; }
-    50% { bottom: 0.2em; }
-    100% { bottom: 0; opacity: 1; }
+.session-links-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    border-radius: 5px;
+    background-color: tomato;
 }
