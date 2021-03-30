@@ -68,6 +68,12 @@ class SignupForm extends React.Component {
                             placeholder="Password"
                         />
                         <br />
+                        <input type="password"
+                            value={this.state.password2}
+                            onChange={this.update('password2')}
+                            placeholder="Confirm Password"
+                        />
+                        <br />
                         <input type="submit" value="Submit" />
                         {this.renderErrors()}
                     </div>
