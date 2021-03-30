@@ -1,4 +1,76 @@
-.main-wrapper {
+.game-wrapper {
     display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 670px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    background-color: powderblue;
 }
 
+.board-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 500px;
+    width: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    background-color: tomato;
+}
+
+.tile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 480px;
+    min-width: 480px;
+    margin: 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    background-color: mediumvioletred;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin: 5px;
+    height: 105px;
+    width: 105px;
+    background-color: mediumpurple;
+}
+
+.letter {
+    background-color:palevioletred;
+}
+
+.game-info, .score-board {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: 400px;
+    width: 250px;
+    background-color: teal;
+}
+
+.side-header {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 15px 15px 5px 15px;
+    background-color: seagreen;
+}
+
+.side-content {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    height: 100%;
+    margin: 5px 15px 15px 15px;
+    background-color:mediumpurple;
+}
