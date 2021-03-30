@@ -52,7 +52,7 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className='nav-wrapper'>
-                <Link to='/'className='game-header'>Disarray</Link>
+                <Link to='/board'className='game-header'>Disarray</Link>
                 <div className='session-links-wrapper'>{this.getLinks()}</div>
             </div>
         );

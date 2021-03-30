@@ -49,7 +49,7 @@
     margin: 5px;
     height: 105px;
     width: 105px;
-    box-shadow: darksalmon -4px -4px 8px, 4px 4px 8px;
+    box-shadow:  rgb(110, 15, 75) -4px -4px 8px,  rgb(110, 15, 75) 4px 4px 8px;
     background-color: mediumpurple;
 }
 
@@ -61,7 +61,10 @@
     height: 100%;
     font-size: 50px;
     border-radius: 50%;
+    width: 95%;
+    height: 95%;
     color: whitesmoke;
+    box-shadow:  rgb(116, 86, 177) -4px -4px 8px,  rgb(116, 86, 177) 4px 4px 8px;
     background-color:palevioletred;
 }
 
