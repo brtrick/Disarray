@@ -30,6 +30,9 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
+app.get("/", (req, res) => {
+  res.send("Hello Disarrayers");
+});
 
 app.use("/api/users", users)
 
