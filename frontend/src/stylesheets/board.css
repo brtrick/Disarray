@@ -1,0 +1,143 @@
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    background-color: powderblue;
+}
+
+.info-wrapper > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    justify-content: space-around;
+    height: 70%;
+    width: 95%;
+    border-radius: 10px;
+    background-color: darksalmon;
+}
+
+.game-wrapper > * {
+    display: flex;
+    align-items: center;
+}
+
+.timer {
+    flex-direction: column;
+    font-size: 24px;
+    padding: 5px;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    background-color:palevioletred;
+}
+
+.board-wrapper {
+    border-radius: 10px;
+    height: 500px;
+    width: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    background-color: tomato;
+}
+
+.tile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 480px;
+    min-width: 480px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: mediumvioletred;
+}
+
+.tile-wrapper > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    border-radius: 20px;
+    margin: 5px;
+    height: 105px;
+    width: 105px;
+    box-shadow: 0 0 8px 2px;             
+    background-color:rgb(122, 91, 184);
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 45px;
+    border-radius: 50%;
+    width: 95%;
+    height: 95%;
+    color: whitesmoke;
+    box-shadow: 0 0 10px 2px rgb(146, 111, 216);
+    background-color: mediumpurple;
+}
+
+.game, .score-board {
+    flex-direction: column;
+    border-radius: 10px;
+    height: 400px;
+    width: 250px;
+    background-color: teal;
+}
+
+.game > * , .score-board > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 40px;
+    text-transform: uppercase;
+    margin: 15px 15px 5px 15px;
+    background-color: seagreen;
+}
+
+.side-content {
+    border-radius: 10px;
+    height: 100%;
+    width: 90%;
+    margin: 5px 15px 15px 15px;
+    background-color:mediumpurple;
+}
+
+.word-bank {
+    flex-direction: column;
+    width: 600px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: plum;
+}
+
+.words {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 15px 15px 15px;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    background-color:palegoldenrod;
+}

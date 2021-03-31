@@ -1,6 +1,9 @@
-.splash-wrapper {
+.main-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: coral;
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+    background-color: rosybrown;
 }

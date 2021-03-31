@@ -6,7 +6,7 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <div className='splash-wrapper'>
+            <div className='main-wrapper'>
                 <h1>Splash</h1>
             </div>
         );
