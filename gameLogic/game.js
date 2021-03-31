@@ -19,9 +19,9 @@ class Game {
         this.wordList = new Wordlist('./enable1.txt');
         this.players = players;
         this.playersFoundWords = {};
-        players.forEach( playerId => this.playersFoundWords[playerId] = {});
+        players.forEach( playerName => this.playersFoundWords[playerName] = {});
         this.playersUniqueWords = {};
-        players.forEach( playerId => this.playersUniqueWords[playerId] = {});
+        players.forEach( playerName => this.playersUniqueWords[playerName] = {});
         this.playersGameScore = [];
         players.forEach(() => this.playersGameScore.push(0));
         // this.timer = new Timer;
@@ -35,9 +35,9 @@ class Game {
     //     // start the timer
     // }
 
-    playWord(word, playerId) {
-        if (typeof(this.playersFoundWords[playerId][word]) === "undefined") {
-            this.playersFoundWords[playerId][word] = true;
+    playWord(word, playerName) {
+        if (typeof(this.playersFoundWords[playerName][word]) === "undefined") {
+            this.playersFoundWords[playerName][word] = true;
         }
     }
 
@@ -46,8 +46,8 @@ class Game {
         const duplicates = {};
 
         // establish count of all foundWords
-        for (let i = 1; i <= this.players.length; i++) {
-            const foundWords = this.playersFoundWords[i];
+        Object.keys(this.playersFoundWords).forEach( playerName => {
+            const foundWords = this.playersFoundWords[playerName];
             Object.keys(foundWords).forEach( word => {
                 if (wordCounts[word] === undefined) {
                     wordCounts[word] = 1;
@@ -55,21 +55,21 @@ class Game {
                     duplicates[word] = true;
                 }
             })
-        }
+        })
 
         // create object of UniqueWords for each player
-        for (let i = 1; i <= this.players.length; i++) {
-            const foundWords = this.playersFoundWords[i];
+        Object.keys(this.playersFoundWords).forEach( playerName => {
+            const foundWords = this.playersFoundWords[playerName];
             Object.keys(foundWords).forEach( word => {
                 if (!Object.keys(duplicates).includes(word)) {
-                    this.playersUniqueWords[i][word] = true;
+                    this.playersUniqueWords[playerName][word] = true;
                 }
             })
-        }
+        })
     }
 
     calculateScores() {
-        // update the 
+        // update the player wordlists
         this.findDuplicateWords();
         // get players scores
         return Object.values(this.playersUniqueWords).map( foundWords => this.wordList.checkAnswers(foundWords));
