@@ -8,19 +8,23 @@ class Board extends React.Component {
         super(props)
         this.boardTiles = this.boardTiles.bind(this);
         this.state = {
-            selectedTiles: [
-                            false, false, false, false,
-                            false, false, false, false,
-                            false, false, false, false,
-                            false, false, false, false
-                           ],
+            selectedTiles:  [
+                                false, false, false, false,
+                                false, false, false, false,
+                                false, false, false, false,
+                                false, false, false, false
+                            ],
             currentWord: "",
-            foundWords: {"test": true, "group": true, "abacus": true}
+            foundWords: {"test": true, "GROUP": true, "abacus": true}
         }
         
         this.moves=[];
+        this.mouseDown = false;
+        this.mouseDownTile = -1;
+        this.mouseDownMoves = 0;
 
-        this.handleTileClick = this.handleTileClick.bind(this);
+        this.handleMouseEvent = this.handleMouseEvent.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
     }
 
     boardTiles() {
@@ -31,7 +35,10 @@ class Board extends React.Component {
                 {tiles.map((tile, i) => (
                     <li 
                     key={`tile-${i}`}
-                    onClick={this.handleTileClick}
+                    // onClick={this.handleTileClick}
+                    onMouseDown={this.handleMouseEvent}
+                    onMouseEnter={this.handleMouseEvent}
+                    onMouseUp={this.handleMouseUp}
                     data-letter={tile}
                     data-index={i}
                     className={'tile' + (this.state.selectedTiles[i] ? ' selected' : '')}>
@@ -42,9 +49,16 @@ class Board extends React.Component {
         )
     }
 
-    handleTileClick (e) {
-        e.preventDefault();
+    handleMouseEvent (e) {
+        if (e.type === "mouseenter" && !this.mouseDown) return;
+        
         const index = parseInt(e.currentTarget.dataset.index);
+        if (e.type === "mousedown") {
+            this.mouseDown = true;
+            this.mouseDownTile = index;
+            this.mouseDownMoves = this.moves.length;    
+        }
+    
         const letter = e.currentTarget.dataset.letter;
         const newSelectedTiles = this.state.selectedTiles;
         const lastMove = (this.moves.length > 0) ? this.moves[this.moves.length-1] : -1;
@@ -56,13 +70,14 @@ class Board extends React.Component {
             this.moves.pop();
             currentWord = currentWord.slice(0, -1);
         }
-        // select if first move or valid move to an unselected tile
+        // select tile if first move or valid move to an unselected tile
         else if (lastMove === -1 || (validMove(lastMove, index) && !newSelectedTiles[index])) {
             newSelectedTiles[index] = true;
             this.moves.push(index);
             currentWord += letter;
         }
         else {
+            if (e.type === "mousedown") this.mouseDown = false;
             //blare obnoxious sound to indicate wrong move
             return;
         }
@@ -70,6 +85,39 @@ class Board extends React.Component {
             selectedTiles: newSelectedTiles,
             currentWord: currentWord
         });
+    }
+
+    handleMouseUp (e) {
+        if (!this.mouseDown) return; // ignore if invalid beginning
+        this.mouseDown = false;
+        const index = parseInt(e.currentTarget.dataset.index);
+        
+        // Treat as click if same tile as mouseDown
+        // Because moves are processed on mouseDown, moves will be 1 less if tile was originally 
+        // selected and 1 more if originally unselected
+        if (index === this.mouseDownTile && 
+            this.moves.length === (this.mouseDownMoves + (this.state.selectedTiles[index] ? 1 : -1))) {
+                this.mouseDownMoves = 0;
+                this.mouseDownTile = -1;
+                return;
+        }
+
+        // submit word and reset the board
+        const foundWords = Object.assign ({}, this.state.foundWords);
+        foundWords[this.state.currentWord] = true;
+        this.setState ({
+            currentWord: "",
+            foundWords: foundWords,
+            selectedTiles: [
+                                false, false, false, false,
+                                false, false, false, false,
+                                false, false, false, false,
+                                false, false, false, false
+                            ]
+        });
+        this.mouseDownMoves = 0;
+        this.mouseDownTile = -1;
+        this.moves = [];
     }
 
 
@@ -98,8 +146,10 @@ class Board extends React.Component {
                     <div className='word-bank'>
                         <h2 className='info-header'>Word Bank</h2>
                         <div className='words'>
-                            <p>{this.state.currentWord}</p>
-                            <p>{foundWords}</p>
+                            <ul>
+                                <li>{this.state.currentWord}</li>
+                                <li>{foundWords}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
