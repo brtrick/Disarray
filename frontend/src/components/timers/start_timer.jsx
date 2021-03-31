@@ -28,7 +28,7 @@ import React, { useEffect, useState } from "react";
         // }
 
         return (
-            <div className="star">
+            <div className="start-timer">
                 <span>GAME STARTING IN: {seconds}</span>
             </div>
         )
