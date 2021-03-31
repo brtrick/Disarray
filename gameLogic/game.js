@@ -23,7 +23,7 @@ class Game {
         this.playersUniqueWords = {};
         players.forEach( playerId => this.playersUniqueWords[playerId] = {});
         this.playersGameScore = [];
-        players.forEach(() => this.playerGameScore.push(0));
+        players.forEach(() => this.playersGameScore.push(0));
         // this.timer = new Timer;
     }
 
@@ -43,41 +43,36 @@ class Game {
 
     findDuplicateWords() {
         const wordCounts = {};
-        const duplicates = [];
+        const duplicates = {};
 
         // establish count of all foundWords
-        for (let i = 0; i < this.playersFoundWords.length; i++) {
+        for (let i = 1; i <= this.players.length; i++) {
             const foundWords = this.playersFoundWords[i];
             Object.keys(foundWords).forEach( word => {
-                if (typeof(wordCounts[word]) === "undefined") {
+                if (wordCounts[word] === undefined) {
                     wordCounts[word] = 1;
                 } else {
-                    wordCounts[word] += 1;
+                    duplicates[word] = true;
                 }
             })
         }
 
-        Object.keys(wordCounts).forEach( word => {
-            if (wordCounts[word] > 1) {
-                duplicates.push(word);
-            }
-        })
-
-        for (let i = 0; i < this.playersFoundWords.length; i++) {
+        // create object of UniqueWords for each player
+        for (let i = 1; i <= this.players.length; i++) {
             const foundWords = this.playersFoundWords[i];
             Object.keys(foundWords).forEach( word => {
-                if (!duplicates.includes(word)) {
-                    this.playersUniqueWords[word] = true;
+                if (!Object.keys(duplicates).includes(word)) {
+                    this.playersUniqueWords[i][word] = true;
                 }
             })
         }
     }
 
     calculateScores() {
-        // this.playersFoundWords.forEach( foundWords => { [] })
-
+        // update the 
+        this.findDuplicateWords();
         // get players scores
-        return this.playersFoundWords.map( foundWords => this.wordList.checkAnswers(foundWords));
+        return Object.values(this.playersUniqueWords).map( foundWords => this.wordList.checkAnswers(foundWords));
     }
 
     roundWinner() {
@@ -101,7 +96,7 @@ class Game {
         winnerIndex.forEach( i => winner.push(this.players[i]));
 
         // increment winning player/players rounds Won
-        playerScores.forEach( score, i => {this.playersGameScore[i] += score});
+        playerScores.forEach( (score, i) => {this.playersGameScore[i] += score});
 
         // return winner/winners
         return winner;
