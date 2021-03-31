@@ -1,8 +1,8 @@
-import lineByLine from "n-readlines";
-// const lineByLine = require("n-readlines");
+// import lineByLine from "n-readlines";
+const lineByLine = require("n-readlines");
 
-export default class Wordlist {
-// class Wordlist {
+// export default class Wordlist {
+class Wordlist {
 
     constructor (filename) {
         this.wordlist = {};
@@ -55,3 +55,5 @@ export default class Wordlist {
         }
     }
 }
+
+module.exports = Wordlist;
