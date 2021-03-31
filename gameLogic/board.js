@@ -1,4 +1,7 @@
-export class Board {
+const Die = require("./die");
+
+// export class Board {
+class Board {
     constructor(size = 4) {
         this.size = size;
         this.grid = [];
@@ -35,3 +38,5 @@ export class Board {
         }
     }
 }
+
+module.exports = Board;
