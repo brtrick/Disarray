@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Game = require("./GameState");
 
 const UsersSchema = new Schema({
     username: {
@@ -24,6 +25,10 @@ const UsersSchema = new Schema({
         type: Number,
         default: 0
     },
+    currentGames: [{
+      type: Schema.Types.ObjectId,
+      ref: "Game"  
+    }],
     date: {
         type: Date,
         default: Date.now
