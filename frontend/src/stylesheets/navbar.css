@@ -2,11 +2,13 @@
     display: flex;
     justify-content: center;
     justify-content: space-between;
+    position: fixed;
     align-items: center;
-    height: 50px;
+    height: 80px;
+    width: 100%;
     margin: auto;
     color: whitesmoke;
-    background-color: rgb(47,49,54);
+    background-color: rgb(54,57,63);
 }
 
 .session-links > * {
@@ -29,14 +31,14 @@
     /* background-color: thistle; */
 }
 
-.session-links-wrapper {
+/* .session-links-wrapper {
     display: flex;
     align-items: center;
-    /* background-color:paleturquoise; */
-}
+    background-color:paleturquoise;
+} */
 
 .game-header {
-    display: flex;
+    /* display: flex; */
     font-size: 35px;
     margin-left: 50%;
     transform: translateX(-50%);

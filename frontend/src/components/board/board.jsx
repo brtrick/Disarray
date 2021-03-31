@@ -27,6 +27,10 @@ class Board extends React.Component {
         return (
             <div className='main-wrapper'>
                 <div className='info-wrapper'>
+                    <div className='timer'>
+                        <div className='timer-header'>Timer</div>
+                        <div className='time'>0:00</div>
+                    </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
                             <h2 className='info-header'>Game Info</h2>
