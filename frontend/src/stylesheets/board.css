@@ -75,6 +75,10 @@
     background-color:rgb(122, 91, 184);
 }
 
+.selected {
+    background-color: blue;
+}
+
 .letter {
     display: flex;
     justify-content: center;
