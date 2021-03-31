@@ -9,14 +9,31 @@ const User = require("../../models/User");
 const validateLoginInput = require("../../validation/login");
 const validateRegisterInput = require('../../validation/register');
 
-router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
     res.json({
       id: req.user.id,
-      handle: req.user.handle,
-      email: req.user.email
+      username: req.user.username
     });
   });
 
+  router.get("/", (req, res) => {
+      User.find().sort({date: -1})
+      .then(users => res.json(users))
+      .catch(err => res.status(404).json(err))
+  });
+
+
+
+
+  router.patch("/:user_id", (req, res) => {
+      User.findByIdAndUpdate(req.params.user_id, {gamesWon: req.body.win, gamesLost: req.body.loss, gamesPlayed: req.body.game}, (err, user) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(user)
+        }
+      })
+  });
 
 
 router.post("/register", (req, res) => {
@@ -68,7 +85,7 @@ router.post("/login", (req, res) => {
     .then(user => {
         if (!user) {
             errors.username = "User does not exist";
-            return res.status(400).json(errors);
+            return res.status(404).json(errors);
         }
         bcrypt.compare(password, user.password)
         .then(isMatch => {
