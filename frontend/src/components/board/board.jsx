@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../stylesheets/board.css'
 import '../../stylesheets/reset.css';
+import RoundTimer from "../timers/round_timer";
 
 class Board extends React.Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class Board extends React.Component {
                 <div className='info-wrapper'>
                     <div className='timer'>
                         <div className='timer-header'>Timer</div>
-                        <div className='time'>0:00</div>
+                        <RoundTimer/>
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 

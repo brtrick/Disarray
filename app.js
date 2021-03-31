@@ -8,6 +8,7 @@ const User = require("./models/User");
 const bodyParser = require("body-parser");
 const path = require('path');
 const boards = require('./routes/api/boards');
+const leaderboard = require("./routes/api/leaderboard");
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", users)
 app.use("/api/boards", boards)
+app.use("/api/leaderboard", leaderboard)
 
 const port = process.env.PORT || 5000;
 
