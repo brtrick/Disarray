@@ -26,7 +26,9 @@ router.get("/current", passport.authenticate("jwt", {session: false}), (req, res
 
 
   router.patch("/:user_id", (req, res) => {
-      User.findByIdAndUpdate(req.params.user_id, {gamesWon: req.body.win, gamesLost: req.body.loss, gamesPlayed: req.body.game}, (err, user) => {
+      User.findByIdAndUpdate(req.params.user_id,
+         {gamesWon: req.body.win, gamesLost: req.body.loss, gamesPlayed: req.body.game},
+          (err, user) => {
         if (err) {
             res.json(err)
         } else {
