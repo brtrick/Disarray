@@ -30,6 +30,7 @@ class Board extends React.Component {
 
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
 
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
@@ -57,21 +58,33 @@ class Board extends React.Component {
             <ul className='tile-wrapper'>
                 {tiles.map((tile, i) => (
                     <li 
-                    key={`tile-${i}`}
-                    // onClick={this.handleTileClick}
-                    onMouseDown={this.handleMouseEvent}
-                    onMouseEnter={this.handleMouseEvent}
-                    onMouseUp={this.handleMouseUp}
-                    data-letter={tile}
-                    data-index={i}
-                    className={'tile' + (this.state.selectedTiles[i] ? ' selected' : '')}>
-                        <p className='letter'>{tile}</p>
+                        key={`tile-${i}`}
+                        // onClick={this.handleTileClick}
+                        onMouseDown={this.handleMouseEvent}
+                        onMouseEnter={this.handleMouseEvent}
+                        onMouseUp={this.handleMouseUp}
+                        onMouseLeave={this.handleMouseLeave}
+                        data-letter={tile}
+                        data-index={i}
+                        className={'tile' + (this.state.selectedTiles[i] ? ' selected' : '')}>
+                            <p className='letter'>{tile}</p>
                     </li>
                 ))}
             </ul>
         )
     }
 
+    handleMouseLeave(e) {
+        const index = parseInt(e.currentTarget.dataset.index);
+        //check if exited left side of board
+        if (([0, 4, 8, 12   ].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left side
+            ([0, 1, 2, 3    ].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
+            ([3, 7, 11, 15  ].includes(index) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
+            ([12, 13, 14, 15].includes(index) && (e.nativeEvent.offsetY >= e.currentTarget.offsetHeight))) //exit bottom
+        {
+                this.submitAndReset();
+        }
+    }
 
     handleMouseEvent (e) {
         if (e.type === "mouseenter" && !this.mouseDown) return;
@@ -113,7 +126,6 @@ class Board extends React.Component {
 
     handleMouseUp (e) {
         if (!this.mouseDown) return; // ignore if invalid beginning
-        this.mouseDown = false;
         const index = parseInt(e.currentTarget.dataset.index);
         
         // Treat as click if same tile as mouseDown
@@ -123,10 +135,13 @@ class Board extends React.Component {
             this.moves.length === (this.mouseDownMoves + (this.state.selectedTiles[index] ? 1 : -1))) {
                 this.mouseDownMoves = 0;
                 this.mouseDownTile = -1;
+                this.mouseDown = false;
                 return;
         }
+        this.submitAndReset();
+    }
 
-        // submit word and reset the board
+    submitAndReset () {
         const foundWords = Object.assign ({}, this.state.foundWords);
         foundWords[this.state.currentWord] = true;
         this.setState ({
@@ -141,6 +156,7 @@ class Board extends React.Component {
         });
         this.mouseDownMoves = 0;
         this.mouseDownTile = -1;
+        this.mouseDown = false;
         this.moves = [];
     }
 
