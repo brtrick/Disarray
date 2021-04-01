@@ -3,6 +3,7 @@ import '../../stylesheets/board.css';
 import '../../stylesheets/reset.css';
 import validMove from '../../util/board_util';
 import RoundTimer from "../timers/round_timer";
+import errorBoop from '../../audio/error_boop.wav'
 
 class Board extends React.Component {
     constructor(props) {
@@ -17,7 +18,6 @@ class Board extends React.Component {
                             ],
             currentWord: "",
             foundWords: {"test": true, "GROUP": true, "abacus": true},
-            // leaderboard: {}
         }
         
         this.moves=[];
@@ -27,12 +27,13 @@ class Board extends React.Component {
 
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
+
+        this.errorBoop = new Audio(errorBoop);
     }
 
     componentDidMount(){
         this.props.fetchLeaderboard();
     }
-
 
     boardTiles() {
         const tiles = "ABCDEFGHIJKLMNOP".split("");
@@ -87,6 +88,7 @@ class Board extends React.Component {
         else {
             if (e.type === "mousedown") this.mouseDown = false;
             //blare obnoxious sound to indicate wrong move
+            this.errorBoop.play()
             return;
         }
         this.setState({
@@ -138,7 +140,7 @@ class Board extends React.Component {
                 <div className='info-wrapper'>
                     <div className='timer'>
                         <div className='timer-header'>Timer</div>
-                        <RoundTimer/>
+                        <RoundTimer />
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
@@ -151,11 +153,11 @@ class Board extends React.Component {
                         <div className='score-board'>
                             <h2 className='info-header'>Leader Board</h2>
                             <div className='side-content'>
-                                <ul>
+                                <ul className='leader-board'>
                                     {lead.map(user => (
                                         <li key={`${user._id}`}>
-                                            <span>{user.username}</span>
-                                            <span>{user.gamesWon}</span>
+                                            <span className='leader-name'>{user.username}</span>
+                                            <span className='leader-score'>{user.gamesWon}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -165,9 +167,9 @@ class Board extends React.Component {
                     <div className='word-bank'>
                         <h2 className='info-header'>Word Bank</h2>
                         <div className='words'>
-                            <ul>
-                                <li>{this.state.currentWord}</li>
-                                <li>{foundWords}</li>
+                            <ul className='word-box'>
+                                <li className='active-word'>{this.state.currentWord}</li>
+                                <li className='found-words'>{foundWords}</li>
                             </ul>
                         </div>
                     </div>

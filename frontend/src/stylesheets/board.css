@@ -5,9 +5,11 @@
     justify-content: space-evenly;
     align-items: center;
     width: 80%;
-    height: 80%;
+    height: 85%;
+    margin-top: 30px;
     border-radius: 10px;
-    background-color: powderblue;
+    background-color: rgba(49, 48, 53, 0.516);
+    /* background-color: powderblue; */
 }
 
 .info-wrapper > * {
@@ -21,7 +23,7 @@
     height: 70%;
     width: 95%;
     border-radius: 10px;
-    background-color: darksalmon;
+    /* background-color: darksalmon; */
 }
 
 .game-wrapper > * {
@@ -31,12 +33,15 @@
 
 .timer {
     flex-direction: column;
-    font-size: 24px;
+    font-size: 28px;
     padding: 5px;
     height: 50px;
     width: 200px;
+    margin: 10px;
     border-radius: 10px;
-    background-color:palevioletred;
+    color: rgb(0,255,175);
+    /* background-color: rgba(62, 71, 109, 0.881); */
+    /* background-color:palevioletred; */
 }
 
 .board-wrapper {
@@ -45,7 +50,8 @@
     width: 500px;
     min-width: 500px;
     min-height: 500px;
-    background-color: tomato;
+    background-color: slategray;
+    /* background-color: tomato; */
 }
 
 .tile-wrapper {
@@ -57,7 +63,8 @@
     min-width: 480px;
     margin: 10px;
     border-radius: 10px;
-    background-color: mediumvioletred;
+    background-color: rgb(68, 77, 85);
+    /* background-color: mediumvioletred; */
 }
 
 .tile-wrapper > * {
@@ -83,7 +90,10 @@
 }
 
 .selected {
-    background-color: blue;
+    /* background-color: blue; */
+    /* border: 2px solid tomato; */
+    /* box-shadow: 0 0 8px 8px tomato; */
+    box-shadow: 0 0 8px 8px rgb(26, 171, 149);
 }
 
 .letter {
@@ -104,9 +114,10 @@
 .game, .score-board {
     flex-direction: column;
     border-radius: 10px;
-    height: 400px;
-    width: 250px;
-    background-color: teal;
+    height: 450px;
+    width: 300px;
+    /* background-color: teal; */
+    background-color: slategray;
 }
 
 .game > * , .score-board > * {
@@ -122,8 +133,8 @@
     border-radius: 5px;
     height: 40px;
     text-transform: uppercase;
-    margin: 15px 15px 5px 15px;
-    background-color: seagreen;
+    /* margin: 15px 15px 5px 15px; */
+    /* background-color: seagreen; */
 }
 
 .side-content {
@@ -131,24 +142,50 @@
     height: 100%;
     width: 90%;
     margin: 5px 15px 15px 15px;
-    background-color:mediumpurple;
+    /* background-color:mediumpurple; */
+    background-color: plum;
+}
+
+.leader-board li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 15px 15px 15px;
+}
+
+.leader-score {
+    color: tomato;
 }
 
 .word-bank {
     flex-direction: column;
     width: 600px;
-    height: 200px;
+    height: 250px;
     border-radius: 10px;
-    background-color: plum;
+    margin: 10px;
+    /* background-color: plum; */
+    background-color: slategray;
 }
 
 .words {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     margin: 5px 15px 15px 15px;
-    width: 80%;
+    width: 95%;
     height: 80%;
     border-radius: 10px;
-    background-color:palegoldenrod;
+    background-color:plum;
+}
+
+.word-box {
+    display: flex;
+    flex-direction: column;
+    background-color: tomato;
+}
+
+.active-word {
+    background-color: teal;
+}
+
+.found-words {
+    background-color: coral;
 }
