@@ -11,8 +11,8 @@ class Board extends React.Component {
         super(props)
         this.boardTiles = this.boardTiles.bind(this);
         this.state = {
-            board: ["","","","","","","","",
-                    "","","","","","","",""],
+            board: ["","","","","P","L","A","Y",
+                    "N","O","W","!","","","",""],
             selectedTiles:  [
                                 false, false, false, false,
                                 false, false, false, false,
