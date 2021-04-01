@@ -5,9 +5,10 @@
     justify-content: space-evenly;
     align-items: center;
     width: 80%;
-    height: 80%;
+    height: 90%;
+    margin-top: 80px;
     border-radius: 10px;
-    background-color: powderblue;
+    background-color: rgba(49, 48, 53, 0.516);
 }
 
 .info-wrapper > * {
@@ -21,7 +22,6 @@
     height: 70%;
     width: 95%;
     border-radius: 10px;
-    background-color: darksalmon;
 }
 
 .game-wrapper > * {
@@ -31,12 +31,13 @@
 
 .timer {
     flex-direction: column;
-    font-size: 24px;
+    font-size: 28px;
     padding: 5px;
     height: 50px;
     width: 200px;
+    margin: 10px;
     border-radius: 10px;
-    background-color:palevioletred;
+    color: rgb(26,203,255);
 }
 
 .board-wrapper {
@@ -45,7 +46,7 @@
     width: 500px;
     min-width: 500px;
     min-height: 500px;
-    background-color: tomato;
+    background-color: slategray;
 }
 
 .tile-wrapper {
@@ -57,7 +58,8 @@
     min-width: 480px;
     margin: 10px;
     border-radius: 10px;
-    background-color: mediumvioletred;
+    background-color: rgb(68, 77, 85);
+    box-shadow: 0 0 10px 6px rgb(36, 41, 46);
 }
 
 .tile-wrapper > * {
@@ -73,6 +75,21 @@
     width: 105px;
     box-shadow: 0 0 8px 2px;             
     background-color:rgb(122, 91, 184);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.selected {
+    box-shadow: 0 0 8px 8px rgb(26, 171, 149);
+}
+
+.selected-letter {
+    color: rgb(26, 171, 149);
 }
 
 .letter {
@@ -93,12 +110,12 @@
 .game, .score-board {
     flex-direction: column;
     border-radius: 10px;
-    height: 400px;
-    width: 250px;
-    background-color: teal;
+    height: 450px;
+    width: 300px;
+    background-color: slategray;
 }
 
-.game > * , .score-board > * {
+.score-board > * {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,36 +125,128 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
     height: 40px;
     text-transform: uppercase;
-    margin: 15px 15px 5px 15px;
-    background-color: seagreen;
+    color: rgb(27, 30, 36);
+    margin: 5px 15px 0px 15px;
 }
 
 .side-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     border-radius: 10px;
     height: 100%;
     width: 90%;
-    margin: 5px 15px 15px 15px;
-    background-color:mediumpurple;
+    margin: 0px 5px 15px 5px;
+    background-color: rgba(68, 77, 85, 0.712);
 }
 
-.word-bank {
-    flex-direction: column;
-    width: 600px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: plum;
+.leader-board li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 15px 15px 15px;
+}
+
+.leader-board {
+    margin-top: 20px;
+    height: 90%;
+    width: 100%;
+}
+
+.leader-score {
+    color: tomato;
 }
 
 .words {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+}
+
+.word-box {
+    display: flex;
+    align-items:flex-start;
+    flex-flow: column wrap;
+    min-height: 80%;
+    max-height: 80%;
+    width: 90%;
+}
+
+.word-box li {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    margin: 4px;
+}
+
+.active-word {
+    width: 90%;
+    color: rgb(14,188,246);
+    font-size: 16px;
+    border-bottom: solid slategray;
+}
+
+.leader-header {
+    justify-content: space-between;
+    width: 90%;
+    font-size: 16px;
+    border-bottom: solid slategray;
+    color: rgb(14,188,246);
+}
+
+.lower-wrapper {
+    width: 95%;
+    height: 100%;
+}
+
+.lower-wrapper > * {
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px 15px 15px 15px;
-    width: 80%;
-    height: 80%;
+}
+
+.chat {
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 10px;
-    background-color:palegoldenrod;
+    align-items: center;
+    margin: 5px;
+    width: 600px;
+    height: 95%;
+    background-color: rgb(64, 103, 136);
+}
+
+.chat-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 95%;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: rgba(68, 77, 85, 0.712);
+}
+
+.chat-input {
+    height: 5px;
+    font-size: 10px;
+    padding: 10px;
+    color: white;
+    border: rgba(96, 109, 121, 0.712) 2px solid;
+    background-color: slategray
+}
+
+.lower-button {
+    align-self: baseline;
+    color: rgb(14,188,246);
+    font-size: 12px;
+    width: 130px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }

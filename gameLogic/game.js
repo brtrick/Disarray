@@ -16,8 +16,8 @@ const Wordlist = require("./wordlist.js");
 // export default class Game {
 class Game {
     constructor(...players) {
-        const d = new Date();
-        this.id = d.getUTCMilliseconds(); 
+        const d = new Date(); 
+        this.id = d.getUTCMilliseconds(); //Can change this to random string
         this.board = new Board;
         this.wordList = new Wordlist(__dirname + '/enable1.txt');
         this.players = players;
@@ -29,7 +29,7 @@ class Game {
         players.forEach(() => this.playersGameScore.push(0));
         // this.timer = new Timer;
         this.isActive = false;
-        // players.forEach(({socket}) => socket.join(this.id) )
+        players.forEach(({socket}) => socket.join(this.id) )
     }
 
     shuffleBoard() {
@@ -48,6 +48,15 @@ class Game {
         });
     }
 
+    renderJSON() {
+        const playerNames = [];
+        this.players.forEach (player => playerNames.push(player.playerName));
+        return ({
+            id: this.id,
+            players: playerNames,
+            board: this.board.grid
+        });
+    }
     // startGameTimer() {
     //     // start the timer
     //     this.isActive = true;

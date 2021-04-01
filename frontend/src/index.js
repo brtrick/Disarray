@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
+import { fetchLeaderboard } from './actions/game_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (process.env.NODE_ENV !== 'production') {
         window.dispatch = store.dispatch
         window.getState = store.getState
+        window.fetchLeaderboard = fetchLeaderboard;
     }
     
     ReactDOM.render(<Root store={store} />, root);

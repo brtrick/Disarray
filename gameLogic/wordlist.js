@@ -13,7 +13,6 @@ class Wordlist {
     initializeLists (filename) {
         const fileLine = new lineByLine(filename);
         // const fileLine = new lineByLine(__dirname + '/enable1.txt');
-
         let word;
 
         while (word = fileLine.next()) {

@@ -5,5 +5,8 @@
     margin: auto;
     height: 100vh;
     width: 100vw;
-    background-color: rosybrown;
+    background: url('../images/main_bg.jpg');
+    background-size:cover;
 }
+
+
