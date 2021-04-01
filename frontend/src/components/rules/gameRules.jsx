@@ -6,16 +6,16 @@ class GameRules extends React.Component {
         return (
             <div className='game-rules-container'>
                 <div onClick={this.props.closeModal} className="close-x">X</div>
-                <h2 className='modal-title'><span>Game Rules</span></h2>
-                <ul className='game-rules-list'>
+                <h2 className='modal-title'>Game Rules</h2>
+                <ul className='rule-list'>
                     <li>
-                       1. Chain letters together to find words.
+                        <span className='bullet'>1.</span> Chain letters together to find words.
                     </li>
                     <li>
-                       2. Words must contain at least 3 letters.
+                        <span className='bullet'>2.</span> Words must contain at least 3 letters.
                     </li>
                     <li>
-                       3. No letter cube can be used more than once in a single word.
+                        <span className='bullet'>3.</span> No letter cube can be used more than once in a single word.
                     </li>
                     <ul className="scoring-list">
                         <span>Scoring Criteria:</span>
@@ -25,7 +25,7 @@ class GameRules extends React.Component {
                         <li>7 letters: 5 points</li>
                         <li>8 or higher: 11 points</li>
                     </ul>
-                    <span>Have Fun!</span>
+                    <span className='closing-message'>Have Fun!</span>
                 </ul>
             </div>
         )

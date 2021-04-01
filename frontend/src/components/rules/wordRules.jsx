@@ -7,21 +7,21 @@ class WordRules extends React.Component {
         return (
             <div className='word-select-rules'>
                 <div onClick={this.props.closeModal} className="close-x">X</div>
-                <h2 className='modal-title'><span>How To Select Words</span></h2>
-                <ul className='word-select-rules'>
+                <h2 className='modal-title'>How To Select Words</h2>
+                <ul className='rule-list'>
                     <li>
-                       1. Two ways to make words: Click or Drag
+                        <span className='bullet'>1.</span> Two ways to make words: Click or Drag
                     </li>
                     <li>
-                       2. Click on the letter where u want to start then either click or drag to adjacent letters.
+                        <span className='bullet'>2.</span> Click on the letter where u want to start then either click or drag to adjacent letters.
                     </li>
                     <li>
-                       3. You can't go back to a previously selected letter or to a letter that is not adjacent to the most recently selected one.
+                        <span className='bullet'>3.</span> You can't go back to a previously selected letter or to a letter that is not adjacent to the most recently selected one.
                     </li>
                     <li>
-                       4. Once satisfied with your word, click on the submit word button.
+                        <span className='bullet'>4.</span> Once satisfied with your word, click on the submit word button.
                     </li>
-                    <span>Good Luck Disarrayers!</span>
+                    <span className='closing-message'>Good Luck Disarrayers!</span>
                 </ul>
             </div>
         )
