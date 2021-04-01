@@ -3,13 +3,16 @@ import '../../stylesheets/board.css';
 import '../../stylesheets/reset.css';
 import validMove from '../../util/board_util';
 import RoundTimer from "../timers/round_timer";
-import errorBoop from '../../audio/error_boop.wav'
+import errorBoop from '../../audio/error_boop.wav';
+import openSocket from "../../sockets/socket";
 
 class Board extends React.Component {
     constructor(props) {
         super(props)
         this.boardTiles = this.boardTiles.bind(this);
         this.state = {
+            board: ["","","","","","","","",
+                    "","","","","","","",""],
             selectedTiles:  [
                                 false, false, false, false,
                                 false, false, false, false,
@@ -28,17 +31,28 @@ class Board extends React.Component {
 
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
-
         this.errorBoop = new Audio(errorBoop);
+        this.socket = null;
+        this.receiveGame = this.receiveGame.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchLeaderboard();
+        this.socket = openSocket({receiveGame: this.receiveGame});
+    }
+
+    componentWillUnmount () {
+        this.socket.disconnect();
+    }
+
+    receiveGame({board}) {
+        this.setState({board: board});
     }
 
     boardTiles() {
-        const tiles = "ABCDEFGHIJKLMNOP".split("");
+        // const tiles = "ABCDEFGHIJKLMNOP".split("");
         // const tiles = [...Array(16).keys()];
+        const tiles = this.state.board;
         return (
             <ul className='tile-wrapper'>
                 {tiles.map((tile, i) => (
