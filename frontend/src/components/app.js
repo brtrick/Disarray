@@ -7,9 +7,11 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import BoardContainer from './board/board_container';
+import Modal from './modal/modal';
 
 const App = () => (
     <div>
+        <Modal/>
         <NavBarContainer />
         <Switch>
             <AuthRoute exact path="/" component={MainPage} />

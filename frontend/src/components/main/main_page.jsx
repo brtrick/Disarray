@@ -2,7 +2,6 @@ import React from 'react';
 import '../../stylesheets/main.css';
 import '../../stylesheets/reset.css';
 
-
 class MainPage extends React.Component {
 
     render() {
