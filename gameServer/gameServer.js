@@ -34,7 +34,7 @@ class GameServer {
 
         
 
-        this.io.listen(port);
+        this.server.listen(port);
 
         this.waitingRoom = [];
         this.games = {};
