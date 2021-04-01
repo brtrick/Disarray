@@ -4,7 +4,6 @@ import '../../stylesheets/splash.css';
 import '../../stylesheets/main.css';
 import '../../stylesheets/reset.css';
 
-
 class MainPage extends React.Component {
 
     render() {
