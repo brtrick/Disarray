@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         const { location } = this.props
         if (this.props.loggedIn) {
             return (
-                <div className='session-links'>
+                <div>
                     <button 
                     className='session-links'
                     onClick={this.logoutUser}>Logout</button>
@@ -52,14 +52,20 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className='nav-wrapper'>
+                <Link to='/board' className='new-game'>New Game</Link>
                 <Link to='/'className='game-header'>
                     <span className='d'>D</span>
                     <div className='end-wrap'>
-                        <span className='is'>is</span>
-                        <span className='array'>arra</span>
+                        <div className='stacked'>
+                            <span className='is'>is</span>
+                            <span className='array'>arr</span>
+                        </div>
+                        <div className='last-two'>
+                            <span className='a'>a</span>
+                            <span className='y'>y</span>
+                        </div>
                     </div>
-                    <span className='y'>y</span>
-                    </Link>
+                </Link>
                 <div className='session-links-wrapper'>{this.getLinks()}</div>
             </div>
         );
