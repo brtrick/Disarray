@@ -5,11 +5,10 @@
     justify-content: space-evenly;
     align-items: center;
     width: 80%;
-    height: 85%;
-    margin-top: 30px;
+    height: 90%;
+    margin-top: 80px;
     border-radius: 10px;
     background-color: rgba(49, 48, 53, 0.516);
-    /* background-color: powderblue; */
 }
 
 .info-wrapper > * {
@@ -23,7 +22,6 @@
     height: 70%;
     width: 95%;
     border-radius: 10px;
-    /* background-color: darksalmon; */
 }
 
 .game-wrapper > * {
@@ -39,9 +37,7 @@
     width: 200px;
     margin: 10px;
     border-radius: 10px;
-    color: rgb(0,255,175);
-    /* background-color: rgba(62, 71, 109, 0.881); */
-    /* background-color:palevioletred; */
+    color: rgb(26,203,255);
 }
 
 .board-wrapper {
@@ -51,7 +47,6 @@
     min-width: 500px;
     min-height: 500px;
     background-color: slategray;
-    /* background-color: tomato; */
 }
 
 .tile-wrapper {
@@ -64,7 +59,7 @@
     margin: 10px;
     border-radius: 10px;
     background-color: rgb(68, 77, 85);
-    /* background-color: mediumvioletred; */
+    box-shadow: 0 0 10px 6px rgb(36, 41, 46);
 }
 
 .tile-wrapper > * {
@@ -90,10 +85,11 @@
 }
 
 .selected {
-    /* background-color: blue; */
-    /* border: 2px solid tomato; */
-    /* box-shadow: 0 0 8px 8px tomato; */
     box-shadow: 0 0 8px 8px rgb(26, 171, 149);
+}
+
+.selected-letter {
+    color: rgb(26, 171, 149);
 }
 
 .letter {
@@ -116,11 +112,10 @@
     border-radius: 10px;
     height: 450px;
     width: 300px;
-    /* background-color: teal; */
     background-color: slategray;
 }
 
-.game > * , .score-board > * {
+.score-board > * {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,20 +125,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
     height: 40px;
     text-transform: uppercase;
-    /* margin: 15px 15px 5px 15px; */
-    /* background-color: seagreen; */
+    color: rgb(27, 30, 36);
+    margin: 5px 15px 0px 15px;
 }
 
 .side-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     border-radius: 10px;
     height: 100%;
     width: 90%;
-    margin: 5px 15px 15px 15px;
-    /* background-color:mediumpurple; */
-    background-color: plum;
+    margin: 0px 5px 15px 5px;
+    background-color: rgba(68, 77, 85, 0.712);
 }
 
 .leader-board li {
@@ -152,40 +149,104 @@
     margin: 5px 15px 15px 15px;
 }
 
-.leader-score {
-    color: tomato;
+.leader-board {
+    margin-top: 20px;
+    height: 90%;
+    width: 100%;
 }
 
-.word-bank {
-    flex-direction: column;
-    width: 600px;
-    height: 250px;
-    border-radius: 10px;
-    margin: 10px;
-    /* background-color: plum; */
-    background-color: slategray;
+.leader-score {
+    color: tomato;
 }
 
 .words {
     display: flex;
     flex-direction: column;
-    margin: 5px 15px 15px 15px;
+    align-items: center;
     width: 95%;
-    height: 80%;
+    height: 95%;
     border-radius: 10px;
-    background-color:plum;
 }
 
 .word-box {
     display: flex;
+    align-items:flex-start;
+    flex-flow: column wrap;
+    min-height: 80%;
+    max-height: 80%;
+    width: 90%;
+}
+
+.word-box li {
+    display: flex;
     flex-direction: column;
-    background-color: tomato;
+    font-size: 13px;
+    margin: 4px;
 }
 
 .active-word {
-    background-color: teal;
+    width: 90%;
+    color: rgb(14,188,246);
+    font-size: 16px;
+    border-bottom: solid slategray;
 }
 
-.found-words {
-    background-color: coral;
+.leader-header {
+    justify-content: space-between;
+    width: 90%;
+    font-size: 16px;
+    border-bottom: solid slategray;
+    color: rgb(14,188,246);
+}
+
+.lower-wrapper {
+    width: 95%;
+    height: 100%;
+}
+
+.lower-wrapper > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat {
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    align-items: center;
+    margin: 5px;
+    width: 600px;
+    height: 95%;
+    background-color: rgb(64, 103, 136);
+}
+
+.chat-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 95%;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: rgba(68, 77, 85, 0.712);
+}
+
+.chat-input {
+    height: 5px;
+    font-size: 10px;
+    padding: 10px;
+    color: white;
+    border: rgba(96, 109, 121, 0.712) 2px solid;
+    background-color: slategray
+}
+
+.lower-button {
+    align-self: baseline;
+    color: rgb(14,188,246);
+    font-size: 12px;
+    width: 130px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }

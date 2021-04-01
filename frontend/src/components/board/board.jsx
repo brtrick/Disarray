@@ -17,7 +17,8 @@ class Board extends React.Component {
                                 false, false, false, false
                             ],
             currentWord: "",
-            foundWords: {"test": true, "GROUP": true, "abacus": true},
+            // foundWords: {"test": true, "GROUP": true, "abacus": true},
+            foundWords: {},
         }
         
         this.moves=[];
@@ -134,7 +135,8 @@ class Board extends React.Component {
     render() {
        if (!this.props.leaderboard) return null;
        const lead = Object.values(this.props.leaderboard);
-        const foundWords = Object.keys(this.state.foundWords).sort();
+       const foundWords = Object.keys(this.state.foundWords).sort();
+
         return (
             <div className='main-wrapper'>
                 <div className='info-wrapper'>
@@ -144,8 +146,21 @@ class Board extends React.Component {
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
-                            <h2 className='info-header'>Game Info</h2>
-                            <div className='side-content'>Content</div>
+                            <h2 className='info-header'>Word Bank</h2>
+                            <div className='side-content'>
+                                <div className='words'>
+                                    <li className='info-header active-word'>
+                                        {this.state.currentWord}
+                                    </li>
+                                    <ul className='word-box'>
+                                        {foundWords.map((foundWord, i) => (
+                                            <li key={`foundWord-${i}`} 
+                                                className='found-words'>{foundWord}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div className='board-wrapper'>
                             <h2>{this.boardTiles()}</h2>
@@ -153,25 +168,33 @@ class Board extends React.Component {
                         <div className='score-board'>
                             <h2 className='info-header'>Leader Board</h2>
                             <div className='side-content'>
+                                <li className='info-header leader-header'>
+                                    <span>Username</span> 
+                                    <span>Score</span>
+                                </li>
                                 <ul className='leader-board'>
                                     {lead.map(user => (
                                         <li key={`${user._id}`}>
-                                            <span className='leader-name'>{user.username}</span>
-                                            <span className='leader-score'>{user.gamesWon}</span>
+                                            <span className='leader-name'>
+                                                {user.username}
+                                            </span>
+                                            <span className='leader-score'>
+                                                {user.gamesWon}
+                                            </span>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div className='word-bank'>
-                        <h2 className='info-header'>Word Bank</h2>
-                        <div className='words'>
-                            <ul className='word-box'>
-                                <li className='active-word'>{this.state.currentWord}</li>
-                                <li className='found-words'>{foundWords}</li>
-                            </ul>
+                    <div className='lower-wrapper'>
+                        <button className='submit lower-button'>Submit Word</button>
+                        <div className='chat'>
+                            <h2 className='info-header'>Chat</h2>
+                            <div className='chat-box'>Content</div>
+                            <input className='chat-input form-input' type="text" value='say hi'/>
                         </div>
+                        <button className='submit lower-button'>Practice Game</button>
                     </div>
                 </div>
             </div>
