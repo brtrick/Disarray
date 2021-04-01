@@ -2,7 +2,7 @@ import React from 'react';
 import '../../stylesheets/board.css';
 import '../../stylesheets/reset.css';
 import validMove from '../../util/board_util';
-
+import RoundTimer from "../timers/round_timer";
 
 class Board extends React.Component {
     constructor(props) {
