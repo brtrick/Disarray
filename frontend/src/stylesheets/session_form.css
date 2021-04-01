@@ -85,6 +85,7 @@
     font-family: 'Press Start 2P';
     letter-spacing: 2px;
     border: 0.125rem solid transparent;
+    line-height: 14px;
     border-radius: 1rem;
     background: rgb(54,57,63);
     box-shadow: 0 0.125rem 0 lightgrey;

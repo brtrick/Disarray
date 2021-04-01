@@ -10,7 +10,20 @@
   
   .modal-child {
     position: absolute;
+    background-color: mediumspringgreen;
+    border-radius: 10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .close-x {
+    text-align: right;
+    background-color: olive;
+    font-size: 20px;
+  }
+
+  .modal-title {
+    font-size: 32px;
+    background-color: orange;
   }

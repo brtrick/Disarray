@@ -7,7 +7,7 @@ class WordRules extends React.Component {
         return (
             <div className='word-select-rules'>
                 <div onClick={this.props.closeModal} className="close-x">X</div>
-                <h2><span>How To Select Words</span></h2>
+                <h2 className='modal-title'><span>How To Select Words</span></h2>
                 <ul className='word-select-rules'>
                     <li>
                        1. Two ways to make words: Click or Drag

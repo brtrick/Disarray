@@ -6,7 +6,7 @@ class GameRules extends React.Component {
         return (
             <div className='game-rules-container'>
                 <div onClick={this.props.closeModal} className="close-x">X</div>
-                <h2 className='game-rules-title'><span>Game Rules</span></h2>
+                <h2 className='modal-title'><span>Game Rules</span></h2>
                 <ul className='game-rules-list'>
                     <li>
                        1. Chain letters together to find words.
