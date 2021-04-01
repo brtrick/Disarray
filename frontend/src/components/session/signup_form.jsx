@@ -58,9 +58,9 @@ class SignupForm extends React.Component {
             <main className='main-wrapper'>
                 <div className='form-wrapper'>
                     <h2 className='form-header'>Sign Up</h2>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form">
-                            {/* <br /> */}
+                    <form className="form" onSubmit={this.handleSubmit}>
+                        <div className='input-wrapper'>
+                            <div className='fields'>
                             <input 
                                 className='form-input'
                                 type="text"
@@ -68,7 +68,7 @@ class SignupForm extends React.Component {
                                 onChange={this.update('username')}
                                 placeholder="Username"
                             />
-                            {/* <br /> */}
+                            
                             <input
                                 className='form-input'
                                 type="password"
@@ -76,7 +76,7 @@ class SignupForm extends React.Component {
                                 onChange={this.update('password')}
                                 placeholder="Password"
                             />
-                            {/* <br /> */}
+                            
                             <input 
                                 className='form-input'
                                 type="password"
@@ -84,12 +84,12 @@ class SignupForm extends React.Component {
                                 onChange={this.update('password2')}
                                 placeholder="Confirm Password"
                             />
-                            {/* <br /> */}
+                            </div>
                             <input className='submit'
                             type="submit" value="Submit" />
                         </div>
+                        <div>{this.renderErrors()}</div>
                     </form>
-                    <div>{this.renderErrors()}</div>
                 </div>
             </main>
         );

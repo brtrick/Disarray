@@ -52,7 +52,14 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className='nav-wrapper'>
-                <Link to='/board'className='game-header'>Disarray</Link>
+                <Link to='/'className='game-header'>
+                    <span className='d'>D</span>
+                    <div className='end-wrap'>
+                        <span className='is'>is</span>
+                        <span className='array'>arra</span>
+                    </div>
+                    <span className='y'>y</span>
+                    </Link>
                 <div className='session-links-wrapper'>{this.getLinks()}</div>
             </div>
         );

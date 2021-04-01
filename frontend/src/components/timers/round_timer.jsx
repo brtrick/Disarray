@@ -50,7 +50,7 @@ import React, { useEffect, useState } from "react";
        }
 
         return (
-            <div className="timer">
+            <div>
                 <span>{minutes}:{stringify(seconds)}</span>
             </div>
         )
