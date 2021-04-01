@@ -1,9 +1,12 @@
 // import User from ""
 
 // export default class Player extends User {
-    export default class Player {
-    constructor() {
-        // this.playerId = ;
+class Player {
+    constructor(username, socket) {
+        this.playerName = username;
+        this.socket = socket;
     }
 
 }
+
+module.exports = Player;

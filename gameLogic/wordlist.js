@@ -12,7 +12,8 @@ class Wordlist {
 
     initializeLists (filename) {
         const fileLine = new lineByLine(filename);
-        
+        // const fileLine = new lineByLine(__dirname + '/enable1.txt');
+
         let word;
 
         while (word = fileLine.next()) {
@@ -53,6 +54,22 @@ class Wordlist {
             default:
                 return 11;
         }
+    }
+
+    finalizeWords(foundWords, duplicates) {
+        const words = Object.keys(foundWords);
+        
+        words.forEach((word) => {
+            if (!this.wordlist[word]) {
+                foundWords[word] = -1;
+            } else if (duplicates.includes(word)) {
+                foundWords[word] = 0;
+            } else {
+                foundWords[word] = this.calculateWordValue(word.length);
+            }
+        });
+
+        return foundWords;
     }
 }
 
