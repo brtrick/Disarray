@@ -3,6 +3,7 @@ import '../../stylesheets/board.css';
 import '../../stylesheets/reset.css';
 import validMove from '../../util/board_util';
 
+
 class Board extends React.Component {
     constructor(props) {
         super(props)
@@ -128,7 +129,7 @@ class Board extends React.Component {
                 <div className='info-wrapper'>
                     <div className='timer'>
                         <div className='timer-header'>Timer</div>
-                        <div className='time'>0:00</div>
+                        <RoundTimer/>
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
