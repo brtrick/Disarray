@@ -16,7 +16,8 @@ class Board extends React.Component {
                                 false, false, false, false
                             ],
             currentWord: "",
-            foundWords: {"test": true, "GROUP": true, "abacus": true}
+            foundWords: {"test": true, "GROUP": true, "abacus": true},
+            // leaderboard: {}
         }
         
         this.moves=[];
@@ -27,6 +28,11 @@ class Board extends React.Component {
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
     }
+
+    componentDidMount(){
+        this.props.fetchLeaderboard();
+    }
+
 
     boardTiles() {
         const tiles = "ABCDEFGHIJKLMNOP".split("");
@@ -49,6 +55,7 @@ class Board extends React.Component {
             </ul>
         )
     }
+
 
     handleMouseEvent (e) {
         if (e.type === "mouseenter" && !this.mouseDown) return;
@@ -123,6 +130,8 @@ class Board extends React.Component {
 
 
     render() {
+       if (!this.props.leaderboard) return null;
+       const lead = Object.values(this.props.leaderboard);
         const foundWords = Object.keys(this.state.foundWords).sort();
         return (
             <div className='main-wrapper'>
@@ -141,7 +150,16 @@ class Board extends React.Component {
                         </div>
                         <div className='score-board'>
                             <h2 className='info-header'>Leader Board</h2>
-                            <div className='side-content'>Content</div>
+                            <div className='side-content'>
+                                <ul>
+                                    {lead.map(user => (
+                                        <li key={`${user._id}`}>
+                                            <span>{user.username}</span>
+                                            <span>{user.gamesWon}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div className='word-bank'>
