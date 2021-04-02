@@ -22,20 +22,31 @@ class Game {
         this.wordList = new Wordlist(__dirname + '/enable1.txt');
         this.players = players;
         this.playersFoundWords = {};
-        players.forEach( ({playerName}) => this.playersFoundWords[playerName] = {});
         this.playersUniqueWords = {};
-        players.forEach( ({playerName}) => this.playersUniqueWords[playerName] = {});
+        this.initializeWordLists();
+        // players.forEach( ({playerName}) => this.playersFoundWords[playerName] = {});
+        // players.forEach( ({playerName}) => this.playersUniqueWords[playerName] = {});
         this.playersGameScore = [];
         players.forEach(() => this.playersGameScore.push(0));
         // this.timer = new Timer;
         this.isActive = false;
         players.forEach(({socket}) => socket.join(this.id) )
+        this.listsReceived = 0;
+        this.roundsPlayed = 0;
+        this.roundResults = {};
+        this.duplicates = [];
     }
 
     shuffleBoard() {
         if (!this.isActive) {
             this.board = new Board;
+            return this.board;
         }
+    }
+
+    initializeWordLists() {
+        this.players.forEach( ({playerName}) => this.playersFoundWords[playerName] = {});
+        this.players.forEach( ({playerName}) => this.playersUniqueWords[playerName] = {});
     }
 
     renderJSON() {
@@ -46,34 +57,15 @@ class Game {
             players: playerNames,
             board: this.board.grid
         });
-    }
-
-    renderJSON() {
-        const playerNames = [];
-        this.players.forEach (player => playerNames.push(player.playerName));
-        return ({
-            id: this.id,
-            players: playerNames,
-            board: this.board.grid
-        });
-    }
-    // startGameTimer() {
-    //     // start the timer
-    //     this.isActive = true;
-    //     this.timer.startTimer;
-    // }
-
-    playWord(word, playerName) {
-        if (this.isActive) {
-            if (typeof(this.playersFoundWords[playerName][word]) === "undefined") {
-                this.playersFoundWords[playerName][word] = true;
-            }
-        }
     }
 
     receiveWords(foundWords) {
         if (!this.isActive) {
-            this.playersFoundWords[Object.keys(foundWords)[0]] = Object.values(foundWords)[0];            
+            this.playersFoundWords[Object.keys(foundWords)[0]] = Object.values(foundWords)[0];   
+            this.listsReceived += 1;         
+            if (this.listsReceived === this.players.length) {
+                return this.sendResults();
+            }
         }
     }
 
@@ -154,22 +146,33 @@ class Game {
     wordResults() {
         if (!this.isActive) {
             const finalWordlists = {};
-            this.findDuplicateWords();
+            // this.findDuplicateWords(); // is likely redundant for multiplayer
             Object.keys(this.playersFoundWords).forEach( playerName => {
                 const foundWords = this.playersFoundWords[playerName];
                 finalWordlists[playerName] = this.wordList.finalizeWords(foundWords, this.duplicates);
             })
+
+            this.finalWordlists = finalWordlists;
             return finalWordlists;
         }
     }
 
+    resetRoundVars() {
+        this.initializeWordLists();
+        this.listsReceived = 0;
+    }
+
     sendResults() {
-        if (!this.isActive) {
-            return ({
-                winners: this.roundWinner(),
-                wordResults: this.wordResults()
-            });
-        }
+        const winners = this.roundWinner()
+        const wordResults = this.wordResults()
+
+        this.roundResults[this.roundsPlayed] = {
+            winners: winners,
+            wordResults: wordResults,
+            nextBoard: this.shuffleBoard()
+        };
+        this.roundsPlayed += 1;
+        this.resetRoundVars();
     }
 }
 
