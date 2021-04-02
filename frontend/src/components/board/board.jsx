@@ -190,6 +190,10 @@ class Board extends React.Component {
         })
     }
 
+    sendChat (e) {
+        e.preventDefault();
+        this.socket.emit('chat', input.value)
+    }
     render() {
        if (!this.props.leaderboard) return null;
        const lead = Object.values(this.props.leaderboard);
@@ -256,7 +260,10 @@ class Board extends React.Component {
                         <div className='chat'>
                             <h2 className='info-header'>Chat</h2>
                             <div className='chat-box'>Content</div>
-                            <input className='chat-input form-input' type="text" value='say hi'/>
+                            <form className='chat-form'>
+                                <input className='chat-input form-input' type="text" placeholder='say hi'/>
+                                <button onClick={this.sendChat}>Send</button>
+                            </form>
                         </div>
                         <button className='submit lower-button' onClick={this.startPractice}>Practice Game</button>
                     </div>
