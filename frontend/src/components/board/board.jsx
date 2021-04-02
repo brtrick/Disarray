@@ -58,6 +58,7 @@ class Board extends React.Component {
             players: players,
             currentGameActive: true
         });
+        this.props.openModal('new-game');
     }
 
     startPractice(e) {
@@ -199,8 +200,10 @@ class Board extends React.Component {
                 <div className='info-wrapper'>
                     <div className='upper-wrap'>
                         <RulesButtons /> 
+
                         <div className='timer'>
-                        {(this.state.currentGameActive && <RoundTimer timeUp={this.timeUp}/>)}
+                        {(this.state.currentGameActive && !this.props.modal && <RoundTimer timeUp={this.timeUp}/>)}
+
                         {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
                         </div>
                         <div className='spacer'></div>
@@ -249,7 +252,7 @@ class Board extends React.Component {
                         </div>
                     </div>
                     <div className='lower-wrapper'>
-                        <button className='submit lower-button'>Submit Word</button>
+                        <button className='submit lower-button' onClick={this.submitAndReset.bind(this)}>Submit Word</button>
                         <div className='chat'>
                             <h2 className='info-header'>Chat</h2>
                             <div className='chat-box'>Content</div>
