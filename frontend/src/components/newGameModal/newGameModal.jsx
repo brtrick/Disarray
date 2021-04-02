@@ -29,7 +29,7 @@ const NewGameModal = ({modal}) => {
 
 const mSTP = state => ({
     modal: state.ui.modal
-})
+});
 
 const mDTP = dispatch => ({
 

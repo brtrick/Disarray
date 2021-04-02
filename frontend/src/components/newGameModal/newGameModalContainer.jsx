@@ -15,9 +15,9 @@ const NewGameModal = ({closeModal}) => {
 
 
 
-const mSTP = state => {
+const mSTP = state => ({
 
-};
+});
 
 const mDTP = dispatch => ({
     closeModal: () => dispatch(closeModal())
