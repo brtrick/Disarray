@@ -15,14 +15,16 @@ import React, { useEffect, useState } from "react";
     // export default RoundTimer;
 
 
-    const RoundTimer = () => {
+    const RoundTimer = ({timeUp}) => {
         const [seconds, setSeconds] = useState(0);
         const [minutes, setMinutes] = useState(2);
+        
 
         const updateTime = () => {
             if (minutes === 0 && seconds === 0) {
                 setSeconds(0);
                 setMinutes(0);
+                timeUp();
             }
             else {
                 if (seconds === 0){
