@@ -19,11 +19,13 @@ class Board extends React.Component {
                                 false, false, false, false,
                                 false, false, false, false
                             ],
+            players: [],
             currentWord: "",
-            // foundWords: {"test": true, "GROUP": true, "abacus": true},
-            foundWords: {},
+            foundWords: {}
         }
-        
+        this.currentGame = null;
+        this.currentGameActive = false;
+
         this.moves=[];
         this.mouseDown = false;
         this.mouseDownTile = -1;
@@ -32,6 +34,7 @@ class Board extends React.Component {
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.startPractice = this.startPractice.bind(this);
         this.errorBoop = new Audio(errorBoop);
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
@@ -46,25 +49,34 @@ class Board extends React.Component {
         this.socket.disconnect();
     }
 
-    receiveGame({board}) {
-        this.setState({board: board});
+    receiveGame({board, players, id}) {
+        this.currentGame = id;
+        this.setState({
+            board: board,
+            players: players
+        });
+    }
+
+    startPractice(e) {
+        e.preventDefault();
+        this.socket.emit("start-practice", {username: "Brad"});
     }
 
     boardTiles() {
-        // const tiles = "ABCDEFGHIJKLMNOP".split("");
-        // const tiles = [...Array(16).keys()];
         const tiles = this.state.board;
+
         return (
             <ul className='tile-wrapper'>
                 {tiles.map((tile, i) => (
                     <li 
-                        key={`tile-${i}`}
-                        // onClick={this.handleTileClick}
-                        onMouseDown={this.handleMouseEvent}
-                        onMouseEnter={this.handleMouseEvent}
-                        onMouseUp={this.handleMouseUp}
-                        onMouseLeave={this.handleMouseLeave}
-                        data-letter={tile}
+                        key={`tile-${i}`}  
+                        {...(this.currentGameActive && {
+                            onMouseDown: this.handleMouseEvent,
+                            onMouseEnter: this.handleMouseEvent,
+                            onMouseUp: this.handleMouseUp,
+                            onMouseLeave: this.handleMouseLeave
+                        })}
+                        data-letter={tile.toLowerCase()}
                         data-index={i}
                         className={'tile' + (this.state.selectedTiles[i] ? ' selected' : '')}>
                             <p className='letter'>{tile}</p>
@@ -76,7 +88,7 @@ class Board extends React.Component {
 
     handleMouseLeave(e) {
         const index = parseInt(e.currentTarget.dataset.index);
-        //check if exited left side of board
+        if (!this.mouseDown) return;
         if (([0, 4, 8, 12   ].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left side
             ([0, 1, 2, 3    ].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
             ([3, 7, 11, 15  ].includes(index) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
@@ -144,7 +156,8 @@ class Board extends React.Component {
 
     submitAndReset () {
         const foundWords = Object.assign ({}, this.state.foundWords);
-        foundWords[this.state.currentWord] = true;
+        if (this.state.currentWord.length >= 3) foundWords[this.state.currentWord] = true;
+        else this.errorBoop.play();
         this.setState ({
             currentWord: "",
             foundWords: foundWords,
@@ -161,6 +174,17 @@ class Board extends React.Component {
         this.moves = [];
     }
 
+    timeUp () {
+        this.setState({
+            currentGameActive: false
+        });
+        this.submitAndReset();
+        this.socket.emit("round-finished", {
+            id: this.currentGame,
+            username: this.props.username,
+            foundWords: this.state.foundwords
+        })
+    }
 
     render() {
        if (!this.props.leaderboard) return null;
@@ -172,7 +196,7 @@ class Board extends React.Component {
                 <div className='info-wrapper'>
                     <div className='timer'>
                         <div className='timer-header'>Timer</div>
-                        <RoundTimer />
+                        <RoundTimer timeUp={this.timeUp}/>
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
@@ -224,7 +248,7 @@ class Board extends React.Component {
                             <div className='chat-box'>Content</div>
                             <input className='chat-input form-input' type="text" value='say hi'/>
                         </div>
-                        <button className='submit lower-button'>Practice Game</button>
+                        <button className='submit lower-button' onClick={this.startPractice}>Practice Game</button>
                     </div>
                 </div>
             </div>

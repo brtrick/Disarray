@@ -30,6 +30,11 @@ class GameServer {
                 }
                 else socket.emit("wait", {msg: "WAITING"}); 
             });
+
+            socket.on("start-practice", ({username}) => {
+                const game = new Game(new Player(username, socket));
+                this.io.to(game.id).emit("startGame", game.renderJSON());
+            })
         });
 
         
