@@ -197,13 +197,13 @@ class Board extends React.Component {
         return (
             <div className='main-wrapper'>
                 <div className='info-wrapper'>
-                 
                     <div className='upper-wrap'>
                         <RulesButtons /> 
+                        <div className='timer'>
                         {(this.state.currentGameActive && <RoundTimer timeUp={this.timeUp}/>)}
                         {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
+                        </div>
                         <div className='spacer'></div>
-
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
