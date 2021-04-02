@@ -11,7 +11,7 @@
   .modal-child {
     position: absolute;
     border-radius: 10px;
-    top: 50%;
+    top: 48%;
     left: 50%;
     height: 60%;
     width: 40%;
@@ -47,6 +47,17 @@
     font-size: 22px;
     margin-bottom: 100px;
     color: rgb(4, 74, 97);
+  }
+
+  .modal-title-round{
+    color: rgb(4, 74, 97);
+    margin-bottom: 250px;
+    font-size: 30px;
+  }
+
+  .modal-round-li{
+    color: rgb(4, 74, 97);
+    margin-bottom: 15%;
   }
 
 
