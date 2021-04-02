@@ -29,14 +29,48 @@
     align-items: center;
 }
 
-.timer {
+.upper-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 70px;
+}
+
+.rules-links-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 2%;
+    width: 16%;
+}
+
+.game-rules-link, .word-rules-link {
+    color: rgb(14,188,246);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    font-size: 12px;
+}
+
+
+.spacer {
+    width: 16%;
+    margin-left: 2%;
+}
+
+.timer-container {
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 28px;
     padding: 5px;
     height: 50px;
     width: 200px;
     margin: 10px;
-    border-radius: 10px;
     color: rgb(26,203,255);
 }
 

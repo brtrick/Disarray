@@ -10,7 +10,73 @@
   
   .modal-child {
     position: absolute;
+    border-radius: 10px;
     top: 50%;
     left: 50%;
+    height: 60%;
+    width: 40%;
     transform: translate(-50%, -50%);
+    background: -webkit-linear-gradient(#eee, #333);
+    /* background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
   }
+
+  .modal-child > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+
+  .close-x {
+    align-self: flex-end;
+    margin: 5px 5px 5px 5px;
+    cursor: pointer;
+    /* background-color: olive; */
+    font-size: 20px;
+  }
+
+  .modal-title {
+    font-size: 32px;
+    text-transform:uppercase;
+    /* background-color: orange; */
+  }
+
+  .rule-list {
+    /* background-color: tomato; */
+    height: 100%;
+  }
+
+  .rule-list > * {
+    display: flex;
+    margin: 50px 10px 10px 10px;
+  }
+
+  .scoring-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scoring-list > * {
+    display: flex;
+    margin: 5px 10px 10px 10px;
+  }
+
+  .scoring-list li {
+    display: flex;
+    justify-content: space-between;
+    padding-inline-start:   50px;
+    /* background-color: thistle; */
+  }
+
+  .bullet {
+    font-size: 16px;
+    /* background-color: teal; */
+  }
+
+  .closing-message {
+    display: flex;
+    justify-content: center;
+  }
+  
