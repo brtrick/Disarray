@@ -39,7 +39,7 @@ class Game {
 
     shuffleBoard() {
         this.board = new Board;
-        return this.board;
+        return this.board.grid;
     }
 
     initializeWordLists() {
@@ -150,10 +150,12 @@ class Game {
     sendResults() {
         const winners = this.roundWinner()
         const wordResults = this.wordResults()
+        const currentScores = this.playersGameScore
 
         this.roundResults[this.roundsPlayed] = {
             winners: winners,
             wordResults: wordResults,
+            currentScores: currentScores,
             nextBoard: this.shuffleBoard()
         };
         this.roundsPlayed += 1;

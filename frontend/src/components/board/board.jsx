@@ -40,15 +40,30 @@ class Board extends React.Component {
         this.errorBoop = new Audio(errorBoop);
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
+        this.endRound = this.endRound.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchLeaderboard();
-        this.socket = openSocket({receiveGame: this.receiveGame});
+        this.socket = openSocket({
+            receiveGame: this.receiveGame,
+            endRound: this.endRound
+        });
     }
 
     componentWillUnmount () {
         this.socket.disconnect();
+    }
+
+    endRound({winners, wordResults, currentScores, nextBoard}){
+        this.setState({
+            winners: winners,
+            wordResults: wordResults,
+            currentScores: currentScores,
+            currentGameActive: true,
+            board: nextBoard
+        })
+        this.props.openModal('new-round');
     }
 
     receiveGame({board, players, id}) {

@@ -1,6 +1,6 @@
 import {io} from "socket.io-client";
 
-const openSocket = ({receiveGame}) => {
+const openSocket = ({receiveGame, roundEnd}) => {
     const socket = io();
 
     socket.onAny((event, ...args)=> {
@@ -16,6 +16,7 @@ const openSocket = ({receiveGame}) => {
         console.log(`Status: ${msg}`);
     });
     socket.on("startGame", receiveGame);
+    socket.on("roundResults", roundEnd);
     // socket.on("startGame", ({board}) => {
     //     console.log(`Receiving board: ${board}`);
     //     this.setState({board: board});
