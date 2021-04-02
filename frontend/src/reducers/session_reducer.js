@@ -3,7 +3,7 @@ import { RECEIVE_CURRENT_USER,
 
 const initialState = {
     isAuthenticated: false,
-    user: {}
+    user: {id: null, username: "Guest"}
 };
 
 const sessionReducer = (state = initialState, action) => {
@@ -16,10 +16,7 @@ const sessionReducer = (state = initialState, action) => {
                 isSignedIn: true
             };
         case RECEIVE_USER_LOGOUT:
-            return {
-                isAuthenticated: false,
-                user: undefined
-            };
+            return initialState;
         default:
             return state;
     }
