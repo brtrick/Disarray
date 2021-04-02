@@ -33,7 +33,22 @@ class GameServer {
 
             socket.on("start-practice", ({username}) => {
                 const game = new Game(new Player(username, socket));
+                this.games[game.id] = game;
                 this.io.to(game.id).emit("startGame", game.renderJSON());
+            })
+
+            socket.on("finish-round", ({id, username, foundWords}) => {
+                console.log(username);
+                console.log(foundWords);
+                this.games[id].receiveWords({username: foundWords});
+                if (this.games[id].listsReceived === this.games[id].players.length) {
+                    
+                    if (this.games[id].roundsPlayed === 3) {
+                        this.io.to(id).emit("endGame", this.games[id].roundResults);
+                    } else {
+                        this.io.to(id).emit("roundResults", this.games[id].roundResults[this.games[id].roundsPlayed-1]);
+                    }
+                }                
             })
         });
 

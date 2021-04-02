@@ -198,13 +198,15 @@ class Board extends React.Component {
         return (
             <div className='main-wrapper'>
                 <div className='info-wrapper'>
-                 
                     <div className='upper-wrap'>
                         <RulesButtons /> 
-                        {(this.state.currentGameActive && !this.props.modal && <RoundTimer timeUp={this.timeUp}/>)}
-                        {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
-                        <div className='spacer'></div>
 
+                        <div className='timer'>
+                        {(this.state.currentGameActive && !this.props.modal && <RoundTimer timeUp={this.timeUp}/>)}
+
+                        {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
+                        </div>
+                        <div className='spacer'></div>
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
@@ -213,14 +215,14 @@ class Board extends React.Component {
                                 <div className='words'>
                                     <li className='info-header active-word'>
                                         {this.state.currentWord}
-                                    </li>
-                                    <ul className='word-box'>
-                                        {foundWords.map((foundWord, i) => (
-                                            <li key={`foundWord-${i}`} 
-                                                className='found-words'>{foundWord}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    </li>                                   
+                                        <ul className='word-box'>
+                                            {foundWords.map((foundWord, i) => (
+                                                <li key={`foundWord-${i}`} 
+                                                    className='found-words'>{foundWord}
+                                                </li>
+                                            ))}
+                                        </ul>
                                 </div>
                             </div>
                         </div>
