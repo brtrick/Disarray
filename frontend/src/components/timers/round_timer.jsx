@@ -50,7 +50,8 @@ import React, { useEffect, useState } from "react";
        }
 
         return (
-            <div>
+            <div className='timer-container'>
+                <div className='timer-header'>Timer</div>
                 <span>{minutes}:{stringify(seconds)}</span>
             </div>
         )

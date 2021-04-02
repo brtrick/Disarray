@@ -5,6 +5,7 @@ import validMove from '../../util/board_util';
 import RoundTimer from "../timers/round_timer";
 import errorBoop from '../../audio/error_boop.wav';
 import openSocket from "../../sockets/socket";
+import RulesButtons from '../rules/rulesButtonsContainer';
 
 class Board extends React.Component {
     constructor(props) {
@@ -194,9 +195,12 @@ class Board extends React.Component {
         return (
             <div className='main-wrapper'>
                 <div className='info-wrapper'>
-                    <div className='timer'>
-                        <div className='timer-header'>Timer</div>
+                 
+                    <div className='upper-wrap'>
+                        <RulesButtons /> 
                         <RoundTimer timeUp={this.timeUp}/>
+                        <div className='spacer'></div>
+
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
