@@ -17,8 +17,8 @@ const NewRoundModal = ({closeModal}) => {
     )
 }
 
-const mSTP = state => ({
-
+const mSTP = (state, ownProps) => ({
+    
 })
 
 const mDTP = dispatch => ({

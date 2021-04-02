@@ -62,7 +62,7 @@ class Board extends React.Component {
             currentScores: currentScores,
             currentGameActive: true,
             board: nextBoard
-        })
+        });
         this.props.openModal('new-round');
     }
 
