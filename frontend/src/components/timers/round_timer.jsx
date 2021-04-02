@@ -16,23 +16,30 @@ import React, { useEffect, useState } from "react";
 
 
     const RoundTimer = ({timeUp}) => {
+        
         const [seconds, setSeconds] = useState(20);
         const [minutes, setMinutes] = useState(0);
         
-
+        const target = new Date().getTime() + minutes*60000 + seconds*1000;
         const updateTime = () => {
-            if (minutes === 0 && seconds === 0) {
+            const timeLeft = target - (new Date());
+            console.log(timeLeft);
+        
+            if (timeLeft <= 0) {
+            // if (minutes === 0 && seconds === 0) {
                 setSeconds(0);
                 setMinutes(0);
                 timeUp();
             }
             else {
-                if (seconds === 0){
-                    setMinutes(minutes => minutes - 1);
-                    setSeconds(59);
-                } else {
-                    setSeconds(seconds => seconds - 1);
-                }
+                setMinutes(Math.floor((timeLeft/60000)%60));
+                setSeconds(Math.floor((timeLeft/1000)%60));
+                // if (seconds === 0){
+                //     setMinutes(minutes => minutes - 1);
+                //     setSeconds(59);
+                // } else {
+                //     setSeconds(seconds => seconds - 1);
+                // }
             }
         }
         
