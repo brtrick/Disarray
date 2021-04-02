@@ -20,10 +20,14 @@ import React, { useEffect, useState } from "react";
         const [seconds, setSeconds] = useState(20);
         const [minutes, setMinutes] = useState(0);
         
-        const target = new Date().getTime() + minutes*60000 + seconds*1000;
+        const start = new Date().getTime()
+        const target = start + minutes*60000 + seconds*1000;
+        // const target = new Date().getTime() + 0*60000 + 20*1000;
         const updateTime = () => {
             const timeLeft = target - (new Date());
-            console.log(timeLeft);
+            console.log(target + ", " + timeLeft);
+            console.log("Minutes: " + minutes);
+            console.log("Seconds: " + seconds);
         
             if (timeLeft <= 0) {
             // if (minutes === 0 && seconds === 0) {
