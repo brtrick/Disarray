@@ -16,8 +16,8 @@ import React, { useEffect, useState } from "react";
 
 
     const RoundTimer = ({timeUp}) => {
-        const [seconds, setSeconds] = useState(0);
-        const [minutes, setMinutes] = useState(2);
+        const [seconds, setSeconds] = useState(20);
+        const [minutes, setMinutes] = useState(0);
         
 
         const updateTime = () => {

@@ -22,10 +22,10 @@ class Board extends React.Component {
                             ],
             players: [],
             currentWord: "",
-            foundWords: {}
+            foundWords: {},
+            currentGameActive: false
         }
         this.currentGame = null;
-        this.currentGameActive = false;
 
         this.moves=[];
         this.mouseDown = false;
@@ -36,6 +36,7 @@ class Board extends React.Component {
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
         this.startPractice = this.startPractice.bind(this);
+        this.timeUp = this.timeUp.bind(this);
         this.errorBoop = new Audio(errorBoop);
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
@@ -54,7 +55,8 @@ class Board extends React.Component {
         this.currentGame = id;
         this.setState({
             board: board,
-            players: players
+            players: players,
+            currentGameActive: true
         });
     }
 
@@ -71,7 +73,7 @@ class Board extends React.Component {
                 {tiles.map((tile, i) => (
                     <li 
                         key={`tile-${i}`}  
-                        {...(this.currentGameActive && {
+                        {...(this.state.currentGameActive && {
                             onMouseDown: this.handleMouseEvent,
                             onMouseEnter: this.handleMouseEvent,
                             onMouseUp: this.handleMouseUp,
@@ -180,7 +182,7 @@ class Board extends React.Component {
             currentGameActive: false
         });
         this.submitAndReset();
-        this.socket.emit("round-finished", {
+        this.socket.emit("finish-round", {
             id: this.currentGame,
             username: this.props.username,
             foundWords: this.state.foundwords
@@ -198,7 +200,8 @@ class Board extends React.Component {
                  
                     <div className='upper-wrap'>
                         <RulesButtons /> 
-                        <RoundTimer timeUp={this.timeUp}/>
+                        {(this.state.currentGameActive && <RoundTimer timeUp={this.timeUp}/>)}
+                        {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
                         <div className='spacer'></div>
 
                     </div>
