@@ -19,31 +19,25 @@ class NavBar extends React.Component {
         const { location } = this.props
         if (this.props.loggedIn) {
             return (
-                <div>
-                    <button 
-                    className='session-links'
-                    onClick={this.logoutUser}>Logout</button>
-                </div>
+                <div 
+                className='session-link'
+                onClick={this.logoutUser}>Logout</div>
             );
         } else {
             if (location.pathname === '/login') {
                 return (
-                    <div className='session-links'>
-                        <Link to={'/signup'}>Signup</Link>
-                    </div>
+                    <Link className='session-link' to={'/signup'}>Signup</Link>
                 );
             } else if (location.pathname === '/signup') {
                 return (
-                    <div className='session-links'>
-                        <Link to={'/login'}>Login</Link>
-                    </div>
+                    <Link className='session-link' to={'/login'}>Login</Link>
                 );
             } else {
                 return (
-                    <div className='session-links'>
-                        <Link to={'/login'}>Login</Link>
-                        <Link to={'/signup'}>Signup</Link>
-                    </div>
+                    <>
+                        <Link className='session-link' to={'/login'}>Login</Link>
+                        <Link className='session-link' to={'/signup'}>Signup</Link>
+                    </>
                 );
             }
         }
@@ -65,8 +59,8 @@ class NavBar extends React.Component {
                             <span className='y'>y</span>
                         </div>
                     </div>
-                </Link>
-                <div className='session-links-wrapper'>{this.getLinks()}</div>
+                </Link>                
+                <div className='session-links-wrap'>{this.getLinks()}</div>
             </div>
         );
     }
