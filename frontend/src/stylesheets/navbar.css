@@ -14,35 +14,36 @@
     align-items: center;
 }
 
-.session-links > * {
+.session-links-wrap {
     display: flex;
-    justify-content:flex-start;
+    justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 100%;
-    font-size: 15px;
+    height: 100%;
+    width: 15%;
     background: -webkit-linear-gradient(#eee, #333);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.session-link {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin: 2.5%;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .new-game {
-    height: 40px;
-    width: 200px;
+    height: 100%;
+    width: 15%;
     font-size: 15px;
     background: -webkit-linear-gradient(#eee, #333);
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.session-links {
-    display: flex;
-    width: 200px;
-}
-
 .game-header {
-    /* margin-left: 50%;
-    transform: translateX(-50%); */
     text-transform: uppercase;
     background: -webkit-linear-gradient(#eee, #333);
     background-clip: text;
