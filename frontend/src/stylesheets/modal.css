@@ -43,6 +43,13 @@
     /* background-color: orange; */
   }
 
+  .modal-title-game {
+    font-size: 22px;
+    margin-bottom: 100px;
+    color: rgb(4, 74, 97);
+  }
+
+
   .rule-list {
     /* background-color: tomato; */
     height: 100%;

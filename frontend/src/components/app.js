@@ -8,10 +8,12 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import BoardContainer from './board/board_container';
 import Modal from './modal/modal';
+import NewGameModal from './newGameModal/newGameModal';
 
 const App = () => (
     <div>
         <Modal/>
+        <NewGameModal />
         <NavBarContainer />
         <Switch>
             <AuthRoute exact path="/" component={MainPage} />
