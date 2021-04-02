@@ -38,8 +38,9 @@ class GameServer {
             })
 
             socket.on("finish-round", ({id, username, foundWords}) => {
-                console.log(username);
-                console.log(foundWords);
+                // console.log(username);
+                // console.log(foundWords);
+                // console.log(this.games);
                 this.games[id].receiveWords({username: foundWords});
                 if (this.games[id].listsReceived === this.games[id].players.length) {
                     
@@ -62,6 +63,7 @@ class GameServer {
 
     createGame () {
             const game = new Game(this.waitingRoom.pop(),this.waitingRoom.pop(),this.waitingRoom.pop());
+            this.games[game.id] = game;
             this.io.to(game.id).emit("startGame", game.renderJSON());
     }
 }

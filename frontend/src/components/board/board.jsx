@@ -117,12 +117,19 @@ class Board extends React.Component {
         const lastMove = (this.moves.length > 0) ? this.moves[this.moves.length-1] : -1;
         let currentWord = this.state.currentWord;
 
-        // undo the last selection
+        // undo the last selection if a click
         if (index === lastMove) {
             newSelectedTiles[index] = false;
             this.moves.pop();
             currentWord = currentWord.slice(0, -1);
         }
+
+        //undo the last selection on drag
+        else if (index === this.moves[this.moves.length-2]) {
+            newSelectedTiles[this.moves.pop()] = false;
+            currentWord = currentWord.slice(0, -1);
+        }
+
         // select tile if first move or valid move to an unselected tile
         else if (lastMove === -1 || (validMove(lastMove, index) && !newSelectedTiles[index])) {
             newSelectedTiles[index] = true;
@@ -149,7 +156,8 @@ class Board extends React.Component {
         // Because moves are processed on mouseDown, moves will be 1 less if tile was originally 
         // selected and 1 more if originally unselected
         if (index === this.mouseDownTile && 
-            this.moves.length === (this.mouseDownMoves + (this.state.selectedTiles[index] ? 1 : -1))) {
+            ((this.moves.length === this.mouseDownMoves + (this.state.selectedTiles[index] ? 1 : -1)) ||
+             ((this.moves.length === this.mouseDownMoves - 1) && this.state.selectedTiles[index]))) { //case of click on previous move to erase last move
                 this.mouseDownMoves = 0;
                 this.mouseDownTile = -1;
                 this.mouseDown = false;
