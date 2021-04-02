@@ -15,60 +15,63 @@ import React, { useEffect, useState } from "react";
     // export default RoundTimer;
 
 
-    const RoundTimer = ({timeUp}) => {
+class RoundTimer extends React.Component {
+    constructor (props) {
+        super(props);
         
-        const [seconds, setSeconds] = useState(20);
-        const [minutes, setMinutes] = useState(0);
-        
-        const start = new Date().getTime()
-        const target = start + minutes*60000 + seconds*1000;
-        // const target = new Date().getTime() + 0*60000 + 20*1000;
-        const updateTime = () => {
-            const timeLeft = target - (new Date());
-            console.log(target + ", " + timeLeft);
-            console.log("Minutes: " + minutes);
-            console.log("Seconds: " + seconds);
-        
-            if (timeLeft <= 0) {
-            // if (minutes === 0 && seconds === 0) {
-                setSeconds(0);
-                setMinutes(0);
-                timeUp();
-            }
-            else {
-                setMinutes(Math.floor((timeLeft/60000)%60));
-                setSeconds(Math.floor((timeLeft/1000)%60));
-                // if (seconds === 0){
-                //     setMinutes(minutes => minutes - 1);
-                //     setSeconds(59);
-                // } else {
-                //     setSeconds(seconds => seconds - 1);
-                // }
-            }
+        this.state = {
+            seconds: 0,
+            minutes: 1
         }
         
-        useEffect(() => {
-            const timeout = setTimeout(updateTime, 1000);
-            return () => {
-                clearTimeout(timeout);
-            }
-        });
+        this.target = new Date().getTime() + this.state.minutes*60000 + this.state.seconds*1000;
+        this.updateTime = this.updateTime.bind(this);
+    }
 
-       const stringify = num => {
-           if (num < 10){
-               return "0" + num.toString();
-           } else {
-               return num;
-           }
-       }
+    updateTime = () => {
+        const timeLeft = this.target - (new Date());
+    
+        if (timeLeft <= 0) {
+            this.setState({
+                seconds: 0,
+                minutes: 0
+            });
+            this.props.timeUp();
+        }
+        else {
+            this.setState({
+                minutes: Math.floor((timeLeft/60000)%60),
+                seconds: Math.floor((timeLeft/1000)%60)
+            });
+            this.timeout = setTimeout(this.updateTime, 1000);
+        }
+    }
+    
+    componentDidMount() {
+        this.timeout = setTimeout(this.updateTime, 950);
+    }
 
+    componentWillUnmount() {
+        clearTimeout(this.timeout);
+    }
+
+    stringify = num => {
+        if (num < 10){
+            return "0" + num.toString();
+        } else {
+            return num;
+        }
+    }
+
+    render() {
         return (
             <div className='timer-container'>
                 <div className='timer-header'>Timer</div>
-                <span>{minutes}:{stringify(seconds)}</span>
+                <span>{this.state.minutes}:{this.stringify(this.state.seconds)}</span>
             </div>
         )
     }
+}
 
 
 
