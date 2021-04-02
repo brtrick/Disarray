@@ -74,6 +74,18 @@
     color: rgb(26,203,255);
 }
 
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    height: 100%;
+    width: 230px;
+    color: tomato;
+    /* background-color: tomato; */
+}
+
 .board-wrapper {
     border-radius: 10px;
     height: 500px;
