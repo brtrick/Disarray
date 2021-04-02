@@ -212,14 +212,14 @@ class Board extends React.Component {
                                 <div className='words'>
                                     <li className='info-header active-word'>
                                         {this.state.currentWord}
-                                    </li>
-                                    <ul className='word-box'>
-                                        {foundWords.map((foundWord, i) => (
-                                            <li key={`foundWord-${i}`} 
-                                                className='found-words'>{foundWord}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    </li>                                   
+                                        <ul className='word-box'>
+                                            {foundWords.map((foundWord, i) => (
+                                                <li key={`foundWord-${i}`} 
+                                                    className='found-words'>{foundWord}
+                                                </li>
+                                            ))}
+                                        </ul>
                                 </div>
                             </div>
                         </div>
