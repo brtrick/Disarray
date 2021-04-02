@@ -118,11 +118,18 @@ class Board extends React.Component {
         let currentWord = this.state.currentWord;
 
         // undo the last selection
-        if (index === lastMove) {
-            newSelectedTiles[index] = false;
-            this.moves.pop();
+        // if (index === lastMove) {
+        //     newSelectedTiles[index] = false;
+        //     this.moves.pop();
+        //     currentWord = currentWord.slice(0, -1);
+        // }
+
+        //undo the last selection
+        if (index === this.moves[this.moves.length-2]) {
+            newSelectedTiles[this.moves.pop()] = false;
             currentWord = currentWord.slice(0, -1);
         }
+
         // select tile if first move or valid move to an unselected tile
         else if (lastMove === -1 || (validMove(lastMove, index) && !newSelectedTiles[index])) {
             newSelectedTiles[index] = true;
