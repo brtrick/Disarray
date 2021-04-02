@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, withRouter } from 'react-router-dom'
+import {Link, withRouter, Redirect } from 'react-router-dom'
 import '../../stylesheets/navbar.css'
 
 class NavBar extends React.Component {
@@ -19,9 +19,11 @@ class NavBar extends React.Component {
         const { location } = this.props
         if (this.props.loggedIn) {
             return (
-                <div 
-                className='session-link'
-                onClick={this.logoutUser}>Logout</div>
+                <div className='session-link' onClick={this.logoutUser}>
+                    <Link 
+                    to='/'
+                    >Logout</Link>
+                </div>
             );
         } else {
             if (location.pathname === '/login') {
