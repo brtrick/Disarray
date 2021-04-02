@@ -222,8 +222,10 @@ class Board extends React.Component {
             <div className='main-wrapper'>
                 <div className='info-wrapper'>
                     <div className='upper-wrap'>
-                        <RulesButtons /> 
-
+                        <div className='rules-links-container'>
+                            {(!this.state.currentGameActive) &&
+                            <RulesButtons />}
+                        </div>
                         <div className='timer'>
                         {(this.state.currentGameActive && !this.props.modal && <RoundTimer timeUp={this.timeUp}/>)}
 
