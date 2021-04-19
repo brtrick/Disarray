@@ -278,14 +278,16 @@ class Board extends React.Component {
                     </div>
                     <div className='lower-wrapper'>
                         <button className='submit lower-button' onClick={this.submitAndReset.bind(this)}>Submit Word</button>
-                        <div className='chat'>
-                            <h2 className='info-header'>Chat</h2>
-                            <div className='chat-box'>Content</div>
-                            <input className='chat-input form-input' type="text" value='say hi'/>
-                        </div>
                         <button className='submit lower-button' onClick={this.startPractice}>Practice Game</button>
                     </div>
                 </div>
+                        <div className='chat'>
+                            <h2 className='info-header'>Chat</h2>
+                            <div className='chat-box'>Content</div>
+                            <div className='chat-container'>
+                                <input className='chat-input' type="text" value='say hi'/>
+                            </div>
+                        </div>
             </div>
         )
     }
