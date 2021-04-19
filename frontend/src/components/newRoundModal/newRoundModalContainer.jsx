@@ -3,6 +3,8 @@ import React from 'react';
 import {closeModal} from '../../actions/modal_actions';
 
 const NewRoundModal = ({closeModal}) => {
+    // PLACE TIMER HERE FOR STARTING NEXT ROUND
+    
     return (
         <div className='modal-round-container'>
             <h3 className='modal-title-round'>Round 1 Results</h3>
@@ -18,7 +20,7 @@ const NewRoundModal = ({closeModal}) => {
 }
 
 const mSTP = (state, ownProps) => ({
-    
+    // PASS INFORMATION FROM ROUND RESULTS FROM GAME SERVER TO PROPS
 })
 
 const mDTP = dispatch => ({

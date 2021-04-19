@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Board from './board';
 import {fetchLeaderboard} from '../../actions/game_actions';
+import {receiveCurrentUser} from '../../actions/session_actions';
 import {openModal} from '../../actions/modal_actions'
 // import { session } from 'passport';
 
@@ -12,7 +13,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
     fetchLeaderboard: () => dispatch(fetchLeaderboard()),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    updateUser: currentUser => dispatch(receiveCurrentUser(currentUser))
 });
 
 export default connect(mSTP, mDTP)(Board);

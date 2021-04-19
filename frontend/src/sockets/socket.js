@@ -1,6 +1,6 @@
 import {io} from "socket.io-client";
 
-const openSocket = ({receiveGame, roundEnd}) => {
+const openSocket = ({receiveGame, roundEnd, username}) => {
     const socket = io();
 
     socket.onAny((event, ...args)=> {
@@ -8,9 +8,21 @@ const openSocket = ({receiveGame, roundEnd}) => {
     });
     socket.on('connect', () => {
         console.log("joining now");
-        const d = new Date();
-        const name = "Brad" + d.getUTCMilliseconds();
-        socket.emit("join", {username: name});
+        // const d = new Date();
+        // let name = "";
+        // debugger
+        // const currentUser = router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
+        //     res.json({
+        //         id: req.user.id,
+        //         username: req.user.username
+        //     });
+        // });
+        // if (currentUser) {
+        //     name = currentUser.username
+        // } else {
+        //     name = "Guest" + d.getUTCMilliseconds();
+        // }
+        socket.emit("join", {username: username});
     });
     socket.on("wait", ({msg}) => {
         console.log(`Status: ${msg}`);

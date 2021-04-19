@@ -45,9 +45,18 @@ class Board extends React.Component {
 
     componentDidMount(){
         this.props.fetchLeaderboard();
+        const d = new Date();
+        let name = "";
+        if (this.props.username) {
+            name = this.props.username;
+        } else {
+            name = "Guest" + d.getUTCMilliseconds();
+            this.props.updateUser(name);
+        }
         this.socket = openSocket({
             receiveGame: this.receiveGame,
-            roundEnd: this.roundEnd
+            roundEnd: this.roundEnd,
+            username: name
         });
     }
 
@@ -78,7 +87,7 @@ class Board extends React.Component {
 
     startPractice(e) {
         e.preventDefault();
-        this.socket.emit("start-practice", {username: "Brad"});
+        this.socket.emit("start-practice", {username: this.props.username});
     }
 
     boardTiles() {
@@ -211,6 +220,7 @@ class Board extends React.Component {
             username: this.props.username,
             foundWords: this.state.foundWords
         })
+        // ADD MODAL THING HERE
     }
 
     render() {
