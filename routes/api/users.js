@@ -22,7 +22,11 @@ router.get("/current", passport.authenticate("jwt", {session: false}), (req, res
       .catch(err => res.status(404).json(err))
   });
 
-
+  router.get("/:user_id", (req, res) => {
+      User.findById(req.params.user_id)
+      .then(user => res.json(user))
+      .catch(err => res.status(404).json(err))
+  });
 
 
   router.patch("/:user_id", (req, res) => {
