@@ -4,9 +4,9 @@
     justify-content: center;
     justify-content: space-evenly;
     align-items: center;
-    width: 80%;
+    width: 70%;
     height: 90%;
-    margin-top: 80px;
+    margin: 80px 10px 0px 10px;
     border-radius: 10px;
     background-color: rgba(49, 48, 53, 0.516);
 }
@@ -20,7 +20,7 @@
 .game-wrapper {
     justify-content: space-around;
     height: 70%;
-    width: 95%;
+    width: 98%;
     border-radius: 10px;
 }
 
@@ -253,8 +253,10 @@
 }
 
 .lower-wrapper {
-    width: 95%;
-    height: 100%;
+    width: 80%;
+    justify-content: space-between;
+    /* height: 100%; */
+    /* border: 2px solid tomato; */
 }
 
 .lower-wrapper > * {
@@ -265,12 +267,11 @@
 
 .chat {
     flex-direction: column;
-    justify-content: space-between;
     border-radius: 10px;
     align-items: center;
-    margin: 5px;
-    width: 600px;
-    height: 95%;
+    width: 30%;
+    height: 90%;
+    margin: 80px 10px 0px 10px;
     background-color: rgb(64, 103, 136);
 }
 
@@ -278,20 +279,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90%;
+    height: 80%;
     width: 95%;
     border-radius: 10px;
-    margin: 5px;
+    margin: auto;
     background-color: rgba(68, 77, 85, 0.712);
 }
 
+.chat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 95%;
+    height: 15%;
+    /* background-color: tomato; */
+}
+
 .chat-input {
-    height: 5px;
-    font-size: 10px;
-    padding: 10px;
     color: white;
     border: rgba(96, 109, 121, 0.712) 2px solid;
-    background-color: slategray
+    background-color: slategray;
+    text-rendering: optimizelegibility;
+    font-family: 'Press Start 2P';
+    width: 90%;
+    height: 20%;
+    font-size: 14px;
+    line-height: 28px;  
+    border-radius: 8px; 
+    text-indent: 2%; 
+    padding: 20px; 
+    margin: 10px; 
+    border: 1px solid #E8E7E9;
+    text-align: start; 
 }
 
 .lower-button {
@@ -300,6 +320,122 @@
     font-size: 12px;
     width: 130px;
     height: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+@media screen and (max-width: 1450px) {
+    .main-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-wrapper {
+        width: 95%;
+    }
+
+    .chat {
+        width: 95%;
+        margin: 5px 10px 0px 10px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .chat-box {
+        width: 99%;
+        margin: 5px;
+    }
+
+    .chat-container {
+        height: 1%;
+    }
+
+    .chat h2 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .game-wrapper {
+        display: flex;
+    }
+
+    .score-board, .practice {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .main-wrapper {
+        display: flex;
+        overflow: scroll;
+    }
+
+    .info-wrapper {
+        min-width: 525px;
+    }
+
+    .game-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 85%;
+        width: 100%;
+        overflow: scroll;
+        margin-top: 0px;
+    }
+
+    .game {
+        width: 95%;
+        margin: 10px;
+        overflow: scroll;
+    }
+
+    .rules-links-container, .lower-wrapper, .spacer {
+        display: none;
+    }
+
+    .info-header {
+        font-size: 12px;
+        height: 16px;
+    }
+
+    .box {
+        width: 95%;
+        height: 85%;
+    }
+
+    .word-box, .words {
+        overflow: scroll;
+    }
+
+    .timer {
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    .timer-container {
+        font-size: 14px;
+        height: 25px;
+    }
+    
+    .upper-wrap {
+        margin-top: 150px;
+        height: 30px;
+    }
+
+    .chat {
+        min-width: 500px;
+        height: 300px;
+    }
+
+    .chat-box {
+        width: 95%;
+        height: 75%;
+        margin-top: 10px;
+        overflow: scroll;
+    }
+
 }

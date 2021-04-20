@@ -23,7 +23,9 @@ class Board extends React.Component {
             players: [],
             currentWord: "",
             foundWords: {},
-            currentGameActive: false
+            currentGameActive: false,
+            chatMessage: "",
+            messages: []
         }
         this.currentGame = null;
 
@@ -35,12 +37,17 @@ class Board extends React.Component {
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.startPractice = this.startPractice.bind(this);
         this.timeUp = this.timeUp.bind(this);
         this.errorBoop = new Audio(errorBoop);
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
         this.roundEnd = this.roundEnd.bind(this);
+        this.displayMessage = this.displayMessage.bind(this);
+        this.sendChat = this.sendChat.bind(this);
+        this.receiveChat = this.receiveChat.bind(this);
+        this.receiveSystemMessage = this.receiveSystemMessage.bind(this);
     }
 
     componentDidMount(){
@@ -48,6 +55,8 @@ class Board extends React.Component {
         this.socket = openSocket({
             receiveGame: this.receiveGame,
             roundEnd: this.roundEnd
+            receiveSystemMessage: this.receiveSystemMessage,
+            receiveChat: this.receiveChat
         });
     }
 
@@ -73,9 +82,43 @@ class Board extends React.Component {
             players: players,
             currentGameActive: true
         });
+        
+        this.displayMessage({msg: <p>-----</p>});
+        this.displayMessage({msg: <p>Start game with {players.join(", ")}</p>});
         this.props.openModal('new-game');
     }
 
+    sendChat (e) {
+        e.preventDefault();
+        if (this.state.chatMessage === "") return;
+        this.displayMessage({msg: <p><span>Me</span>: {this.state.chatMessage}</p>});
+        this.socket.emit('chat', {gameId: this.currentGame, username: this.props.username, msg: this.state.chatMessage});
+        this.setState({
+            chatMessage: ""
+        });
+    }
+
+    receiveChat ({username, msg}) {
+        this.displayMessage({msg: <p><span>{username}</span>: {msg}</p>});
+    }
+
+    receiveSystemMessage({msg}) {
+        this.displayMessage({msg: <p>{msg}</p>});
+    }
+
+    displayMessage({msg}) {
+        const messages = this.state.messages;
+        messages.push(msg);
+        this.setState({
+            messages: messages,
+        })
+    }
+
+    handleChange(e) {
+        this.setState({
+            chatMessage: e.target.value
+        })
+    }
     startPractice(e) {
         e.preventDefault();
         this.socket.emit("start-practice", {username: "Brad"});
@@ -108,9 +151,9 @@ class Board extends React.Component {
     handleMouseLeave(e) {
         const index = parseInt(e.currentTarget.dataset.index);
         if (!this.mouseDown) return;
-        if (([0, 4, 8, 12   ].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left side
-            ([0, 1, 2, 3    ].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
-            ([3, 7, 11, 15  ].includes(index) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
+        if (([0,   4,  8, 12].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left side
+            ([0,   1,  2,  3].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
+            ([3,   7, 11, 15].includes(index) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
             ([12, 13, 14, 15].includes(index) && (e.nativeEvent.offsetY >= e.currentTarget.offsetHeight))) //exit bottom
         {
                 this.submitAndReset();
@@ -217,6 +260,9 @@ class Board extends React.Component {
        if (!this.props.leaderboard) return null;
        const lead = Object.values(this.props.leaderboard);
        const foundWords = Object.keys(this.state.foundWords).sort();
+       const messages = this.state.messages.map ((message, idx) => {
+           return (<li key={idx}>{message}</li>)
+       });
 
         return (
             <div className='main-wrapper'>
@@ -236,7 +282,7 @@ class Board extends React.Component {
                     <div className='game-wrapper'>
                         <div className='game'> 
                             <h2 className='info-header'>Word Bank</h2>
-                            <div className='side-content'>
+                            <div className='side-content box'>
                                 <div className='words'>
                                     <li className='info-header active-word'>
                                         {this.state.currentWord}
@@ -278,13 +324,18 @@ class Board extends React.Component {
                     </div>
                     <div className='lower-wrapper'>
                         <button className='submit lower-button' onClick={this.submitAndReset.bind(this)}>Submit Word</button>
-                        <div className='chat'>
-                            <h2 className='info-header'>Chat</h2>
-                            <div className='chat-box'>Content</div>
-                            <input className='chat-input form-input' type="text" value='say hi'/>
-                        </div>
-                        <button className='submit lower-button' onClick={this.startPractice}>Practice Game</button>
+                        <button className='submit lower-button practice' onClick={this.startPractice}>Practice Game</button>
                     </div>
+                </div>
+                <div className='chat'>
+                            <h2 className='info-header'>Chat</h2>
+                            <div className='chat-box'><ul id="chat-content">{messages}</ul></div>
+                            <div className='chat-container'>
+                              <form className='chat-form'>
+                                <input id='chat-input' name="chat" type="text" placeholder='say hi' value={this.state.chatMessage} onChange={this.handleChange}/>
+                                <button onClick={this.sendChat} type="submit">Send</button>
+                              </form>
+                            </div>
                 </div>
             </div>
         )
