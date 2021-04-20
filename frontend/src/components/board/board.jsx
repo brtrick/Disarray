@@ -25,7 +25,7 @@ class Board extends React.Component {
             foundWords: {},
             currentGameActive: false,
 
-            roundModal: false
+            roundModal: false,
             chatMessage: "",
             messages: []
         }
