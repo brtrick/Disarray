@@ -1,6 +1,8 @@
 import {connect} from 'react-redux';
 import React from 'react';
 import {closeModal} from '../../actions/modal_actions';
+import ModalTimer from './modalTimer';
+
 
 const NewRoundModal = ({closeModal}) => {
     // PLACE TIMER HERE FOR STARTING NEXT ROUND
@@ -14,7 +16,7 @@ const NewRoundModal = ({closeModal}) => {
                     Player 1 Words: 
                 </li>
             </ul>
-            <button onClick={closeModal} className='submit game-rules-link'>START ROUND</button>
+            <ModalTimer closeModal={closeModal}/>
         </div>
     )
 }
@@ -28,3 +30,4 @@ const mDTP = dispatch => ({
 });
 
 export default connect(mSTP, mDTP)(NewRoundModal);
+

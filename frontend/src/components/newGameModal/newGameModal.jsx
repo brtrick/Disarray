@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../../stylesheets/modal.css';
 import '../../stylesheets/reset.css';
 import NewGameModalContainer from './newGameModalContainer';
-import NewRoundModal from '../newRoundModal/newRoundModalContainer';
+import NewRoundModalContainer from '../newRoundModal/newRoundModalContainer';
 
 const NewGameModal = ({modal}) => {
     let component;
@@ -12,7 +12,7 @@ const NewGameModal = ({modal}) => {
             component = <NewGameModalContainer/>;
             break;
         case 'new-round':
-            component = <NewRoundModal/>
+            component = <NewRoundModalContainer/>
             break;
         default:
             return null;

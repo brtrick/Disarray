@@ -4,8 +4,12 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    width: 700px;
-    height: 700px;
+    width: 50%;
+    min-width: 400px;
+    max-width: 650px;
+    height: 70%;
+    min-height: 450px;
+    margin-top: 5%;
     /* margin-bottom: 20%; */
     /* background-color: rgba(49, 48, 53, 0.516); */
     background-color: rgba(68, 77, 85, 0.872);

@@ -9,28 +9,22 @@ const Board = require("./board.js");
 const Player = require("./player");
 const Die = require("./die.js");
 const Wordlist = require("./wordlist.js");
-// const Filename = require("WHATEVER THE PATH IS FOR THE WORDLIST FILE)"
-
-// import Timer from "./timer";
 
 // export default class Game {
 class Game {
     constructor(...players) {
-        const d = new Date(); 
-        this.id = d.getUTCMilliseconds(); //Can change this to random string
+        //const d = new Date(); 
+        // this.id = d.getUTCMilliseconds(); //Can change this to random string
+        this.id = Math.floor(Math.random()*100000);
         this.board = new Board;
         this.wordList = new Wordlist(__dirname + '/enable1.txt');
         this.players = players;
         this.playersFoundWords = {};
         this.playersUniqueWords = {};
         this.initializeWordLists();
-        // players.forEach( ({playerName}) => this.playersFoundWords[playerName] = {});
-        // players.forEach( ({playerName}) => this.playersUniqueWords[playerName] = {});
         this.playersGameScore = [];
         players.forEach(() => this.playersGameScore.push(0));
-        // this.timer = new Timer;
         this.isActive = false;
-        players.forEach(({socket}) => socket.join(this.id) )
         this.listsReceived = 0;
         this.roundsPlayed = 0;
         this.roundResults = {};
@@ -150,6 +144,7 @@ class Game {
     sendResults() {
         const wordResults = this.wordResults();
         const winners = this.roundWinner();
+
         const currentScores = this.playersGameScore;
 
         this.roundResults[this.roundsPlayed] = {
