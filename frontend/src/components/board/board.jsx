@@ -27,7 +27,8 @@ class Board extends React.Component {
 
             roundModal: false,
             chatMessage: "",
-            messages: []
+            messages: [],
+            roundNumber: 1
         }
         this.currentGame = null;
 
@@ -68,14 +69,22 @@ class Board extends React.Component {
     }
 
     roundEnd({winners, wordResults, currentScores, nextBoard}){
+        this.props.openModal('new-round', {
+            winners: winners,
+            wordResults: wordResults,
+            currentScores: currentScores,
+            roundNumber: this.state.roundNumber
+        });
         this.setState({
             winners: winners,
             wordResults: wordResults,
             currentScores: currentScores,
             currentGameActive: true,
-            board: nextBoard
-        });
-        this.props.openModal('new-round');
+            board: nextBoard,
+            roundNumber: this.state.roundNumber++,
+            foundWords: {},
+            currentWord: "",
+        })
     }
 
     receiveGame({board, players, id}) {

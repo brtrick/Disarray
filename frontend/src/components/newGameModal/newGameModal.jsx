@@ -6,13 +6,14 @@ import NewGameModalContainer from './newGameModalContainer';
 import NewRoundModalContainer from '../newRoundModal/newRoundModalContainer';
 
 const NewGameModal = ({modal}) => {
+    if (!modal){return null}
     let component;
-    switch (modal) {
+    switch (modal.type) {
         case 'new-game':
             component = <NewGameModalContainer/>;
             break;
         case 'new-round':
-            component = <NewRoundModalContainer/>
+            component = <NewRoundModalContainer />
             break;
         default:
             return null;
