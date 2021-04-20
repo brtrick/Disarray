@@ -282,7 +282,7 @@ class Board extends React.Component {
                     <div className='game-wrapper'>
                         <div className='game'> 
                             <h2 className='info-header'>Word Bank</h2>
-                            <div className='side-content'>
+                            <div className='side-content box'>
                                 <div className='words'>
                                     <li className='info-header active-word'>
                                         {this.state.currentWord}
@@ -324,16 +324,18 @@ class Board extends React.Component {
                     </div>
                     <div className='lower-wrapper'>
                         <button className='submit lower-button' onClick={this.submitAndReset.bind(this)}>Submit Word</button>
-                        <div className='chat'>
+                        <button className='submit lower-button practice' onClick={this.startPractice}>Practice Game</button>
+                    </div>
+                </div>
+                <div className='chat'>
                             <h2 className='info-header'>Chat</h2>
                             <div className='chat-box'><ul id="chat-content">{messages}</ul></div>
-                            <form className='chat-form'>
+                            <div className='chat-container'>
+                              <form className='chat-form'>
                                 <input id='chat-input' name="chat" type="text" placeholder='say hi' value={this.state.chatMessage} onChange={this.handleChange}/>
                                 <button onClick={this.sendChat} type="submit">Send</button>
-                            </form>
-                        </div>
-                        <button className='submit lower-button' onClick={this.startPractice}>Practice Game</button>
-                    </div>
+                              </form>
+                            </div>
                 </div>
             </div>
         )
