@@ -3,7 +3,7 @@ import { RECEIVE_CURRENT_USER,
 
 const initialState = {
     isAuthenticated: false,
-    user: {id: null, username: "Guest"}
+    user: {id: null, username: `Guest${Math.floor(Math.random()*10000)}`}
 };
 
 const sessionReducer = (state = initialState, action) => {

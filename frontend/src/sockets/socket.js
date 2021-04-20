@@ -8,20 +8,6 @@ const openSocket = ({receiveGame, roundEnd, username}) => {
     });
     socket.on('connect', () => {
         console.log("joining now");
-        // const d = new Date();
-        // let name = "";
-        // debugger
-        // const currentUser = router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
-        //     res.json({
-        //         id: req.user.id,
-        //         username: req.user.username
-        //     });
-        // });
-        // if (currentUser) {
-        //     name = currentUser.username
-        // } else {
-        //     name = "Guest" + d.getUTCMilliseconds();
-        // }
         socket.emit("join", {username: username});
     });
     socket.on("wait", ({msg}) => {
