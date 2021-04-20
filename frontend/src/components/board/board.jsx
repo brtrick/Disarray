@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../stylesheets/board.css';
 import '../../stylesheets/reset.css';
+import '../../stylesheets/chat.css';
 import validMove from '../../util/board_util';
 import RoundTimer from "../timers/round_timer";
 import errorBoop from '../../audio/error_boop.wav';
@@ -83,15 +84,15 @@ class Board extends React.Component {
             currentGameActive: true
         });
         
-        this.displayMessage({msg: <p>-----</p>});
-        this.displayMessage({msg: <p>Start game with {players.join(", ")}</p>});
+        this.displayMessage({msg: <p className='system-msg'>-----</p>});
+        this.displayMessage({ msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
         this.props.openModal('new-game');
     }
 
     sendChat (e) {
         e.preventDefault();
         if (this.state.chatMessage === "") return;
-        this.displayMessage({msg: <p><span>Me</span>: {this.state.chatMessage}</p>});
+        this.displayMessage({ msg: <p className='me-msg'>{this.state.chatMessage}</p>});
         this.socket.emit('chat', {gameId: this.currentGame, username: this.props.username, msg: this.state.chatMessage});
         this.setState({
             chatMessage: ""
@@ -99,11 +100,11 @@ class Board extends React.Component {
     }
 
     receiveChat ({username, msg}) {
-        this.displayMessage({msg: <p><span>{username}</span>: {msg}</p>});
+        this.displayMessage({ msg: <p className='user-msg'><span className='user'>{username}:</span> {msg}</p>});
     }
 
     receiveSystemMessage({msg}) {
-        this.displayMessage({msg: <p>{msg}</p>});
+        this.displayMessage({ msg: <p className='system-msg'>{msg}</p>});
     }
 
     displayMessage({msg}) {
@@ -328,14 +329,24 @@ class Board extends React.Component {
                     </div>
                 </div>
                 <div className='chat'>
-                            <h2 className='info-header'>Chat</h2>
-                            <div className='chat-box'><ul id="chat-content">{messages}</ul></div>
-                            <div className='chat-container'>
-                              <form className='chat-form'>
-                                <input id='chat-input' name="chat" type="text" placeholder='say hi' value={this.state.chatMessage} onChange={this.handleChange}/>
-                                <button onClick={this.sendChat} type="submit">Send</button>
-                              </form>
-                            </div>
+                    <h2 className='info-header chat-header'>Chat</h2>
+                    <div className='chat-box'>
+                        <ul id="chat-content">{messages}</ul>
+                    </div>
+                    <div className='chat-container'>
+                        <form className='chat-form'>
+                            <input  id='chat-input' 
+                                    name="chat" 
+                                    type="text" 
+                                    placeholder='say hi' 
+                                    value={this.state.chatMessage} 
+                                    onChange={this.handleChange}/>
+                            <button 
+                                    onClick={this.sendChat} 
+                                    type="submit"
+                                    className='submit lower-button send'>Send</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
