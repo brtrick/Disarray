@@ -30,7 +30,11 @@ class Game {
         players.forEach(() => this.playersGameScore.push(0));
         // this.timer = new Timer;
         this.isActive = false;
-        players.forEach(({socket}) => socket.join(this.id) )
+        players.forEach(({socket}) => {
+            socket.leave("site");
+            socket.leave("waiting");
+            socket.join(this.id); 
+        });
         this.listsReceived = 0;
         this.roundsPlayed = 0;
         this.roundResults = {};

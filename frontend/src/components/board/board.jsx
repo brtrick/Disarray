@@ -46,6 +46,8 @@ class Board extends React.Component {
         this.endRound = this.endRound.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.sendChat = this.sendChat.bind(this);
+        this.receiveChat = this.receiveChat.bind(this);
+        this.receiveSystemMessage = this.receiveSystemMessage.bind(this);
     }
 
     componentDidMount(){
@@ -53,7 +55,8 @@ class Board extends React.Component {
         this.socket = openSocket({
             receiveGame: this.receiveGame,
             endRound: this.endRound,
-            receiveChat: this.displayMessage
+            receiveSystemMessage: this.receiveSystemMessage,
+            receiveChat: this.receiveChat
         });
     }
 
@@ -79,18 +82,28 @@ class Board extends React.Component {
             players: players,
             currentGameActive: true
         });
+        
+        this.displayMessage({msg: <p>-----</p>});
+        this.displayMessage({msg: <p>Start game with {players.join(", ")}</p>});
         this.props.openModal('new-game');
     }
 
     sendChat (e) {
         e.preventDefault();
-        // const msg = e.target.previousSibling.value;
-        this.displayMessage({msg: `Me: ${this.state.chatMessage}`})
-        this.socket.emit('chat', {gameId: this.currentGame, msg: `${this.props.username}: ${this.state.chatMessage}`});
+        if (this.state.chatMessage === "") return;
+        this.displayMessage({msg: <p><span>Me</span>: {this.state.chatMessage}</p>});
+        this.socket.emit('chat', {gameId: this.currentGame, username: this.props.username, msg: this.state.chatMessage});
         this.setState({
             chatMessage: ""
-        })
-        // e.target.previousSibling.value = "";
+        });
+    }
+
+    receiveChat ({username, msg}) {
+        this.displayMessage({msg: <p><span>{username}</span>: {msg}</p>});
+    }
+
+    receiveSystemMessage({msg}) {
+        this.displayMessage({msg: <p>{msg}</p>});
     }
 
     displayMessage({msg}) {
