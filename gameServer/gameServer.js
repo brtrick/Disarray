@@ -77,6 +77,11 @@ class GameServer {
 
     createGame () {
             const game = new Game(this.waitingRoom.pop(),this.waitingRoom.pop(),this.waitingRoom.pop());
+            game.players.forEach(({socket}) => {
+                socket.leave("site");
+                socket.leave("waiting");
+                socket.join(game.id); 
+            });
             this.games[game.id] = game;
             this.io.to(game.id).emit("startGame", game.renderJSON());
     }
