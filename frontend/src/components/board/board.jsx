@@ -236,7 +236,7 @@ class Board extends React.Component {
                     <div className='game-wrapper'>
                         <div className='game'> 
                             <h2 className='info-header'>Word Bank</h2>
-                            <div className='side-content'>
+                            <div className='side-content box'>
                                 <div className='words'>
                                     <li className='info-header active-word'>
                                         {this.state.currentWord}

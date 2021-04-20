@@ -372,6 +372,11 @@
         display: flex;
         overflow: scroll;
     }
+
+    .info-wrapper {
+        min-width: 525px;
+    }
+
     .game-wrapper {
         display: flex;
         flex-direction: column-reverse;
@@ -389,6 +394,16 @@
 
     .rules-links-container, .lower-wrapper, .spacer {
         display: none;
+    }
+
+    .info-header {
+        font-size: 12px;
+        height: 16px;
+    }
+
+    .box {
+        width: 95%;
+        height: 85%;
     }
 
     .word-box, .words {
@@ -412,10 +427,14 @@
     }
 
     .chat {
+        min-width: 525px;
         height: 300px;
     }
 
     .chat-box {
+        width: 95%;
+        height: 75%;
+        margin-top: 10px;
         overflow: scroll;
     }
 

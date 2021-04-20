@@ -47,23 +47,50 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div className='nav-wrapper'>
-                <Link to='/board' className='new-game'>New Game</Link>
-                <Link to='/'className='game-header'>
-                    <span className='d'>D</span>
-                    <div className='end-wrap'>
-                        <div className='stacked'>
-                            <span className='is'>is</span>
-                            <span className='array'>arr</span>
+            <nav>
+                <div className='nav-wrapper'>
+                    <Link to='/board' className='new-game'>New Game</Link>
+                    <Link to='/'className='game-header'>
+                        <span className='d'>D</span>
+                        <div className='end-wrap'>
+                            <div className='stacked'>
+                                <span className='is'>is</span>
+                                <span className='array'>arr</span>
+                            </div>
+                            <div className='last-two'>
+                                <span className='a'>a</span>
+                                <span className='y'>y</span>
+                            </div>
                         </div>
-                        <div className='last-two'>
-                            <span className='a'>a</span>
-                            <span className='y'>y</span>
+                    </Link>                
+                    <div className='session-links-wrap'>{this.getLinks()}</div>
+                </div>
+                
+                <div className='nav-wrapper burger'>
+                    <div className='nav-spacer'></div>
+                    <Link to='/' className='game-header'>
+                        <span className='d'>D</span>
+                        <div className='end-wrap'>
+                            <div className='stacked'>
+                                <span className='is'>is</span>
+                                <span className='array'>arr</span>
+                            </div>
+                            <div className='last-two'>
+                                <span className='a'>a</span>
+                                <span className='y'>y</span>
+                            </div>
                         </div>
-                    </div>
-                </Link>                
-                <div className='session-links-wrap'>{this.getLinks()}</div>
-            </div>
+                    </Link>
+                    <ul className='burger-dropdown'>
+                        <li>
+                            <ul>
+                                <li><Link to='/board' className='new-game'>New Game</Link></li>
+                                <li><div className='session-links-wrap'>{this.getLinks()}</div></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         );
     }
 }

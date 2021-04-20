@@ -102,3 +102,45 @@
     font-size: 70px;
     margin-left: -10px;
 }
+
+.burger {
+    display: none;
+}
+
+@media screen and (max-width: 1140px) {
+    .nav-wrapper {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .burger-dropdown {
+        display: block;
+    }
+
+    .burger-dropdown > li {
+        background: url('../images/hamburger.png');
+        background-repeat: no-repeat;
+        background-size: 50px 50px;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .burger-dropdown > ul {
+        position: absolute;
+        top: 200px;
+        left: 0;
+        flex-direction: column;
+        cursor: pointer;
+        box-shadow: black 5px 5px 10px;
+    }
+
+    .burger-dropdown:hover ul {
+        display: flex;
+        background: ghostwhite;
+    }
+}
