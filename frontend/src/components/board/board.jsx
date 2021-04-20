@@ -43,7 +43,7 @@ class Board extends React.Component {
         this.errorBoop = new Audio(errorBoop);
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
-        this.endRound = this.endRound.bind(this);
+        this.roundEnd = this.roundEnd.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.sendChat = this.sendChat.bind(this);
         this.receiveChat = this.receiveChat.bind(this);
@@ -54,7 +54,7 @@ class Board extends React.Component {
         this.props.fetchLeaderboard();
         this.socket = openSocket({
             receiveGame: this.receiveGame,
-            endRound: this.endRound,
+            roundEnd: this.roundEnd
             receiveSystemMessage: this.receiveSystemMessage,
             receiveChat: this.receiveChat
         });
@@ -64,7 +64,7 @@ class Board extends React.Component {
         this.socket.disconnect();
     }
 
-    endRound({winners, wordResults, currentScores, nextBoard}){
+    roundEnd({winners, wordResults, currentScores, nextBoard}){
         this.setState({
             winners: winners,
             wordResults: wordResults,
