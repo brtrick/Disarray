@@ -30,7 +30,6 @@ class Wordlist {
 
         words.forEach((word) => {
             if (this.wordlist[word]) {
-                foundWords[word] = true;
                 score += this.wordlist[word];
             }
             // If foundWords not initialized to false, need to set it here

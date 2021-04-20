@@ -24,6 +24,8 @@ class Board extends React.Component {
             currentWord: "",
             foundWords: {},
             currentGameActive: false,
+
+            roundModal: false
             chatMessage: "",
             messages: []
         }
@@ -54,7 +56,8 @@ class Board extends React.Component {
         this.props.fetchLeaderboard();
         this.socket = openSocket({
             receiveGame: this.receiveGame,
-            roundEnd: this.roundEnd
+            username: this.props.username,
+            roundEnd: this.roundEnd,
             receiveSystemMessage: this.receiveSystemMessage,
             receiveChat: this.receiveChat
         });
@@ -121,7 +124,7 @@ class Board extends React.Component {
     }
     startPractice(e) {
         e.preventDefault();
-        this.socket.emit("start-practice", {username: "Brad"});
+        this.socket.emit("start-practice", {username: this.props.username});
     }
 
     boardTiles() {
@@ -246,7 +249,8 @@ class Board extends React.Component {
 
     timeUp () {
         this.setState({
-            currentGameActive: false
+            currentGameActive: false,
+            roundModal: true
         });
         this.submitAndReset();
         this.socket.emit("finish-round", {
@@ -254,6 +258,7 @@ class Board extends React.Component {
             username: this.props.username,
             foundWords: this.state.foundWords
         })
+        // ADD MODAL THING HERE
     }
 
     render() {

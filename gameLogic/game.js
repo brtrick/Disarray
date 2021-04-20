@@ -101,7 +101,7 @@ class Game {
     roundWinner() {
         // confirm multiple players
         if (this.players.length === 1) {
-            return;
+            return Object.values(this.playersUniqueWords).map( foundWords => this.wordList.checkAnswers(foundWords));
         }
         // determine winning score
         const playerScores = this.calculateScores();
@@ -142,8 +142,9 @@ class Game {
     }
 
     sendResults() {
-        const winners = this.roundWinner();
         const wordResults = this.wordResults();
+        const winners = this.roundWinner();
+
         const currentScores = this.playersGameScore;
 
         this.roundResults[this.roundsPlayed] = {
@@ -154,6 +155,7 @@ class Game {
         };
         this.roundsPlayed += 1;
         this.resetRoundVars();
+
     }
 }
 
