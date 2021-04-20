@@ -51,13 +51,14 @@ class GameServer {
             });
 
             socket.on("finish-round", ({id, username, foundWords}) => {
-                this.games[id].receiveWords({username: foundWords});
+                this.games[id].receiveWords({[username]: foundWords});
                 if (this.games[id].listsReceived === this.games[id].players.length) {
                     console.log(this.games[id].roundResults)
                     if (this.games[id].roundsPlayed === 3) {
                         this.io.to(id).emit("endGame", this.games[id].roundResults);
                     } else {
                         this.io.to(id).emit("roundResults", this.games[id].roundResults[this.games[id].roundsPlayed-1]);
+                        this.games[id].resetRoundVars();
                     }
                 }                
             });

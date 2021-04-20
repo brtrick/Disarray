@@ -7,9 +7,9 @@ import '../../stylesheets/modal.css';
 import '../../stylesheets/reset.css';
 
 const Modal = ({modal, closeModal}) => {
-
+    if (!modal){return null}
     let component;
-    switch (modal) {
+    switch (modal.type) {
         case 'game-rules':
             component = <GameRulesContainer />;
             break;

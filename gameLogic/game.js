@@ -62,7 +62,7 @@ class Game {
     findDuplicateWords() {
         const wordCounts = {};
         const duplicates = {};
-        
+        console.log(this.players)
         // establish count of all foundWords
         Object.keys(this.playersFoundWords).forEach( playerName => {
             const foundWords = this.playersFoundWords[playerName];
@@ -81,6 +81,8 @@ class Game {
     findUniqueWords() {
         this.findDuplicateWords();
         // create object of UniqueWords for each player
+        console.log(this.playersFoundWords)
+        console.log(this.playersUniqueWords)
         Object.keys(this.playersFoundWords).forEach( playerName => {
             const foundWords = this.playersFoundWords[playerName];
             Object.keys(foundWords).forEach( word => {
@@ -114,9 +116,9 @@ class Game {
                 winnerIndex.push(i);
             }
         }
-        const winner = [];
-        winnerIndex.forEach( i => winner.push(this.players[i]));
-        
+        let winnerArr = [];
+        winnerIndex.forEach( i => winnerArr.push(this.players[i]));
+        let winner = winnerArr.map(p => {return p.playerName})
         // increment winning player/players rounds Won
         playerScores.forEach( (score, i) => {this.playersGameScore[i] += score});
         
@@ -142,8 +144,8 @@ class Game {
     }
 
     sendResults() {
-        const wordResults = this.wordResults();
         const winners = this.roundWinner();
+        const wordResults = this.wordResults();
 
         const currentScores = this.playersGameScore;
 
@@ -154,7 +156,6 @@ class Game {
             nextBoard: this.shuffleBoard()
         };
         this.roundsPlayed += 1;
-        this.resetRoundVars();
 
     }
 }

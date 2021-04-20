@@ -13,7 +13,7 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
     fetchLeaderboard: () => dispatch(fetchLeaderboard()),
-    openModal: modal => dispatch(openModal(modal)),
+    openModal: (modal, roundResults) => dispatch(openModal(modal, roundResults)),
     updateUser: currentUser => dispatch(receiveCurrentUser(currentUser))
 });
 

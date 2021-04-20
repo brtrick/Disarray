@@ -4,7 +4,7 @@ import {closeModal} from '../../actions/modal_actions';
 import ModalTimer from './modalTimer';
 
 
-const NewRoundModal = ({closeModal}) => {
+const NewRoundModal = ({roundResults, closeModal}) => {
     // PLACE TIMER HERE FOR STARTING NEXT ROUND
     
     return (
@@ -22,6 +22,7 @@ const NewRoundModal = ({closeModal}) => {
 }
 
 const mSTP = (state, ownProps) => ({
+    roundResults: state.ui.modal.roundResults
     // PASS INFORMATION FROM ROUND RESULTS FROM GAME SERVER TO PROPS
 })
 
