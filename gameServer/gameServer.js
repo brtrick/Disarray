@@ -44,7 +44,6 @@ class GameServer {
             });
 
             socket.on("chat", ({gameId, username, msg}) => {
-                console.log(gameId);
                 if (gameId)
                     socket.to(gameId).emit('chat', {username: username, msg: msg});
                 else
@@ -52,9 +51,6 @@ class GameServer {
             });
 
             socket.on("finish-round", ({id, username, foundWords}) => {
-                // console.log(username);
-                // console.log(foundWords);
-                // console.log(this.games);
                 this.games[id].receiveWords({username: foundWords});
                 if (this.games[id].listsReceived === this.games[id].players.length) {
                     
