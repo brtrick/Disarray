@@ -83,7 +83,7 @@ class NavBar extends React.Component {
                     </Link>
                     <ul className='burger-dropdown'>
                         <li>
-                            <ul>
+                            <ul className='burger-list'>
                                 <li><Link to='/board' className='new-game'>New Game</Link></li>
                                 <li><div className='session-links-wrap'>{this.getLinks()}</div></li>
                             </ul>
