@@ -43,7 +43,7 @@ class GameServer {
                 // console.log(this.games);
                 this.games[id].receiveWords({username: foundWords});
                 if (this.games[id].listsReceived === this.games[id].players.length) {
-                    
+                    console.log(this.games[id].roundResults)
                     if (this.games[id].roundsPlayed === 3) {
                         this.io.to(id).emit("endGame", this.games[id].roundResults);
                     } else {

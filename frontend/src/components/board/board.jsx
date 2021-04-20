@@ -23,7 +23,8 @@ class Board extends React.Component {
             players: [],
             currentWord: "",
             foundWords: {},
-            currentGameActive: false
+            currentGameActive: false,
+            roundModal: false
         }
         this.currentGame = null;
 
@@ -204,7 +205,8 @@ class Board extends React.Component {
 
     timeUp () {
         this.setState({
-            currentGameActive: false
+            currentGameActive: false,
+            roundModal: true
         });
         this.submitAndReset();
         this.socket.emit("finish-round", {
