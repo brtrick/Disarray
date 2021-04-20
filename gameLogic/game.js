@@ -148,9 +148,9 @@ class Game {
     }
 
     sendResults() {
-        const winners = this.roundWinner()
-        const wordResults = this.wordResults()
-        const currentScores = this.playersGameScore
+        const winners = this.roundWinner();
+        const wordResults = this.wordResults();
+        const currentScores = this.playersGameScore;
 
         this.roundResults[this.roundsPlayed] = {
             winners: winners,

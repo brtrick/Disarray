@@ -13,12 +13,12 @@ class GameServer {
 
         this.io.on('connection', (socket)=> {
             console.log(`Socket ${socket.id} connection established.`);
-            socket.broadcast.emit(`User ${socket.id} now connected`)
+            socket.broadcast.emit(`User ${socket.id} now connected`);
             
             socket.on('disconnect', () => {
                 console.log(`disconnect: ${socket.id}`);
                 socket.broadcast.emit(`Socket ${socket.id} disconnected.`);
-            })
+            });
 
             socket.on("join", ({username}) => {
                 console.log(`${username} Joining!`);
@@ -35,7 +35,14 @@ class GameServer {
                 const game = new Game(new Player(username, socket));
                 this.games[game.id] = game;
                 this.io.to(game.id).emit("startGame", game.renderJSON());
-            })
+            });
+
+            socket.on("chat", ({gameId, msg}) => {
+                if (gameId)
+                    socket.to(gameId).emit('chat', {msg: msg});
+                else
+                    socket.broadcast.emit('chat', {msg: msg});
+            });
 
             socket.on("finish-round", ({id, username, foundWords}) => {
                 // console.log(username);
@@ -50,7 +57,7 @@ class GameServer {
                         this.io.to(id).emit("roundResults", this.games[id].roundResults[this.games[id].roundsPlayed-1]);
                     }
                 }                
-            })
+            });
         });
 
         

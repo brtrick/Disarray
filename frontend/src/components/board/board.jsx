@@ -23,7 +23,9 @@ class Board extends React.Component {
             players: [],
             currentWord: "",
             foundWords: {},
-            currentGameActive: false
+            currentGameActive: false,
+            chatMessage: "",
+            messages: []
         }
         this.currentGame = null;
 
@@ -35,19 +37,23 @@ class Board extends React.Component {
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.startPractice = this.startPractice.bind(this);
         this.timeUp = this.timeUp.bind(this);
         this.errorBoop = new Audio(errorBoop);
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
         this.endRound = this.endRound.bind(this);
+        this.displayMessage = this.displayMessage.bind(this);
+        this.sendChat = this.sendChat.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchLeaderboard();
         this.socket = openSocket({
             receiveGame: this.receiveGame,
-            endRound: this.endRound
+            endRound: this.endRound,
+            receiveChat: this.displayMessage
         });
     }
 
@@ -76,6 +82,30 @@ class Board extends React.Component {
         this.props.openModal('new-game');
     }
 
+    sendChat (e) {
+        e.preventDefault();
+        // const msg = e.target.previousSibling.value;
+        this.displayMessage({msg: `Me: ${this.state.chatMessage}`})
+        this.socket.emit('chat', {gameId: this.currentGame, msg: `${this.props.username}: ${this.state.chatMessage}`});
+        this.setState({
+            chatMessage: ""
+        })
+        // e.target.previousSibling.value = "";
+    }
+
+    displayMessage({msg}) {
+        const messages = this.state.messages;
+        messages.push(msg);
+        this.setState({
+            messages: messages,
+        })
+    }
+
+    handleChange(e) {
+        this.setState({
+            chatMessage: e.target.value
+        })
+    }
     startPractice(e) {
         e.preventDefault();
         this.socket.emit("start-practice", {username: "Brad"});
@@ -108,9 +138,9 @@ class Board extends React.Component {
     handleMouseLeave(e) {
         const index = parseInt(e.currentTarget.dataset.index);
         if (!this.mouseDown) return;
-        if (([0, 4, 8, 12   ].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left side
-            ([0, 1, 2, 3    ].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
-            ([3, 7, 11, 15  ].includes(index) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
+        if (([0,   4,  8, 12].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left side
+            ([0,   1,  2,  3].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
+            ([3,   7, 11, 15].includes(index) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
             ([12, 13, 14, 15].includes(index) && (e.nativeEvent.offsetY >= e.currentTarget.offsetHeight))) //exit bottom
         {
                 this.submitAndReset();
@@ -213,14 +243,13 @@ class Board extends React.Component {
         })
     }
 
-    sendChat (e) {
-        e.preventDefault();
-        this.socket.emit('chat', input.value)
-    }
     render() {
        if (!this.props.leaderboard) return null;
        const lead = Object.values(this.props.leaderboard);
        const foundWords = Object.keys(this.state.foundWords).sort();
+       const messages = this.state.messages.map ((message, idx) => {
+           return (<li key={idx}>{message}</li>)
+       });
 
         return (
             <div className='main-wrapper'>
@@ -284,10 +313,10 @@ class Board extends React.Component {
                         <button className='submit lower-button' onClick={this.submitAndReset.bind(this)}>Submit Word</button>
                         <div className='chat'>
                             <h2 className='info-header'>Chat</h2>
-                            <div className='chat-box'>Content</div>
+                            <div className='chat-box'><ul id="chat-content">{messages}</ul></div>
                             <form className='chat-form'>
-                                <input className='chat-input form-input' type="text" placeholder='say hi'/>
-                                <button onClick={this.sendChat}>Send</button>
+                                <input id='chat-input' name="chat" type="text" placeholder='say hi' value={this.state.chatMessage} onChange={this.handleChange}/>
+                                <button onClick={this.sendChat} type="submit">Send</button>
                             </form>
                         </div>
                         <button className='submit lower-button' onClick={this.startPractice}>Practice Game</button>
