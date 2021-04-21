@@ -107,6 +107,12 @@
     display: none;
 }
 
+.session-link:hover, .new-game:hover {
+    background: -webkit-linear-gradient(rgb(116, 15, 136), rgb(55, 50, 58));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 @media screen and (max-width: 1140px) {
     .nav-wrapper {
         display: none;
@@ -174,5 +180,5 @@
         padding: 10px;
         box-shadow: black 5px 5px 10px;
     }
-    
+
 }

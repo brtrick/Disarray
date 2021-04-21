@@ -41,8 +41,8 @@
 .rules-links-container {
     display: flex;
     justify-content: space-evenly;
-    margin-right: 2%;
-    width: 16%;
+    margin-right: 4%;
+    width: 18%;
 }
 
 .game-rules-link, .word-rules-link {
@@ -55,10 +55,9 @@
     font-size: 12px;
 }
 
-
 .spacer {
-    width: 16%;
-    margin-left: 2%;
+    width: 18%;
+    margin-left: 4%;
 }
 
 .timer-container {
@@ -83,7 +82,6 @@
     height: 100%;
     width: 230px;
     color: tomato;
-    /* background-color: tomato; */
 }
 
 .board-wrapper {
@@ -232,8 +230,9 @@
     flex-shrink: 0.5;
     min-width: 20%;
     max-width: 20%;
-    font-size: clamp(0.6rem, -0.4000rem + 8.0000vw, 0.8rem);
+    font-size: clamp(0.6em, -0.4000em + 8.0000vw, 0.8em);
     margin: 4px 4px 4px 4px;
+    transform: scale(0.8);
 }
 
 .active-word {
@@ -254,8 +253,6 @@
 .lower-wrapper {
     width: 80%;
     justify-content: space-between;
-    /* height: 100%; */
-    /* border: 2px solid tomato; */
 }
 
 .lower-wrapper > * {
@@ -348,6 +345,22 @@
         display: none;
     }
 
+    .rules-links-container {
+        margin-right: 0%;
+        margin-left: 6%;
+    }
+
+    .spacer {
+        margin-left: 0%;
+    }
+
+    .lower-wrapper {
+        display: flex;
+        justify-self: flex-start;
+        width: 65%;
+        margin-right: 5%;
+    }
+
 }
 
 @media screen and (max-width: 800px) {
@@ -438,7 +451,6 @@
         margin-top: 0px;
         height: 800px;
     }
-
 
     .timer-container {
          margin-top: 100px;
