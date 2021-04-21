@@ -42,11 +42,8 @@
 }
 
 #chat-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 95%;
-    width: 95%;
+    overflow: auto;
+    width: 98%;
 }
 
 .system-msg {

@@ -270,26 +270,26 @@
     align-items: center;
     width: 30%;
     height: 90%;
-    max-height: 90%;
     margin: 80px 10px 0px 10px;
     background-color: rgb(64, 103, 136);
 }
 
 .chat-box {
-    /* display: flex;
+    overflow-y: scroll;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+    align-items: center;
+    justify-content: flex-end;
     height: 80%;
     width: 95%;
     border-radius: 10px;
     margin: auto;
     background-color: rgba(68, 77, 85, 0.712);
-    overflow-y: scroll;
 }
 
 .chat-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -305,12 +305,6 @@
     height: 50px;
 }
 
-#chat-content {
-    min-height: 0;
-    max-height: 95%;
-    overflow-y: scroll;
-}
-
 @media screen and (max-width: 1450px) {
     .main-wrapper {
         display: flex;
@@ -319,12 +313,17 @@
 
     .info-wrapper {
         width: 95%;
+        height: 75%;
+    }
+
+    .game-wrapper {
+        height: 79%;
     }
 
     .chat {
         width: 95%;
         margin: 5px 10px 0px 10px;
-        height: 315px;
+        height: 30%;
         display: flex;
         justify-content: center;
     }
@@ -358,6 +357,7 @@
 
     .info-wrapper {
         min-width: 525px;
+        height: 95%;
     }
 
     .game-wrapper {
@@ -396,6 +396,7 @@
     .timer {
         display: flex;
         justify-content: center;
+        align-items: center;
         font-size: 16px;
     }
 
@@ -405,7 +406,7 @@
     }
     
     .upper-wrap {
-        margin-top: 150px;
+        margin-top: 175px;
         height: 30px;
     }
 
