@@ -9,7 +9,7 @@ const NewRoundModal = ({roundResults, closeModal}) => {
     
     return (
         <div className='modal-round-container'>
-            <h1 className='modal-title-round'>Round {`${roundResults.roundNumber}`} Results</h1>
+            <h1 className='modal-round-results'>Round {`${roundResults.roundNumber}`} Results</h1>
                <div className='round-winner-container'>
                 {   roundResults.winners.map(winner => (
                     <h2 className='round-winner'> Round Winner: {`${winner}`}
@@ -20,13 +20,17 @@ const NewRoundModal = ({roundResults, closeModal}) => {
             <div className='round-scores-container'>
               { Object.keys(roundResults.wordResults).map((player, idx) => (
                   <div key={idx} className='player-round-modal'>
-                      <h3>
-                          {`${player}`}
-                      </h3>
-                      <span>
-                          Score: {`${roundResults.currentScores[idx]}`}
-                      </span>
+                      <div className='player-stats'>
+                        <h3>
+                            {`${player}`}
+                        </h3>
+                        ---
+                        <span>
+                            Score: {`${roundResults.currentScores[idx]}`}
+                        </span>
+                      </div>
                       <ul className='player-word-list'>
+                          <span className='words'>Words</span>
                         {Object.keys(roundResults.wordResults[player]).map(word => {
                             if (roundResults.wordResults[player][word] > 0 ) {return <li className='valid-word'>{`${word}`}</li>}
                             else if (roundResults.wordResults[player][word] === 0 ) {return <li className='repeated-word'>{`${word}`}</li>}
