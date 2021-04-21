@@ -9,13 +9,17 @@ const NewRoundModal = ({roundResults, closeModal}) => {
     
     return (
         <div className='modal-round-container'>
-            <h3 className='modal-title-round'>Round 1 Results</h3>
-            <ul>
-                <li className='modal-round-li'>
-                    Player 1 Score: 
-                    Player 1 Words: 
-                </li>
-            </ul>
+            <h1 className='modal-title-round'>Round {`${roundResults.roundNumber}`} Results</h1>
+               <div className='round-winner-container'>
+                {   roundResults.winners.map(winner => (
+                    <h2 className='round-winner'> Round Winner: {`${winner}`}
+                    </h2>
+                ))
+                }
+                </div>
+            <div className='round-scores-container'>
+
+            </div>
             <ModalTimer closeModal={closeModal}/>
         </div>
     )

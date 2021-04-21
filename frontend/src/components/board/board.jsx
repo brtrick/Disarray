@@ -81,7 +81,7 @@ class Board extends React.Component {
             currentScores: currentScores,
             currentGameActive: true,
             board: nextBoard,
-            roundNumber: this.state.roundNumber++,
+            roundNumber: (this.state.roundNumber + 1),
             foundWords: {},
             currentWord: "",
         })
