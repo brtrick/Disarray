@@ -1,7 +1,7 @@
 import {io} from "socket.io-client";
 
 
-const openSocket = ({receiveGame, roundEnd, receiveSystemMessage, receiveChat, username}) => {
+const openSocket = ({receiveGame, roundEnd, endGame, receiveSystemMessage, receiveChat, username}) => {
     const socket = io();
 
     socket.onAny((event, ...args)=> {
@@ -15,6 +15,7 @@ const openSocket = ({receiveGame, roundEnd, receiveSystemMessage, receiveChat, u
     socket.on("startGame", receiveGame);
     socket.on("roundResults", roundEnd);
     socket.on("chat", receiveChat);
+    socket.on("endGame", endGame);
 
     return socket;
 }

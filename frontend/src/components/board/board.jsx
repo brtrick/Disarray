@@ -48,6 +48,7 @@ class Board extends React.Component {
         this.socket = null;
         this.receiveGame = this.receiveGame.bind(this);
         this.roundEnd = this.roundEnd.bind(this);
+        this.endGame = this.endGame.bind(this);
         this.displayMessage = this.displayMessage.bind(this);
         this.sendChat = this.sendChat.bind(this);
         this.receiveChat = this.receiveChat.bind(this);
@@ -60,6 +61,7 @@ class Board extends React.Component {
             receiveGame: this.receiveGame,
             username: this.props.username,
             roundEnd: this.roundEnd,
+            endGame: this.endGame,
             receiveSystemMessage: this.receiveSystemMessage,
             receiveChat: this.receiveChat
         });
@@ -82,6 +84,19 @@ class Board extends React.Component {
             currentScores: currentScores,
             currentGameActive: true,
             board: nextBoard,
+            roundNumber: (this.state.roundNumber + 1),
+            foundWords: {},
+            currentWord: "",
+        })
+    }
+
+    endGame(gameResults){
+        this.props.openModal('end-game', {
+            gameResults: gameResults
+        });
+        this.setState({
+            gameResults: gameResults,
+            currentGameActive: true,
             roundNumber: (this.state.roundNumber + 1),
             foundWords: {},
             currentWord: "",
