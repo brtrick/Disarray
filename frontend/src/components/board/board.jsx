@@ -96,8 +96,8 @@ class Board extends React.Component {
         });
         this.setState({
             gameResults: gameResults,
-            currentGameActive: true,
-            roundNumber: (this.state.roundNumber + 1),
+            currentGameActive: false,
+            roundNumber: 1,
             foundWords: {},
             currentWord: "",
         })

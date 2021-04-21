@@ -19,6 +19,7 @@ class Game {
         this.board = new Board;
         this.wordList = new Wordlist(__dirname + '/enable1.txt');
         this.players = players;
+        this.disconnectedPlayers = [];
         this.playersFoundWords = {};
         this.playersUniqueWords = {};
         this.initializeWordLists();
@@ -62,7 +63,6 @@ class Game {
     findDuplicateWords() {
         const wordCounts = {};
         const duplicates = {};
-        console.log(this.players)
         // establish count of all foundWords
         Object.keys(this.playersFoundWords).forEach( playerName => {
             const foundWords = this.playersFoundWords[playerName];
@@ -139,6 +139,10 @@ class Game {
     resetRoundVars() {
         this.initializeWordLists();
         this.listsReceived = 0;
+        this.disconnectedPlayers.forEach ((playerName) => {
+            this.playersFoundWords[playerName] = {};
+            this.listsReceived += 1;
+        })
     }
 
     sendResults() {
