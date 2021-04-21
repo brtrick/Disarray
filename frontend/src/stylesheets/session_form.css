@@ -5,13 +5,11 @@
     align-items: center;
     border-radius: 10px;
     width: 50%;
-    min-width: 400px;
+    min-width: 600px;
     max-width: 650px;
-    height: 70%;
-    min-height: 450px;
+    height: 65%;
+    min-height: 550px;
     margin-top: 5%;
-    /* margin-bottom: 20%; */
-    /* background-color: rgba(49, 48, 53, 0.516); */
     background-color: rgba(68, 77, 85, 0.872);
 }
 

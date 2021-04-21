@@ -424,10 +424,30 @@
 
 }
 
-@media screen and (max-height: 1000px) {
+@media screen and (max-height: 900px) {
 
-    .game-wrapper, .board-wrapper {
-        overflow:scroll;
+    .rules-links-container, .lower-wrapper, .spacer {
+        display: none;
+    }
+
+    .game-wrapper {
+        height: 500px;
+    }
+
+    .info-wrapper {
+        margin-top: 0px;
+        height: 800px;
+    }
+
+
+    .timer-container {
+         margin-top: 100px;
+        font-size: 14px;
+        height: 25px;
+    }
+
+    .main-wrapper {
+        height: 120vh;
     }
 
 }
