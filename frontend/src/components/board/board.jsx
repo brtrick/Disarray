@@ -331,7 +331,9 @@ class Board extends React.Component {
                 <div className='chat'>
                     <h2 className='info-header chat-header'>Chat</h2>
                     <div className='chat-box'>
-                        <ul id="chat-content">{messages}</ul>
+                        <div className='msg-wrap'>
+                            <ul id="chat-content">{messages}</ul>
+                        </div>
                     </div>
                     <div className='chat-container'>
                         <form className='chat-form'>

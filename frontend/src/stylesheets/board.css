@@ -275,16 +275,16 @@
 }
 
 .chat-box {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    flex-direction: column-reverse;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     height: 80%;
     width: 95%;
     border-radius: 10px;
     margin: auto;
     background-color: rgba(68, 77, 85, 0.712);
+    overflow: auto;
 }
 
 .chat-container {

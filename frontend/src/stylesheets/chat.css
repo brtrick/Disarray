@@ -42,8 +42,13 @@
 }
 
 #chat-content {
-    overflow-y: auto;
+    overflow-y: scroll;
     width: 98%;
+    margin: auto;
+}
+
+.msg-wrap {
+    width: 100%;
 }
 
 .system-msg {
