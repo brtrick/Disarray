@@ -107,6 +107,12 @@
     display: none;
 }
 
+.session-link:hover, .new-game:hover {
+    background: -webkit-linear-gradient(rgb(116, 15, 136), rgb(55, 50, 58));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 @media screen and (max-width: 1140px) {
     .nav-wrapper {
         display: none;
@@ -124,11 +130,10 @@
 
     .burger-dropdown {
         display: flex;
-        flex-direction: column;
     }
 
     .burger-dropdown > li {
-        background: url('../images/burg1.png');
+        background: url('../images/disarrayMenu.png');
         background-repeat: no-repeat;
         background-size: 50px 50px;
         width: 50px;
@@ -142,6 +147,7 @@
 
     .burger-list{
         display: none;
+        background: rgb(81,92,102);
     }
 
     .new-game {
@@ -155,8 +161,9 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
         width: 100%;
-        height: 100%;
+        margin-top: 15px;
         background: -webkit-linear-gradient(#eee, white);
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -173,5 +180,5 @@
         padding: 10px;
         box-shadow: black 5px 5px 10px;
     }
-    
+
 }
