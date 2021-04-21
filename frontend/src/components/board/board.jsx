@@ -90,16 +90,13 @@ class Board extends React.Component {
         })
     }
 
-    endGame(gameResults){
+    endGame(roundResults){
         this.props.openModal('end-game', {
-            gameResults: gameResults
+            roundResults: roundResults
         });
         this.setState({
-            gameResults: gameResults,
-            currentGameActive: true,
-            roundNumber: (this.state.roundNumber + 1),
-            foundWords: {},
-            currentWord: "",
+            roundResults: roundResults,
+            currentGameActive: true
         })
     }
 
