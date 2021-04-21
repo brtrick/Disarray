@@ -81,8 +81,6 @@ class Game {
     findUniqueWords() {
         this.findDuplicateWords();
         // create object of UniqueWords for each player
-        console.log(this.playersFoundWords)
-        console.log(this.playersUniqueWords)
         Object.keys(this.playersFoundWords).forEach( playerName => {
             const foundWords = this.playersFoundWords[playerName];
             Object.keys(foundWords).forEach( word => {

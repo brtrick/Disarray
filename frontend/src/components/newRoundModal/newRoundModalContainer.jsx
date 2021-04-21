@@ -18,7 +18,26 @@ const NewRoundModal = ({roundResults, closeModal}) => {
                 }
                 </div>
             <div className='round-scores-container'>
+              { Object.keys(roundResults.wordResults).map((player, idx) => (
+                  <div key={idx} className='player-round-modal'>
+                      <h3>
+                          {`${player}`}
+                      </h3>
+                      <span>
+                          Score: {`${roundResults.currentScores[idx]}`}
+                      </span>
+                      <ul className='player-word-list'>
+                        {Object.keys(roundResults.wordResults[player]).map(word => {
+                            if (roundResults.wordResults[player][word] > 0 ) {return <li className='valid-word'>{`${word}`}</li>}
+                            else if (roundResults.wordResults[player][word] === 0 ) {return <li className='repeated-word'>{`${word}`}</li>}
+                            else {return <li className='invalid-word'>{`${word}`}</li>}
+                        })
+                        }
+                      </ul>
+                  </div>
+              ))
 
+              }  
             </div>
             <ModalTimer closeModal={closeModal}/>
         </div>
