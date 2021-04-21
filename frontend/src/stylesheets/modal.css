@@ -102,16 +102,89 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 100%;
   }
 
-  .modal-title-round{
+  .modal-round-results{
     margin-top: 30px;
     font-size: 50px;
+    margin-bottom: 10px;
   }
 
   .round-winner-container{
     position: relative;
-    bottom: 40%;
+  }
+
+  .round-scores-container {
+    display: flex;
+    justify-content: space-between ;
+    width: 90%;
+    height: 60%;
+  }
+
+  .round-winner {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .player-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .player-stats > h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .player-stats > span {
+    margin-top: 5px;
+  }
+
+  .player-round-modal {
+    width: 33%;
+  }
+
+  .modal-timer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: whitesmoke;
+  }
+
+  .player-word-list {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  .player-word-list li {
+    margin-bottom: 5px;
+  }
+
+  .words {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .valid-word {
+    color: rgb(97, 230, 97);
+  }
+
+  .repeated-word {
+    color:orange;
+  }
+
+  .invalid-word {
+    text-decoration: line-through;
+    color: rgb(204, 69, 45);
+  }
+
+  .modal-timer-header {
+    margin-bottom: 10px;
   }
 
   
