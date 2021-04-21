@@ -127,7 +127,7 @@
     }
 
     .burger-dropdown > li {
-        background: url('../images/burg1.png');
+        background: url('../images/disarrayMenu.png');
         background-repeat: no-repeat;
         background-size: 50px 50px;
         width: 50px;
@@ -141,6 +141,7 @@
 
     .burger-list{
         display: none;
+        background: rgb(81,92,102);
     }
 
     .new-game {
