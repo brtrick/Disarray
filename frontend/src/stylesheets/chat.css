@@ -42,7 +42,7 @@
 }
 
 #chat-content {
-    overflow: auto;
+    overflow-y: auto;
     width: 98%;
 }
 

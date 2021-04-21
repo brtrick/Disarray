@@ -275,7 +275,7 @@
 }
 
 .chat-box {
-    overflow-y: scroll;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -323,7 +323,8 @@
     .chat {
         width: 95%;
         margin: 5px 10px 0px 10px;
-        height: 30%;
+        min-height: 28%;
+        max-height: 28%;
         display: flex;
         justify-content: center;
     }
