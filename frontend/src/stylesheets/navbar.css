@@ -124,7 +124,6 @@
 
     .burger-dropdown {
         display: flex;
-        flex-direction: column;
     }
 
     .burger-dropdown > li {
@@ -155,8 +154,9 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: space-between;
         width: 100%;
-        height: 100%;
+        margin-top: 15px;
         background: -webkit-linear-gradient(#eee, white);
         background-clip: text;
         -webkit-text-fill-color: transparent;
