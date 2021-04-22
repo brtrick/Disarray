@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../../stylesheets/modal.css';
+import '../../stylesheets/endgame_modal.css'
 import '../../stylesheets/reset.css';
 import NewGameModalContainer from './newGameModalContainer';
 import NewRoundModalContainer from '../newRoundModal/newRoundModalContainer';

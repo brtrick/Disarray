@@ -111,6 +111,27 @@ class Board extends React.Component {
             //roundResults: roundResults
         });
         this.currentGame = null;
+        })
+        let roundScores = roundResults[0]['currentScores']
+        let topScore = Math.max(...roundScores)
+        let breadWinner = []
+        let playerNames = Object.keys(roundResults[0]['wordResults'])
+
+        for (let i = 0; i < roundScores.length; i++) {
+            if (roundScores[i] === topScore) {
+                breadWinner.push(i)
+            }
+        }
+
+        let breadWinnerArr = []
+        breadWinner.forEach(i => {
+            breadWinnerArr.push(playerNames[i])
+        })    
+
+        if (breadWinnerArr.includes(this.props.username)) {
+            this.props.updateUser({id: this.props.id, win: this.props.gamesWon + 1, loss: this.props.gamesLost, game: this.props.gamesPlayed + 1})
+        } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
+        }
     }
 
     receiveGame({board, players, id}) {
