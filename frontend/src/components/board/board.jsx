@@ -325,7 +325,7 @@ class Board extends React.Component {
         this.socket.emit("finish-round", {
             id: this.currentGame,
             username: this.props.username,
-            foundWords: this.state.foundWords
+            foundWords: Object.fromEntries(Object.entries(this.state.foundWords).sort())
         })
         // ADD MODAL THING HERE
     }
