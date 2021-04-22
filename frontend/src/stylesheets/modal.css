@@ -171,16 +171,17 @@
   }
 
   .valid-word {
-    color: rgb(97, 230, 97);
+    /* color: rgb(97, 230, 97); */
+    color: lightseagreen;
   }
 
   .repeated-word {
-    color:orange;
+    color:rosybrown;
   }
 
   .invalid-word {
     text-decoration: line-through;
-    color: rgb(204, 69, 45);
+    color: tomato
   }
 
   .modal-timer-header {
