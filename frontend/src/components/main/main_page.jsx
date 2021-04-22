@@ -10,7 +10,7 @@ class MainPage extends React.Component {
     render() {
         return (
             <div className='splash-page'>
-                <NavLink to='/board' className='start'>Press Start</NavLink>
+                <NavLink to='/board' className='start'>Click to Start</NavLink>
             </div>
         );
     }

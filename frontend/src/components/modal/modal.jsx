@@ -5,6 +5,7 @@ import WordRulesContainer from '../rules/wordRulesContainer';
 import GameRulesContainer from '../rules/gameRulesContainer';
 import '../../stylesheets/modal.css';
 import '../../stylesheets/reset.css';
+import '../../stylesheets/endgame_modal.css'
 
 const Modal = ({modal, closeModal}) => {
     if (!modal){return null}

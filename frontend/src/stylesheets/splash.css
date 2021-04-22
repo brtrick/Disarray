@@ -13,7 +13,10 @@
 .start {
     font-size: 80px;
     /* text-transform: uppercase; */
-    color:rgb(41, 199, 183);
+    /* color:rgb(41, 199, 183); */
+    background: -webkit-linear-gradient(aqua, rgb(41, 199, 183), rgb(94, 148, 143),rgb(158, 192, 192), rgb(91, 123, 123));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @media screen and (max-width: 900px) {
