@@ -56,8 +56,10 @@
 }
 
 .spacer {
+    display: flex;
     width: 18%;
     margin-left: 4%;
+    justify-content: center;
 }
 
 .timer-container {
