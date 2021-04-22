@@ -26,8 +26,8 @@ const EndGameModal = ({roundResults, closeModal}) => {
             <div>
                 <div className='winner'>
                     <div className='game-winner'>
-                        { breadWinnerArr.map(topScorer => (
-                            <div>{`${topScorer}`}</div>
+                        { breadWinnerArr.map((topScorer, idx) => (
+                            <div key={idx}>{`${topScorer}`}</div>
                             ))}
                     </div>
                     <span>&nbsp;WINS</span>
@@ -37,13 +37,13 @@ const EndGameModal = ({roundResults, closeModal}) => {
     
             <div className='end-scores-container'>
                 {playerNames.map((playerName, i) => (
-                    <div key={i} className='player-end-modal'>
-                        <div className='end-player-stats'>
-                            <h3>
-                                <div>{`${playerName}`}</div>
+                    <div key={i + 200} className='player-end-modal'>
+                        <div key={i + 300}className='end-player-stats'>
+                            <h3 key={i + 400}>
+                                <div key={i + 500}>{`${playerName}`}</div>
                             </h3>
                             ---
-                            <span>
+                            <span key={i + 600}>
                                 Score: {`${roundScores[i]}`}
                             </span>
                         </div>
@@ -52,16 +52,16 @@ const EndGameModal = ({roundResults, closeModal}) => {
             </div>
             <span className='end-words'> Words Played</span>
             <div className='end-results'>
-                { Object.keys(roundResults.roundResults).map(round => (
-                    <div className='roundup'>
-                        <h4 className='round-title'>Round {`${parseInt(round) + 1}`}</h4>
-                        <ul className='end-player-word-list'>
-                            {Object.keys(roundResults.roundResults[round]['wordResults']).map(player => (
-                                <div className='player'>{`${player}`}
-                                    {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map(word => { //'the'
-                                        if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='valid-word'>{`${roundResults.roundResults[round]['wordResults'][player][word]} - ${word}`}</li> }
-                                        else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='repeated-word'>{`${word}`}</li> }
-                                        else { return <li className='invalid-word'>{`${word}`}</li> }
+                { Object.keys(roundResults.roundResults).map((round, idx) => (
+                    <div className='roundup' key={idx + 340}>
+                        <h4 className='round-title' key={idx + 200}>Round {`${parseInt(round) + 1}`}</h4>
+                        <ul className='end-player-word-list' key={idx + 240}>
+                            {Object.keys(roundResults.roundResults[round]['wordResults']).map((player, idx) => (
+                                <div className='player' key={idx}>{`${player}`}
+                                    {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map((word, idx) => { //'the'
+                                        if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='valid-word' key={idx + 600}>{`${roundResults.roundResults[round]['wordResults'][player][word]} - ${word}`}</li> }
+                                        else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='repeated-word' key={idx + 600}>{`${word}`}</li> }
+                                        else { return <li className='invalid-word' key={idx + 600}>{`${word}`}</li> }
                                     })}
                                 </div>
                             ))}
