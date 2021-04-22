@@ -26,13 +26,16 @@
 
 .end-scores-container {
   display: flex;
+  justify-content: center;
   margin-bottom: 10px;
+  width: 100%;
+  /* background: violet; */
 }
 
 .player-end-modal {
     display: flex;
     justify-content: space-around;
-    width: 300px;
+    width: 100%;
     /* background: turquoise; */
 }
 
