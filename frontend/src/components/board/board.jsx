@@ -42,6 +42,7 @@ class Board extends React.Component {
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.joinGame = this.joinGame.bind(this);
         this.startPractice = this.startPractice.bind(this);
         this.timeUp = this.timeUp.bind(this);
         this.errorBoop = new Audio(errorBoop);
@@ -65,13 +66,21 @@ class Board extends React.Component {
             receiveSystemMessage: this.receiveSystemMessage,
             receiveChat: this.receiveChat
         });
+        this.receiveSystemMessage({msg: "Click 'Join Game' to play!"});
     }
 
     componentWillUnmount () {
         this.socket.disconnect();
     }
 
+    joinGame(e) {
+        e.preventDefault();
+        if (this.currentGame === null) 
+            this.socket.emit("join", {username: this.props.username});
+    }
+
     roundEnd({winners, wordResults, currentScores, nextBoard}){
+        this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.props.openModal('new-round', {
             winners: winners,
             wordResults: wordResults,
@@ -131,6 +140,9 @@ class Board extends React.Component {
             this.props.updateUser({id: this.props.id, win: this.props.gamesWon + 1, loss: this.props.gamesLost, game: this.props.gamesPlayed + 1})
         } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
         }
+        this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
+        this.receiveSystemMessage({msg: "-----"});
+        this.receiveSystemMessage({msg: "Click 'Join Game' to play again!"});
     }
 
     receiveGame({board, players, id}) {
@@ -142,7 +154,7 @@ class Board extends React.Component {
         });
         
         this.displayMessage({msg: <p className='system-msg'>-----</p>});
-        this.displayMessage({ msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
+        this.displayMessage({msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
         this.props.openModal('new-game');
     }
 
@@ -338,7 +350,9 @@ class Board extends React.Component {
 
                         {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
                         </div>
-                        <div className='spacer'></div>
+                        <div className='spacer'>
+                            <button className='join-game submit' onClick={this.joinGame}>Join Game</button>
+                        </div>
                     </div>
                     <div className='game-wrapper'>
                         <div className='game'> 
