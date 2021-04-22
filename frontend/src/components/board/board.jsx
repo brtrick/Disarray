@@ -80,7 +80,7 @@ class Board extends React.Component {
     }
 
     roundEnd({winners, wordResults, currentScores, nextBoard}){
-        this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
+        //this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.props.openModal('new-round', {
             winners: winners,
             wordResults: wordResults,
@@ -120,10 +120,10 @@ class Board extends React.Component {
             //roundResults: roundResults
         });
         this.currentGame = null;
-        let roundScores = roundResults[0]['currentScores']
-        let topScore = Math.max(...roundScores)
-        let breadWinner = []
-        let playerNames = Object.keys(roundResults[0]['wordResults'])
+        let roundScores = roundResults[0]['currentScores'];
+        let topScore = Math.max(...roundScores);
+        let breadWinner = [];
+        let playerNames = Object.keys(roundResults[0]['wordResults']);
 
         for (let i = 0; i < roundScores.length; i++) {
             if (roundScores[i] === topScore) {
@@ -316,6 +316,7 @@ class Board extends React.Component {
     }
 
     timeUp () {
+        this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.setState({
             currentGameActive: false,
             roundModal: true
