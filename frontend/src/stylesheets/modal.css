@@ -13,7 +13,9 @@
     border-radius: 10px;
     top: 48%;
     left: 50%;
+    min-height: 550px;
     height: 67%;
+    min-width: 550px;
     width: 60%;
     transform: translate(-50%, -50%);
     background: -webkit-linear-gradient(#eee, #333);
@@ -103,28 +105,34 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+    width: 100%;
+    /* background: violet; */
   }
 
   .modal-round-results{
-    margin-top: 30px;
+    text-align: center;
     font-size: 50px;
-    margin-bottom: 10px;
+    width: 100%;
+    /* background: yellowgreen; */
   }
 
   .round-winner-container{
-    position: relative;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    /* background: wheat; */
   }
 
   .round-scores-container {
     display: flex;
-    justify-content: space-between ;
-    width: 90%;
-    height: 60%;
+    width: 100%;
+    height: 70%;
+    /* background: steelblue; */
   }
 
   .round-winner {
     font-size: 20px;
-    margin-bottom: 20px;
+    /* background: teal; */
   }
 
   .player-stats {
@@ -132,6 +140,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+    /* background: seagreen; */
   }
 
   .player-stats > h3 {
@@ -144,7 +154,76 @@
   }
 
   .player-round-modal {
-    width: 33%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* background:sandybrown; */
+  }
+
+  .game-roundup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 95%;
+    border: steelblue solid 2px;
+    border-radius: 10px;
+    margin: 10px;
+    /* background: rosybrown; */
+    /* background: steelblue; */
+  }
+  
+  .round-results {
+    display: flex;
+    width: 100%;
+    height: 85%;
+    /* background: tomato; */
+  }
+
+  .round-words {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    text-transform: uppercase;
+    border-radius: 8px 8px 0px 0px;
+    background:steelblue;
+  }
+  
+  .player-word-list {
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 0px 8px 8px;
+    padding-top: 5px;
+    background:slategray;
+  }
+  
+  .player-word-list li {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    /* background: sienna; */
+  }
+  
+  
+  .valid-word {
+    /* color: rgb(97, 230, 97); */
+    color:palegreen;
+  }
+  
+  .repeated-word {
+    color:sandybrown;
+  }
+  
+  .invalid-word {
+    text-decoration: line-through solid 3px pink;
+    color: tomato;
   }
 
   .modal-timer-container {
@@ -152,39 +231,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 24px;
     color: whitesmoke;
+    height: 10%;
+    /* background: chocolate; */
   }
-
-  .player-word-list {
-    text-align: center;
-    margin-top: 25px;
-  }
-
-  .player-word-list li {
-    margin-bottom: 5px;
-  }
-
-  .words {
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-
-  .valid-word {
-    /* color: rgb(97, 230, 97); */
-    color: lightseagreen;
-  }
-
-  .repeated-word {
-    color:rosybrown;
-  }
-
-  .invalid-word {
-    text-decoration: line-through;
-    color: tomato
-  }
-
+  
   .modal-timer-header {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    /* background: coral; */
+  }
+
+   .modal-timer-container span {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    /* background:darkseagreen; */
   }
 
