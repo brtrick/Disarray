@@ -437,6 +437,14 @@
 
 }
 
+@media screen and (max-height: 970px) {
+    .timer-container, .timer {
+        margin-top: 2%;
+        font-size: 20px;
+        height: 25px;
+    }
+}
+
 @media screen and (max-height: 900px) {
 
     .rules-links-container, .lower-wrapper, .spacer {
@@ -448,18 +456,23 @@
     }
 
     .info-wrapper {
-        margin-top: 0px;
-        height: 800px;
+        margin-top: 5%;
+        height: 90%;
     }
 
     .timer-container {
-         margin-top: 100px;
-        font-size: 14px;
-        height: 25px;
+        margin-top: 5%;
+        font-size: 16px;
     }
 
-    .main-wrapper {
-        height: 120vh;
-    }
+}
 
+@media screen and (max-height: 830px) {
+    .timer-container {
+        margin-top: 15%;
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-between;
+    }
 }

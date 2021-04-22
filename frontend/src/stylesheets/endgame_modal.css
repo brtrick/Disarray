@@ -1,0 +1,107 @@
+/* .end-game-modal-container {
+  transform: scale(1);
+  background:thistle;
+} */
+
+.game-over {
+    font-size: 30px;
+}
+
+.end-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    /* background: maroon; */
+}
+
+.winner {
+  display: flex;
+  font-size: 18px;
+  margin: 10px 0px 10px 0px;
+  color: tomato;
+}
+
+.end-scores-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.player-end-modal {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    /* background: turquoise; */
+}
+
+.end-player-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: coral; */
+}
+
+.end-words {
+    text-transform: uppercase;
+    /* background: lightsalmon; */
+
+}
+.end-results {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 70%;
+    /* background:violet;   */
+}
+
+.round-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: steelblue;
+    border-radius: 8px 8px 0px 0px;
+    width: 100%;
+    height: 7%;
+}
+
+.roundup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    border: steelblue solid 2px;
+    border-radius: 10px;
+    margin: 10px;
+    /* background: steelblue; */
+}
+
+.end-player-word-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+    width: 100%;
+    height: 92%;
+    border-radius: 0px 0px 8px 8px;
+    background:slategray;
+}
+
+.end-player-word-list li {
+    margin-bottom: 5px;
+    /* width: 5%; */
+}
+
+.quit-game {
+    font-size: 20px;
+    background: transparent;
+}
+
+.quit-game:hover {
+    cursor: pointer;
+    color: indigo;
+}
