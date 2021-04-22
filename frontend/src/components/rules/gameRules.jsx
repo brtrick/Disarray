@@ -17,9 +17,15 @@ class GameRules extends React.Component {
                     <li>
                         <span className='bullet'>3.</span> No letter cube can be used more than once in a single word.
                     </li>
+                    <li>
+                        <span className='bullet'>4.</span> A word that appears on more than one player's list scores no points for that round.
+                    </li>
+                    <li>
+                        <span className='bullet'>5.</span> The player with the highest cumulative score after 3 rounds wins!
+                    </li>
                     <ul className="scoring-list">
                         <span>Scoring Criteria:</span>
-                        <li>4 or less letters: 1 point</li>
+                        <li>3-4 letters: 1 point</li>
                         <li>5 letters: 2 points</li>
                         <li>6 letters: 3 points</li>
                         <li>7 letters: 5 points</li>
