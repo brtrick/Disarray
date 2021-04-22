@@ -57,11 +57,13 @@ const EndGameModal = ({roundResults, closeModal}) => {
                         <h4 className='round-title'>Round {`${parseInt(round) + 1}`}</h4>
                         <ul className='end-player-word-list'>
                             {Object.keys(roundResults.roundResults[round]['wordResults']).map(player => (
-                                Object.keys(roundResults.roundResults[round]['wordResults'][player]).map(word => { //'the'
-                                    if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='valid-word'>{`${word}`}</li> }
-                                    else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='repeated-word'>{`${word}`}</li> }
-                                    else { return <li className='invalid-word'>{`${word}`}</li> }
-                                })
+                                <div className='player'>{`${player}`}
+                                    {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map(word => { //'the'
+                                        if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='valid-word'>{`${roundResults.roundResults[round]['wordResults'][player][word]} - ${word}`}</li> }
+                                        else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='repeated-word'>{`${word}`}</li> }
+                                        else { return <li className='invalid-word'>{`${word}`}</li> }
+                                    })}
+                                </div>
                             ))}
                         </ul>
                     </div>
