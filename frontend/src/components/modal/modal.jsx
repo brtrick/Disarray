@@ -6,6 +6,7 @@ import GameRulesContainer from '../rules/gameRulesContainer';
 import '../../stylesheets/modal.css';
 import '../../stylesheets/reset.css';
 import '../../stylesheets/endgame_modal.css'
+import PersonalLinksModalContainer from '../personalLinksModal/personalLinksModalContainer';
 
 const Modal = ({modal, closeModal}) => {
     if (!modal){return null}
@@ -16,6 +17,9 @@ const Modal = ({modal, closeModal}) => {
             break;
         case 'word-rules':
             component = <WordRulesContainer />;
+            break;
+        case 'personal-links':
+            component = <PersonalLinksModalContainer/>
             break;
         default:
             return null;

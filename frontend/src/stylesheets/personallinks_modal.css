@@ -1,0 +1,53 @@
+.personal-links-modal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.developers {
+    font-size: 40px;
+    margin-top: -10%;
+}
+
+.developers-container{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.developer-info{
+    height: 24%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.developer-info span{
+    font-size: 25px;
+}
+
+.icons-container{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icons{
+    height: 25px;
+    width: 40px;
+}
+
+.icons svg{
+    height: 100%;
+    width: 100%;
+    color: black;
+}
+
+.icons svg:hover{
+    color: blue;
+}
+
+
+.thank-you-message{
+    margin-bottom: 5px;
+}
