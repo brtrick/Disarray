@@ -49,7 +49,7 @@ class NavBar extends React.Component {
         return (
             <nav>
                 <div className='nav-wrapper'>
-                    <Link to='/board' className='new-game'>New Game</Link>
+                    <Link to='/board' className='new-game'>Join Game</Link>
                     <Link to='/'className='game-header'>
                         <span className='d'>D</span>
                         <div className='end-wrap'>
