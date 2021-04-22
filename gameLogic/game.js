@@ -99,10 +99,6 @@ class Game {
     }
 
     roundWinner() {
-        // confirm multiple players
-        if (this.players.length === 1) {
-            return Object.values(this.playersUniqueWords).map( foundWords => this.wordList.checkAnswers(foundWords));
-        }
         // determine winning score
         const playerScores = this.calculateScores();
         const winningScore = Math.max(...playerScores);
