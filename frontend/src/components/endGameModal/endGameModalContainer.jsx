@@ -57,12 +57,15 @@ const EndGameModal = ({roundResults, closeModal}) => {
                         <h4 className='round-title'>Round {`${parseInt(round) + 1}`}</h4>
                         <ul className='end-player-word-list'>
                             {Object.keys(roundResults.roundResults[round]['wordResults']).map(player => (
-                                <div className='player'>{`${player}`}
-                                    {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map(word => { //'the'
-                                        if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='valid-word'>{`${roundResults.roundResults[round]['wordResults'][player][word]} - ${word}`}</li> }
-                                        else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='repeated-word'>{`${word}`}</li> }
-                                        else { return <li className='invalid-word'>{`${word}`}</li> }
-                                    })}
+                                <div className='end-scores'>
+                                    <span className='player'>{`${player}`}</span>
+                                    <div className='final-word-box'>
+                                        {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map(word => {
+                                            if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='all valid-word'>{`${word}[${roundResults.roundResults[round]['wordResults'][player][word]}]`}</li> }
+                                            else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='all repeated-word'>{`${word}`}</li> }
+                                            else { return <li className='all invalid-word'>{`${word}`}</li> }
+                                        })}
+                                    </div>
                                 </div>
                             ))}
                         </ul>
