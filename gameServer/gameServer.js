@@ -92,6 +92,12 @@ class GameServer {
                     //End game if 3 rounds have been played or if this was a practice round
                     if (this.games[id].roundsPlayed === 3 || this.games[id].players.length === 1) {
                         this.io.to(id).emit("endGame", this.games[id].roundResults);
+                        this.games[id].players.forEach(({socket}) => {
+                            socket.join("site");
+                            socket.leave(id);
+                            delete this.socketsInGames[socket.id]; 
+                            delete this.games[id]; 
+                        });
                     } else {
                         this.io.to(id).emit("roundResults", this.games[id].roundResults[this.games[id].roundsPlayed-1]);
                         this.games[id].resetRoundVars();
