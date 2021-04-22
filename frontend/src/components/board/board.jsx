@@ -111,7 +111,6 @@ class Board extends React.Component {
             //roundResults: roundResults
         });
         this.currentGame = null;
-        })
         let roundScores = roundResults[0]['currentScores']
         let topScore = Math.max(...roundScores)
         let breadWinner = []
