@@ -11,21 +11,21 @@ const NewRoundModal = ({roundResults, closeModal}) => {
         <div className='modal-round-container'>
             <h1 className='modal-round-results'>Round {`${roundResults.roundNumber}`} Results</h1>
                <div className='round-winner-container'>
-                {   roundResults.winners.map(winner => (
-                    <h2 className='round-winner'> Round Winner: {`${winner}`}
+                {   roundResults.winners.map((winner, idx) => (
+                    <h2 className='round-winner' key={idx}> Round Winner: {`${winner}`}
                     </h2>
                 ))
                 }
                 </div>
             <div className='round-scores-container'>
               { Object.keys(roundResults.wordResults).map((player, idx) => (
-                  <div key={idx} className='player-round-modal'>
-                      <div className='player-stats'>
-                        <h3>
+                  <div key={idx + 100} className='player-round-modal'>
+                      <div key={idx + 200} className='player-stats'>
+                        <h3 key={idx + 300}>
                             {`${player}`}
                         </h3>
                         ---
-                        <span>
+                        <span key={idx + 400}>
                             Score: {`${roundResults.currentScores[idx]}`}
                         </span>
                       </div>
@@ -33,10 +33,10 @@ const NewRoundModal = ({roundResults, closeModal}) => {
                         <div className='game-roundup'>
                                 <span className='round-words'>Words</span>
                             <ul className='player-word-list'>
-                                {Object.keys(roundResults.wordResults[player]).map(word => {
-                                    if (roundResults.wordResults[player][word] > 0 ) {return <li className='valid-word'>{`${word}`}</li>}
-                                    else if (roundResults.wordResults[player][word] === 0 ) {return <li className='repeated-word'>{`${word}`}</li>}
-                                    else {return <li className='invalid-word'>{`${word}`}</li>}
+                                {Object.keys(roundResults.wordResults[player]).map((word, idx) => {
+                                    if (roundResults.wordResults[player][word] > 0 ) {return <li key={idx + 500} className='valid-word'>{`${word}`}</li>}
+                                    else if (roundResults.wordResults[player][word] === 0 ) {return <li key={idx + 500} className='repeated-word'>{`${word}`}</li>}
+                                    else {return <li className='invalid-word' key={idx + 500}>{`${word}`}</li>}
                                 })
                                 }
                             </ul>

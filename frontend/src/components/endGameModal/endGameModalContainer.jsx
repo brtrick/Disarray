@@ -26,8 +26,8 @@ const EndGameModal = ({roundResults, closeModal}) => {
             <div>
                 <div className='winner'>
                     <div className='game-winner'>
-                        { breadWinnerArr.map(topScorer => (
-                            <div>{`${topScorer}`}</div>
+                        { breadWinnerArr.map((topScorer, idx) => (
+                            <div key={idx}>{`${topScorer}`}</div>
                             ))}
                     </div>
                     <span>&nbsp;WINS</span>
@@ -37,13 +37,13 @@ const EndGameModal = ({roundResults, closeModal}) => {
     
             <div className='end-scores-container'>
                 {playerNames.map((playerName, i) => (
-                    <div key={i} className='player-end-modal'>
-                        <div className='end-player-stats'>
-                            <h3>
-                                <div>{`${playerName}`}</div>
+                    <div key={i + 200} className='player-end-modal'>
+                        <div key={i + 300}className='end-player-stats'>
+                            <h3 key={i + 400}>
+                                <div key={i + 500}>{`${playerName}`}</div>
                             </h3>
                             ---
-                            <span>
+                            <span key={i + 600}>
                                 Score: {`${roundScores[i]}`}
                             </span>
                         </div>

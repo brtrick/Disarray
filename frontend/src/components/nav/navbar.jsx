@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, withRouter, Redirect } from 'react-router-dom'
+import { openModal } from '../../actions/modal_actions';
 import '../../stylesheets/navbar.css'
 
 class NavBar extends React.Component {
@@ -49,7 +50,7 @@ class NavBar extends React.Component {
         return (
             <nav>
                 <div className='nav-wrapper'>
-                    <div className='new-game'>About</div>
+                    <div className='new-game' onClick={() => this.props.openModal('personal-links')}>About</div>
                     <Link to='/'className='game-header'>
                         <span className='d'>D</span>
                         <div className='end-wrap'>
