@@ -19,6 +19,35 @@ class GameServer {
             socket.on('disconnect', () => {
                 console.log(`disconnect: ${socket.id}`);
                 socket.broadcast.emit(`Socket ${socket.id} disconnected.`);
+                //Check if in waiting room
+                for (let i=0; i < this.waitingRoom.length; i++) {
+                    if (this.waitingRoom[i].socket===socket) {
+                        this.io.to("waiting").emit("systemMessage", {msg: `${this.waitingRoom[i].playerName} has left the game.`}); 
+                        this.waitingRoom.splice(i, 1);
+                        this.io.to("waiting").emit("systemMessage", {msg: `${this.waitingRoom.length} player${this.waitingRoom.length === 1 ? '' : 's'} now waiting to start.`});
+                        break;
+                    }
+                }
+
+                //Check if in current game
+                if (this.socketsInGames[socket.id]) {
+                    const game = this.games[this.socketsInGames[socket.id]];
+                    game.players.forEach((player) => {
+                        if (player.socket === socket) {
+                            game.disconnectedPlayers.push(player.playerName);
+                            if (game.disconnectedPlayers.length === game.players.length) {
+                                delete this.games[game.id];
+                            }
+                            this.io.to(game.id).emit("systemMessage", {msg: `${player.playerName} has left the game.`});
+                            //Check if list has not already been received for this round 
+                            if (Object.keys(game.playersFoundWords[player.playerName]).length === 0) {
+                                game.playersFoundWords[player.playerName] = {};
+                                game.listsReceived += 1; 
+                            }
+                        }
+                    });
+
+                }
             });
 
             socket.on("join", ({username}) => {
@@ -53,7 +82,7 @@ class GameServer {
             socket.on("finish-round", ({id, username, foundWords}) => {
                 this.games[id].receiveWords({[username]: foundWords});
                 if (this.games[id].listsReceived === this.games[id].players.length) {
-                    console.log(this.games[id].roundResults)
+                    //console.log(this.games[id].roundResults)
                     if (this.games[id].roundsPlayed === 3) {
                         this.io.to(id).emit("endGame", this.games[id].roundResults);
                     } else {
@@ -70,6 +99,7 @@ class GameServer {
 
         this.waitingRoom = [];
         this.games = {};
+        this.socketsInGames = {};
     }
 
     createGame () {
@@ -77,7 +107,9 @@ class GameServer {
             game.players.forEach(({socket}) => {
                 socket.leave("site");
                 socket.leave("waiting");
-                socket.join(game.id); 
+                socket.join(game.id);
+                this.socketsInGames[socket.id] = game.id; 
+            
             });
             this.games[game.id] = game;
             this.io.to(game.id).emit("startGame", game.renderJSON());
