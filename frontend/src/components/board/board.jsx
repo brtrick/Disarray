@@ -25,11 +25,11 @@ class Board extends React.Component {
             currentWord: "",
             foundWords: {},
             currentGameActive: false,
+            roundNumber: 1,
 
             roundModal: false,
             chatMessage: "",
-            messages: [],
-            roundNumber: 1
+            messages: []
         }
         this.currentGame = null;
 
@@ -95,12 +95,22 @@ class Board extends React.Component {
             roundResults: roundResults
         });
         this.setState({
+            board: ["","","","","P","L","A","Y",
+                    "N","O","W","!","","","",""],
+            selectedTiles:  [
+                                false, false, false, false,
+                                false, false, false, false,
+                                false, false, false, false,
+                                false, false, false, false
+                            ],
+            players: [],
+            currentWord: "",
+            foundWords: {},
             currentGameActive: false,
             roundNumber: 1,
-            foundWords: {},
-            currentWord: "",
-            roundResults: roundResults
-        })
+            //roundResults: roundResults
+        });
+        this.currentGame = null;
     }
 
     receiveGame({board, players, id}) {
@@ -149,6 +159,7 @@ class Board extends React.Component {
     }
     startPractice(e) {
         e.preventDefault();
+        if (this.currentGame !== null) return;
         this.socket.emit("start-practice", {username: this.props.username});
     }
 
