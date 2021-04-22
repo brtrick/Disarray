@@ -45,6 +45,12 @@ export const login = user => dispatch => (
         })
 )
 
+export const update = user => dispatch => (
+    APIUtil.update(user)
+    .then(user => dispatch(receiveCurrentUser(user)))
+    .catch(err => console.log(err))
+)
+
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken')
     APIUtil.setAuthToken(false)

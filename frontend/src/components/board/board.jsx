@@ -101,6 +101,7 @@ class Board extends React.Component {
             currentWord: "",
             roundResults: roundResults
         })
+        this.props.updateUser({id: this.props.id})
     }
 
     receiveGame({board, players, id}) {
