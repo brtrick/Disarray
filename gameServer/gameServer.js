@@ -51,6 +51,11 @@ class GameServer {
             });
 
             socket.on("join", ({username}) => {
+                //Don't allow someone to join the waiting Room more than once
+                for (let i=0; i < this.waitingRoom.length; i++) {
+                    if (this.waitingRoom[i].playerName === username)
+                        return;
+                }
                 console.log(`${username} Joining!`);
                 const player = new Player(username, socket);
                 this.waitingRoom.push(player);
