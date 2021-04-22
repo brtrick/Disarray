@@ -52,17 +52,20 @@ const EndGameModal = ({roundResults, closeModal}) => {
             </div>
             <span className='end-words'> Words Played</span>
             <div className='end-results'>
-                { Object.keys(roundResults.roundResults).map((round, idx) => (
-                    <div className='roundup' key={idx + 340}>
-                        <h4 className='round-title' key={idx + 200}>Round {`${parseInt(round) + 1}`}</h4>
-                        <ul className='end-player-word-list' key={idx + 240}>
-                            {Object.keys(roundResults.roundResults[round]['wordResults']).map((player, idx) => (
-                                <div className='player' key={idx}>{`${player}`}
-                                    {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map((word, idx) => { //'the'
-                                        if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='valid-word' key={idx + 600}>{`${roundResults.roundResults[round]['wordResults'][player][word]} - ${word}`}</li> }
-                                        else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='repeated-word' key={idx + 600}>{`${word}`}</li> }
-                                        else { return <li className='invalid-word' key={idx + 600}>{`${word}`}</li> }
-                                    })}
+                { Object.keys(roundResults.roundResults).map(round => (
+                    <div className='roundup'>
+                        <h4 className='round-title'>Round {`${parseInt(round) + 1}`}</h4>
+                        <ul className='end-player-word-list'>
+                            {Object.keys(roundResults.roundResults[round]['wordResults']).map(player => (
+                                <div className='end-scores'>
+                                    <span className='player'>{`${player}`}</span>
+                                    <div className='final-word-box'>
+                                        {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map(word => {
+                                            if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li className='all valid-word'>{`${word}[${roundResults.roundResults[round]['wordResults'][player][word]}]`}</li> }
+                                            else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li className='all repeated-word'>{`${word}`}</li> }
+                                            else { return <li className='all invalid-word'>{`${word}`}</li> }
+                                        })}
+                                    </div>
                                 </div>
                             ))}
                         </ul>

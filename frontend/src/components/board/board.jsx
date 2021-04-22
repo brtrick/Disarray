@@ -351,7 +351,7 @@ class Board extends React.Component {
                         {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
                         </div>
                         <div className='spacer'>
-                            <button className='join-game submit' onClick={this.joinGame}>Join Game</button>
+                            <button className='join-game submit game-rules-link' onClick={this.joinGame}>Join Game</button>
                         </div>
                     </div>
                     <div className='game-wrapper'>
