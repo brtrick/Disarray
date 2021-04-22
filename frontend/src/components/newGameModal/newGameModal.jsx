@@ -4,6 +4,7 @@ import '../../stylesheets/modal.css';
 import '../../stylesheets/reset.css';
 import NewGameModalContainer from './newGameModalContainer';
 import NewRoundModalContainer from '../newRoundModal/newRoundModalContainer';
+import EndGameModalContainer from '../endGameModal/endGameModalContainer';
 
 const NewGameModal = ({modal}) => {
     if (!modal){return null}
@@ -14,6 +15,9 @@ const NewGameModal = ({modal}) => {
             break;
         case 'new-round':
             component = <NewRoundModalContainer />
+            break;
+        case 'end-game':
+            component = <EndGameModalContainer/>
             break;
         default:
             return null;

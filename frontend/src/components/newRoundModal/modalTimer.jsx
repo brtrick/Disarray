@@ -5,7 +5,7 @@ class ModalTimer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            seconds: 55
+            seconds: 30
         }
 
         this.target = new Date().getTime() + this.state.seconds*1000;
@@ -19,7 +19,7 @@ class ModalTimer extends React.Component {
             this.setState({
                 seconds: 0
             });
-            this.props.closeModal();
+            // this.props.closeModal();
         } else {
             this.setState({
                 seconds: Math.floor((timeLeft/1000) % 60)
@@ -47,7 +47,7 @@ class ModalTimer extends React.Component {
     render() {
         return (
             <div className='modal-timer-container'>
-                <div className='modal-timer-header'>New Round:</div>
+                <div className='modal-timer-header'>New Round</div>
                 <span>{this.stringify(this.state.seconds)}</span>
             </div>
         )
