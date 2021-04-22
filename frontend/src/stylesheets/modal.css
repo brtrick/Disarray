@@ -68,20 +68,20 @@
 
   .rule-list > * {
     display: flex;
-    margin: 50px 10px 10px 10px;
+    margin: 30px 10px 10px 10px;
   }
 
-  .scoring-list {
+  .scoring-list, .ways-list {
     display: flex;
     flex-direction: column;
   }
 
-  .scoring-list > * {
+  .scoring-list > *, .ways-list > * {
     display: flex;
     margin: 5px 10px 10px 10px;
   }
 
-  .scoring-list li {
+  .scoring-list li, .ways-list li {
     display: flex;
     justify-content: space-between;
     padding-inline-start:   50px;
