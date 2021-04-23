@@ -47,7 +47,6 @@ export const login = user => dispatch => (
 
 export const update = user => dispatch => (
     APIUtil.update(user)
-    .then(user => dispatch(receiveCurrentUser(user.data)))
     .catch(err => console.log(err))
 )
 
