@@ -19,20 +19,24 @@ const EndGameModal = ({roundResults, closeModal}) => {
         breadWinnerArr.push(playerNames[i])
     })
 
+    let practice = playerNames.length <= 1;
+
     return (
         <div className='end-game-modal-container'>
             <div className='end-wrapper'>
-            <h1 className='game-over'>GAME OVER</h1>
-            <div>
-                <div className='winner'>
-                    <div className='game-winner'>
-                        { breadWinnerArr.map((topScorer, idx) => (
-                            <div key={idx}>{`${topScorer}`}</div>
-                            ))}
+            <h1 className='game-over'>{practice ? "PRACTICE" : "GAME"} OVER</h1>
+            <div> {(practice) ? "" : 
+                (
+                    <div className='winner'>
+                        <div className='game-winner'>
+                            { breadWinnerArr.map((topScorer, idx) => (
+                                <div key={idx}>{`${topScorer}`}</div>
+                                ))}
+                        </div>
+                        <span>&nbsp;WINS</span>
+                        <span>!!!</span>
                     </div>
-                    <span>&nbsp;WINS</span>
-                    <span>!!!</span>
-                </div>
+                )}
             </div>
     
             <div className='end-scores-container'>

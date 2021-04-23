@@ -80,7 +80,7 @@ class Board extends React.Component {
     }
 
     roundEnd({winners, wordResults, currentScores, nextBoard}){
-        this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
+        //this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.props.openModal('new-round', {
             winners: winners,
             wordResults: wordResults,
@@ -120,10 +120,10 @@ class Board extends React.Component {
             //roundResults: roundResults
         });
         this.currentGame = null;
-        let roundScores = roundResults[0]['currentScores']
-        let topScore = Math.max(...roundScores)
-        let breadWinner = []
-        let playerNames = Object.keys(roundResults[0]['wordResults'])
+        let roundScores = roundResults[0]['currentScores'];
+        let topScore = Math.max(...roundScores);
+        let breadWinner = [];
+        let playerNames = Object.keys(roundResults[0]['wordResults']);
 
         for (let i = 0; i < roundScores.length; i++) {
             if (roundScores[i] === topScore) {
@@ -135,14 +135,15 @@ class Board extends React.Component {
         breadWinner.forEach(i => {
             breadWinnerArr.push(playerNames[i])
         })    
-
-        if (breadWinnerArr.includes(this.props.username)) {
-            this.props.updateUser({id: this.props.id, win: this.props.gamesWon + 1, loss: this.props.gamesLost, game: this.props.gamesPlayed + 1})
-        } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
+        if (this.props.id) {
+            if (breadWinnerArr.includes(this.props.username)) {
+                this.props.updateUser({id: this.props.id, win: this.props.gamesWon + 1, loss: this.props.gamesLost, game: this.props.gamesPlayed + 1})
+            } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
+            }
         }
-        this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
+        if (this.state.players.length > 1) this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
         this.receiveSystemMessage({msg: "-----"});
-        this.receiveSystemMessage({msg: "Click 'Join Game' to play again!"});
+        this.receiveSystemMessage({msg: "Click 'Join Game' to play!"});
     }
 
     receiveGame({board, players, id}) {
@@ -152,9 +153,14 @@ class Board extends React.Component {
             players: players,
             currentGameActive: true
         });
-        
-        this.displayMessage({msg: <p className='system-msg'>-----</p>});
-        this.displayMessage({msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
+        if (players.length === 1) {
+            this.displayMessage({msg: <p className='system-msg'>-----</p>});
+            this.displayMessage({msg: <p className='system-msg'>Start Practice Round</p>});
+        }
+        else {
+            this.displayMessage({msg: <p className='system-msg'>-----</p>});
+            this.displayMessage({msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
+        }
         this.props.openModal('new-game');
     }
 
@@ -316,6 +322,7 @@ class Board extends React.Component {
     }
 
     timeUp () {
+        if (this.state.players.length > 1) this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.setState({
             currentGameActive: false,
             roundModal: true
@@ -324,7 +331,7 @@ class Board extends React.Component {
         this.socket.emit("finish-round", {
             id: this.currentGame,
             username: this.props.username,
-            foundWords: this.state.foundWords
+            foundWords: Object.fromEntries(Object.entries(this.state.foundWords).sort())
         })
         // ADD MODAL THING HERE
     }
