@@ -141,9 +141,9 @@ class Board extends React.Component {
             } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
             }
         }
-        this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
+        if (this.state.players.length > 1) this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
         this.receiveSystemMessage({msg: "-----"});
-        this.receiveSystemMessage({msg: "Click 'Join Game' to play again!"});
+        this.receiveSystemMessage({msg: "Click 'Join Game' to play!"});
     }
 
     receiveGame({board, players, id}) {
@@ -322,7 +322,7 @@ class Board extends React.Component {
     }
 
     timeUp () {
-        this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
+        if (this.state.players.length > 1) this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.setState({
             currentGameActive: false,
             roundModal: true
