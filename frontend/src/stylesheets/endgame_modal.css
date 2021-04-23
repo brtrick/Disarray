@@ -139,8 +139,9 @@
 }
 
 .end-player-word-list li {
+    display: flex;
     margin-bottom: 5px;
-    /* width: 5%; */
+    overflow: auto;
 }
 
 .quit-game {
