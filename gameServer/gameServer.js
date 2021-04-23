@@ -50,6 +50,13 @@ class GameServer {
                 }
             });
 
+            //End practice is called when a game begins during someone's practice round
+            socket.on("end-practice", (gameId) => {
+                socket.leave(gameId);
+                delete this.games[gameId];
+                //socketsInGames will already have been replaced by new game
+            });
+            
             socket.on("join", ({username}) => {
                 //Don't allow someone to join the waiting Room more than once
                 for (let i=0; i < this.waitingRoom.length; i++) {

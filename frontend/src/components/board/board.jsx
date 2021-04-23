@@ -32,6 +32,7 @@ class Board extends React.Component {
             messages: []
         }
         this.currentGame = null;
+        this.practicing = false;
 
         this.moves=[];
         this.mouseDown = false;
@@ -99,10 +100,7 @@ class Board extends React.Component {
         })
     }
 
-    endGame(roundResults){
-        this.props.openModal('end-game', {
-            roundResults: roundResults
-        });
+    initializeGame() {
         this.setState({
             board: ["","","","","P","L","A","Y",
                     "N","O","W","!","","","",""],
@@ -117,9 +115,15 @@ class Board extends React.Component {
             foundWords: {},
             currentGameActive: false,
             roundNumber: 1,
-            //roundResults: roundResults
         });
         this.currentGame = null;
+    }
+
+    endGame(roundResults){
+        this.props.openModal('end-game', {
+            roundResults: roundResults
+        });
+        this.initializeGame();
         let roundScores = roundResults[0]['currentScores'];
         let topScore = Math.max(...roundScores);
         let breadWinner = [];
@@ -147,6 +151,12 @@ class Board extends React.Component {
     }
 
     receiveGame({board, players, id}) {
+        if (this.practicing) {
+            this.receiveSystemMessage({msg: "Abandoning practice session for game."})
+            this.socket.emit("end-practice", this.currentGame);
+            this.initializeGame();
+            this.practicing = false;
+        }
         this.currentGame = id;
         this.setState({
             board: board,
@@ -154,6 +164,7 @@ class Board extends React.Component {
             currentGameActive: true
         });
         if (players.length === 1) {
+            this.practicing = true;
             this.displayMessage({msg: <p className='system-msg'>-----</p>});
             this.displayMessage({msg: <p className='system-msg'>Start Practice Round</p>});
         }
