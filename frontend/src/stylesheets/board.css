@@ -195,6 +195,10 @@
     margin: 5px 15px 15px 15px;
 }
 
+.leader-name {
+    overflow-x: auto;
+}
+
 .leader-board {
     margin-top: 20px;
     height: 90%;
@@ -420,12 +424,7 @@
 
     .timer-container {
         font-size: 14px;
-        height: 25px;
-    }
-    
-    .upper-wrap {
-        /* margin-top: 175px; */
-        height: 30px;
+        /* height: px; */
     }
 
     .chat {
@@ -439,20 +438,25 @@
         margin-top: 10px;
     }
 
+    .lower-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
 }
 
 @media screen and (max-height: 970px) {
     .timer-container, .timer {
-        margin-top: 2%;
+        /* margin-top: 2%; */
         font-size: 20px;
-        height: 25px;
+        /* height: 25px; */
     }
 }
 
 @media screen and (max-height: 900px) {
 
-    .rules-links-container, .lower-wrapper, .spacer {
-        display: none;
+    .upper-wrap {
+        height: 10%;
     }
 
     .game-wrapper {
@@ -465,7 +469,7 @@
     }
 
     .timer-container {
-        margin-top: 5%;
+        /* margin-top: 5%; */
         font-size: 16px;
     }
 
@@ -474,7 +478,7 @@
 @media screen and (max-height: 830px) {
 
     .upper-wrap {
-        height: 75px;
+        height: 50px;
     }
     
     .timer-container {
