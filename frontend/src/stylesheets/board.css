@@ -372,6 +372,7 @@
     }
 
     .info-wrapper {
+        margin-top: 200px;
         min-width: 525px;
         /* height: 95%; */
         /* overflow: scroll; */
