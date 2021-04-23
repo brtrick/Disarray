@@ -8,7 +8,7 @@ import {openModal} from '../../actions/modal_actions'
 const mSTP = state => ({
     leaderboard: state.leaderboard,
     username: state.session.user.username,
-    id: state.session.user.id ? state.session.user.id : state.session.user._id,
+    id: state.session.user.id,
     gamesWon: state.session.user.gamesWon,
     gamesLost: state.session.user.gamesLost,
     gamesPlayed: state.session.user.gamesPlayed,

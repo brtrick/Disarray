@@ -124,32 +124,36 @@ class Board extends React.Component {
             roundResults: roundResults
         });
         this.initializeGame();
-        let roundScores = roundResults[0]['currentScores'];
-        let topScore = Math.max(...roundScores);
-        let breadWinner = [];
-        let playerNames = Object.keys(roundResults[0]['wordResults']);
 
-        for (let i = 0; i < roundScores.length; i++) {
-            if (roundScores[i] === topScore) {
-                breadWinner.push(i)
+        if (!this.practicing) {
+            let roundScores = roundResults[0]['currentScores'];
+            let topScore = Math.max(...roundScores);
+            let breadWinner = [];
+            let playerNames = Object.keys(roundResults[0]['wordResults']);
+
+            for (let i = 0; i < roundScores.length; i++) {
+                if (roundScores[i] === topScore) {
+                    breadWinner.push(i)
+                }
             }
-        }
 
-        let breadWinnerArr = []
-        breadWinner.forEach(i => {
-            breadWinnerArr.push(playerNames[i])
-        })    
-        if (this.props.id) {
-            if (breadWinnerArr.includes(this.props.username)) {
-                this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed})
+            let breadWinnerArr = []
+            breadWinner.forEach(i => {
+                breadWinnerArr.push(playerNames[i])
+            })    
+            if (this.props.id) {
+                if (breadWinnerArr.includes(this.props.username)) {
+                    this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed})
+                    .then(this.props.fetchLeaderboard());
+                } else { this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed})
                 .then(this.props.fetchLeaderboard());
-            } else { this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed})
-            .then(this.props.fetchLeaderboard());
+                }
+                this.props.receiveCurrentUser(this.props.user);
             }
-            this.props.receiveCurrentUser(this.props.user);
+            setTimeout(5000, this.props.fetchLeaderboard);
+            this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
         }
-        this.props.fetchLeaderboard();
-        if (this.state.players.length > 1) this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
+        else this.practicing = false;    
         this.receiveSystemMessage({msg: "-----"});
         this.receiveSystemMessage({msg: "Click 'Join Game' to play!"});
     }
