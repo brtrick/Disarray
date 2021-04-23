@@ -12,7 +12,13 @@ Words are entered in one of two ways:
 
      <img src= "README_assets/DragWordsmall.gif" width="200">
 
-To de-select the last letter selected, simply click it again (if clicking) / return to the previously selected letter (if dragging).
+* To de-select the last letter selected, simply click it again (if clicking) / return to the previously selected letter (if dragging).
 
-<img src= "README_assets/DragReverse.gif" width="200">
+     <img src= "README_assets/DragReverse.gif" width="200">
+
+## Contributors
+* Alejandro Weil
+* Brad Trick
+* Brekke Andrew Green
+* Marco Torre
 
