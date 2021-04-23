@@ -23,7 +23,7 @@ router.get("/current", passport.authenticate("jwt", {session: false}), (req, res
   });
 
   router.get("/:user_id", (req, res) => {
-      User.findById(req.params.user_id)
+      User.findById(req.params.user_id).select("id username gamesPlayed gamesWon gamesLost")
       .then(user => res.json(user))
       .catch(err => res.status(404).json(err))
   });
