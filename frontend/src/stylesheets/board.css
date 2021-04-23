@@ -367,22 +367,24 @@
 
 @media screen and (max-width: 800px) {
     .main-wrapper {
-        display: flex;
+        /* display: flex; */
         overflow: scroll;
     }
 
     .info-wrapper {
+        margin-top: 200px;
         min-width: 525px;
-        height: 95%;
+        /* height: 95%; */
+        /* overflow: scroll; */
     }
 
     .game-wrapper {
         display: flex;
         flex-direction: column-reverse;
-        height: 85%;
-        width: 100%;
-        overflow: scroll;
-        margin-top: 0px;
+        height: 100%;
+        max-width: 100%;
+        overflow: auto;
+        /* margin-top: 0px; */
     }
 
     .game {
@@ -422,7 +424,7 @@
     }
     
     .upper-wrap {
-        margin-top: 175px;
+        /* margin-top: 175px; */
         height: 30px;
     }
 
@@ -470,6 +472,11 @@
 }
 
 @media screen and (max-height: 830px) {
+
+    .upper-wrap {
+        height: 75px;
+    }
+    
     .timer-container {
         margin-top: 15%;
         display: flex;
@@ -477,4 +484,18 @@
         width: 70%;
         justify-content: space-between;
     }
+
+    .game-wrapper {
+        overflow: auto;
+    }
+}
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+      .main-wrapper > * {
+          transform: scale(0.7);
+      }
 }
