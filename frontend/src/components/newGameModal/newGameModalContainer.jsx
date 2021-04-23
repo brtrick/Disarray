@@ -6,8 +6,8 @@ import {closeModal} from '../../actions/modal_actions';
 const NewGameModal = ({closeModal}) => {
     return (
         <div className='new-game-modal-container'>
-            <h2 className='modal-title-game'>Click Join Game to Start a Game</h2>
-            <button onClick={closeModal} className='submit game-rules-link'>JOIN GAME</button>
+            <h2 className='modal-title-game'>Click Start to Begin Round</h2>
+            <button onClick={closeModal} className='submit game-rules-link'>START</button>
         </div>
     )
 }
