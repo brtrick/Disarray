@@ -135,10 +135,11 @@ class Board extends React.Component {
         breadWinner.forEach(i => {
             breadWinnerArr.push(playerNames[i])
         })    
-
-        if (breadWinnerArr.includes(this.props.username)) {
-            this.props.updateUser({id: this.props.id, win: this.props.gamesWon + 1, loss: this.props.gamesLost, game: this.props.gamesPlayed + 1})
-        } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
+        if (this.props.id) {
+            if (breadWinnerArr.includes(this.props.username)) {
+                this.props.updateUser({id: this.props.id, win: this.props.gamesWon + 1, loss: this.props.gamesLost, game: this.props.gamesPlayed + 1})
+            } else { this.props.updateUser({id: this.props.id, win: this.props.gamesWon, loss: this.props.gamesLost + 1, game: this.props.gamesPlayed + 1})
+            }
         }
         this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
         this.receiveSystemMessage({msg: "-----"});
@@ -152,9 +153,14 @@ class Board extends React.Component {
             players: players,
             currentGameActive: true
         });
-        
-        this.displayMessage({msg: <p className='system-msg'>-----</p>});
-        this.displayMessage({msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
+        if (players.length === 1) {
+            this.displayMessage({msg: <p className='system-msg'>-----</p>});
+            this.displayMessage({msg: <p className='system-msg'>Start Practice Round</p>});
+        }
+        else {
+            this.displayMessage({msg: <p className='system-msg'>-----</p>});
+            this.displayMessage({msg: <p className='system-msg'>Start game with {players.join(", ")}</p>});
+        }
         this.props.openModal('new-game');
     }
 
