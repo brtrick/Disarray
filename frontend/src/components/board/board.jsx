@@ -143,14 +143,13 @@ class Board extends React.Component {
             })    
             if (this.props.id) {
                 if (breadWinnerArr.includes(this.props.username)) {
-                    this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed})
-                    .then(this.props.fetchLeaderboard());
-                } else { this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed})
-                .then(this.props.fetchLeaderboard());
+                    this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
+                } else { 
+                    this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
                 }
                 this.props.receiveCurrentUser(this.props.user);
             }
-            setTimeout(5000, this.props.fetchLeaderboard);
+            setTimeout(this.props.fetchLeaderboard, 2000);
             this.receiveSystemMessage({msg: `${breadWinnerArr} wins!`});
         }
         else this.practicing = false;    
