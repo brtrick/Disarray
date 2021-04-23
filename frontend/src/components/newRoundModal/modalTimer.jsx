@@ -19,7 +19,7 @@ class ModalTimer extends React.Component {
             this.setState({
                 seconds: 0
             });
-            // this.props.closeModal();
+            this.props.closeModal();
         } else {
             this.setState({
                 seconds: Math.floor((timeLeft/1000) % 60)
