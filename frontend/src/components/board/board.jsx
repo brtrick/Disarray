@@ -81,7 +81,6 @@ class Board extends React.Component {
     }
 
     roundEnd({winners, wordResults, currentScores, nextBoard}){
-        //this.receiveSystemMessage({msg: "Round finished! Collecting words from other players..."});
         this.props.openModal('new-round', {
             winners: winners,
             wordResults: wordResults,
@@ -353,7 +352,6 @@ class Board extends React.Component {
             username: this.props.username,
             foundWords: Object.fromEntries(Object.entries(this.state.foundWords).sort())
         })
-        // ADD MODAL THING HERE
     }
 
     render() {
@@ -373,7 +371,7 @@ class Board extends React.Component {
                             <RulesButtons />}
                         </div>
                         <div className='timer'>
-                        {(this.state.currentGameActive && !this.props.modal && <RoundTimer timeUp={this.timeUp}/>)}
+                        {(this.state.currentGameActive && (!this.props.modal || this.props.modal.type === "personal-links") && <RoundTimer timeUp={this.timeUp}/>)}
 
                         {(!this.state.currentGameActive && this.currentGame && (<p>Time's Up!</p>))}
                         </div>
