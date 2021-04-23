@@ -12,7 +12,9 @@ const NewRoundModal = ({roundResults, closeModal}) => {
             <h1 className='modal-round-results'>Round {`${roundResults.roundNumber}`} Results</h1>
                <div className='round-winner-container'>
                 {   roundResults.winners.map((winner, idx) => (
-                    <h2 className='round-winner' key={idx}> Round Winner: {`${winner}`}
+                    <h2 className='round-winner' key={idx}> 
+                        <span>Round Winner:</span>
+                        <span>{`${winner}`}</span>
                     </h2>
                 ))
                 }

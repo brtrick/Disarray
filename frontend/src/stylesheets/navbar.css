@@ -153,6 +153,7 @@
 
     .new-game {
         margin: 5px;
+        width: 100%;
         background: -webkit-linear-gradient(#eee, white);
         background-clip: text;
         -webkit-text-fill-color: transparent;

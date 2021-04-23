@@ -84,7 +84,7 @@ class NavBar extends React.Component {
                     <ul className='burger-dropdown'>
                         <li>
                             <ul className='burger-list'>
-                                <li><Link to='/board' className='new-game'>New Game</Link></li>
+                                <li><div className='new-game' onClick={() => this.props.openModal('personal-links')}>About</div></li>
                                 <li><div className='session-links-wrap'>{this.getLinks()}</div></li>
                             </ul>
                         </li>
