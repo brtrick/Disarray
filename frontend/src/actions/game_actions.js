@@ -9,6 +9,6 @@ export const receiveLeaderboard = leaderboard => ({
 
 export const fetchLeaderboard = () => dispatch => (
     GameUtil.leaderboard()
-    .then(leaderboard => dispatch(receiveLeaderboard(leaderboard)))
+    .then(leaderboard => dispatch(receiveLeaderboard(leaderboard.data)))
     .catch(err => console.log(err))
 );

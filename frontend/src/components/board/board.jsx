@@ -408,7 +408,7 @@ class Board extends React.Component {
                                 </li>
                                 <ul className='leader-board'>
                                     {lead.map(user => (
-                                        <li key={`${user._id}`}>
+                                        <li key={`${user.id}`}>
                                             <span className='leader-name'>
                                                 {user.username}
                                             </span>
