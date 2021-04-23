@@ -36,7 +36,7 @@ const NewRoundModal = ({roundResults, closeModal}) => {
                                 <span className='round-words'>Words</span>
                             <ul className='player-word-list'>
                                 {Object.keys(roundResults.wordResults[player]).map((word, idx) => {
-                                    if (roundResults.wordResults[player][word] > 0 ) {return <li key={idx + 500} className='valid-word'>{`${word}`}</li>}
+                                    if (roundResults.wordResults[player][word] > 0) { return <li key={idx + 500} className='valid-word'>{`${word}[${roundResults.wordResults[player][word]}]`}</li>}
                                     else if (roundResults.wordResults[player][word] === 0 ) {return <li key={idx + 500} className='repeated-word'>{`${word}`}</li>}
                                     else {return <li className='invalid-word' key={idx + 500}>{`${word}`}</li>}
                                 })
