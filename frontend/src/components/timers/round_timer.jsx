@@ -1,20 +1,6 @@
 import React from "react";
 
 
-    // const RoundTimer = () => {
-    //     const [counter, setCounter] = React.useState(60);
-    //     setTimeout(() => setCounter(counter - 1), 1000);
-
-    //     return (
-    //         <div className="timer-div">
-    //             <div className="timer">Timer: {counter}</div>
-    //         </div>
-    //     )
-    // }
-
-    // export default RoundTimer;
-
-
 class RoundTimer extends React.Component {
     constructor (props) {
         super(props);

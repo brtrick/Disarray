@@ -4,7 +4,7 @@ import SignupForm from './signup_form';
 
 const mSTP = (state) => {
     return {
-        signedIn: state.session.isSignedIn,
+        signedIn: state.session.isAuthenticated,
         errors: state.errors.session
     };
 };
