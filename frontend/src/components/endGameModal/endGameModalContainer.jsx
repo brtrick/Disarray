@@ -57,17 +57,17 @@ const EndGameModal = ({roundResults, closeModal}) => {
             <span className='end-words'> Words Played</span>
             <div className='end-results'>
                 { Object.keys(roundResults.roundResults).map((round, idx) => (
-                    <div key={idx+48} className='roundup'>
+                    <div key={idx+489} className='roundup'>
                         <h4 key={idx + 123} className='round-title'>Round {`${parseInt(round) + 1}`}</h4>
                         <ul key={idx + 876} className='end-player-word-list'>
                             {Object.keys(roundResults.roundResults[round]['wordResults']).map((player, idx2) => (
-                                <div key={idx2 + 24} className='end-scores'>
-                                    <span key={idx2 + 33} className='player'>{`${player}`}</span>
-                                    <div key={idx2 + 67} className='final-word-box'>
+                                <div key={idx2 + 240} className='end-scores'>
+                                    <span key={idx2 + 330} className='player'>{`${player}`}</span>
+                                    <div key={idx2 + 670} className='final-word-box'>
                                         {Object.keys(roundResults.roundResults[round]['wordResults'][player]).map((word, idx3) => {
-                                            if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li key={idx3 + 72} className='all valid-word'>{`${word}[${roundResults.roundResults[round]['wordResults'][player][word]}]`}</li> }
-                                            else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li key={idx3 + 88} className='all repeated-word'>{`${word}`}</li> }
-                                            else { return <li key={idx3 + 92} className='all invalid-word'>{`${word}`}</li> }
+                                            if (roundResults.roundResults[round]['wordResults'][player][word] > 0) { return <li key={idx3 + 720} className='all valid-word'>{`${word}[${roundResults.roundResults[round]['wordResults'][player][word]}]`}</li> }
+                                            else if (roundResults.roundResults[round]['wordResults'][player][word] === 0) { return <li key={idx3 + 880} className='all repeated-word'>{`${word}`}</li> }
+                                            else { return <li key={idx3 + 920} className='all invalid-word'>{`${word}`}</li> }
                                         })}
                                     </div>
                                 </div>

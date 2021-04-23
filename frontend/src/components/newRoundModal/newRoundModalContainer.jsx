@@ -21,7 +21,7 @@ const NewRoundModal = ({roundResults, closeModal}) => {
                 </div>
             <div className='round-scores-container'>
               { Object.keys(roundResults.wordResults).map((player, idx) => (
-                  <div key={idx + 100} className='player-round-modal'>
+                  <div key={idx} className='player-round-modal'>
                       <div key={idx + 200} className='player-stats'>
                         <h3 key={idx + 300}>
                             {`${player}`}
