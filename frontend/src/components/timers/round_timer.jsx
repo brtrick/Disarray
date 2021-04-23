@@ -20,8 +20,8 @@ class RoundTimer extends React.Component {
         super(props);
         
         this.state = {
-            seconds: 0,
-            minutes: 1
+            seconds: 10,
+            minutes: 0
         }
         
         this.target = new Date().getTime() + this.state.minutes*60000 + this.state.seconds*1000;

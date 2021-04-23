@@ -5,7 +5,7 @@ class ModalTimer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            seconds: 20
+            seconds: 5
         }
 
         this.target = new Date().getTime() + this.state.seconds*1000;

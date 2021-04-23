@@ -47,6 +47,7 @@ export const login = user => dispatch => (
 
 export const update = user => dispatch => (
     APIUtil.update(user)
+    .catch(err => console.log(err))
 )
 
 export const logout = () => dispatch => {
