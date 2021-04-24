@@ -83,9 +83,9 @@ class GameServer {
 
             socket.on("chat", ({gameId, username, msg}) => {
                 if (gameId)
-                    socket.to(gameId).emit('chat', {username: username, msg: msg});
+                    socket.to(gameId).emit('chat', {username, msg});
                 else
-                    socket.to("site").emit('chat', {username: username, msg: msg});
+                    socket.to("site").emit('chat', {username, msg});
             });
 
             socket.on("finish-round", ({id, username, foundWords}) => {
