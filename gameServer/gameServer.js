@@ -12,12 +12,10 @@ class GameServer {
         });
 
         this.io.on('connection', (socket)=> {
-            // console.log(`Socket ${socket.id} connection established.`);
             socket.join("site");
             socket.broadcast.emit(`User ${socket.id} now connected`);
             
             socket.on('disconnect', () => {
-                // console.log(`disconnect: ${socket.id}`);
                 socket.broadcast.emit(`Socket ${socket.id} disconnected.`);
                 //Check if in waiting room
                 for (let i=0; i < this.waitingRoom.length; i++) {
@@ -63,13 +61,10 @@ class GameServer {
                     if (this.waitingRoom[i].playerName === username)
                         return;
                 }
-                // console.log(`${username} Joining!`);
                 const player = new Player(username, socket);
                 this.waitingRoom.push(player);
-                // socket.leave("site");
                 socket.join("waiting");
                 if (this.waitingRoom.length === 3) {
-                    // console.log("Time to start a game!");
                     this.createGame();
                 }
                 else {
