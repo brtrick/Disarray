@@ -20,7 +20,7 @@ The player with the highest score after 3 rounds wins!
 
 ![End of Game Results](README_assets/endOfGameModal.PNG)
 ## Word Entry
-Words are entered in one of two ways:
+When forming words, no letter tile can be used more than once in a single word, and consecutive letters must be adjacent in the grid. Players enter words in one of two ways:
 
 * Click on each tile individually, in order. When the word is fully spelled, click "Submit Word".
 
@@ -37,9 +37,7 @@ Words are entered in one of two ways:
     ![Click Word](README_assets/DragReverse.gif)
      <!-- <img src="README_assets/DragReverse.gif" width="200"> -->
 
-No letter tile can be used more than once in a single word. Consecutive letters must be adjacent in the grid.
-
-## Contributors (and their primary areas of responsibility)  
+## Contributors (and their primary responsibilities)  
 <!-- ### ![Alejandro Weil](README_assets/Alejandro.jpg)**Alejandro Weil**  -->
 ### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil**
 <!-- ### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**   -->
@@ -56,27 +54,21 @@ this.socket.emit('chat', {
 //gameServer.js
 socket.on("chat", ({gameId, username, msg}) => {
     if (gameId)
-        socket.to(gameId).emit('chat', 
-            {username, msg});
+        socket.to(gameId).emit('chat', {username, msg});
     else
-        socket.to("site").emit('chat', 
-            {username, msg});
+        socket.to("site").emit('chat', {username, msg});
 });
 ```
 
-Brad also implemented the inputting of words from the board. Event handlers monitor `mouseenter`, `mouseleave`, `mousedown`, and `mouseup` on the board tiles and store the results in the React state. For example, the handler for mouseleave submits the current word if the mouse leaves the board:
+Brad's main other responsibility was allowing users to enter words from the board. Event handlers monitor `mouseenter`, `mouseleave`, `mousedown`, and `mouseup` on the board tiles and store the results in the React state. For example, the handler for mouseleave submits the current word if the mouse leaves the board while creating a word through dragging:
 ```js
 handleMouseLeave(e) {
     const index = parseInt(e.currentTarget.dataset.index);
     if (!this.mouseDown) return;
-    if (([0,   4,  8, 12].includes(index) && 
-        (e.nativeEvent.offsetX < 0)) || //exit left
-        ([0,   1,  2,  3].includes(index) && 
-        (e.nativeEvent.offsetY < 0)) || //exit top
-        ([3,   7, 11, 15].includes(index) && 
-        (e.nativeEvent.offsetX > e.currentTarget.offsetWidth)) || //exit right
-        ([12, 13, 14, 15].includes(index) && 
-        (e.nativeEvent.offsetY > e.currentTarget.offsetHeight))) //exit bottom
+    if (([0,   4,  8, 12].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left
+        ([0,   1,  2,  3].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
+        ([3,   7, 11, 15].includes(index) && (e.nativeEvent.offsetX > e.currentTarget.offsetWidth)) || //exit right
+        ([12, 13, 14, 15].includes(index) && (e.nativeEvent.offsetY > e.currentTarget.offsetHeight))) //exit bottom
     {
             this.submitAndReset();
     }
