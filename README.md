@@ -40,8 +40,9 @@ Words are entered in one of two ways:
 No letter tile can be used more than once in a single word. Consecutive letters must be adjacent in the grid.
 
 ## Contributors (and their primary areas of responsibility)  
-### **Alejandro Weil**  
-### **Brad Trick**  
+### ![Alejandro Weil](README_assets/Alejandro.jpg)**Alejandro Weil** 
+### <img src="README_assets/Alejandro.jpg" width="150px"> 
+### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**  
 Brad implemented the game server and [socket.io](https://socket.io/) sockets that coordinate the flow of game elements across multiple clients on the web. The server and clients communicate through defined message types. For example, when the server receives a `chat` message from a client, it broadcasts the accompanying message to the appropriate `room`, either the other players in the game or, if the user is not currently in a game, the site more broadly: 
 ```js
 //socket.js (Client)
@@ -55,10 +56,10 @@ this.socket.emit('chat', {
 socket.on("chat", ({gameId, username, msg}) => {
     if (gameId)
         socket.to(gameId).emit('chat', 
-            {username: username, msg: msg});
+            {username, msg});
     else
         socket.to("site").emit('chat', 
-            {username: username, msg: msg});
+            {username, msg});
 });
 ```
 
@@ -80,6 +81,6 @@ handleMouseLeave(e) {
     }
 }
 ```
-### **Brekke Andrew Green**  
-### **Marco Torre**  
+### ![Brekke Green](README_assets/Brekke.jpg)**Brekke Andrew Green**  
+### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**  
 
