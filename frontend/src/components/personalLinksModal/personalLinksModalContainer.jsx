@@ -13,37 +13,37 @@ const PersonalLinksModal = ({closeModal}) => {
                 <div className='developer-info'>
                     <span>Alejandro Weil</span>
                     <div className='icons-container'>
-                        <a href="https://www.linkedin.com/in/alejandro-weil-b9275720b/" className='icons'><FaIcons.FaLinkedin/></a>
-                        <a href="https://github.com/aweil13" className='icons'><FaIcons.FaGithub/></a>
-                        <a href="https://angel.co/u/alejandro-weil" className='icons'><FaIcons.FaAngellist /></a>
-                        <a href="https://aweil13.github.io/PortfolioSite/" className='icons'><FaIcons.FaAddressCard/></a>
+                        <a href="https://www.linkedin.com/in/alejandro-weil-b9275720b/" className='icons' target="_blank"><FaIcons.FaLinkedin/></a>
+                        <a href="https://github.com/aweil13" className='icons' target="_blank"><FaIcons.FaGithub/></a>
+                        <a href="https://angel.co/u/alejandro-weil" className='icons' target="_blank"><FaIcons.FaAngellist /></a>
+                        <a href="https://aweil13.github.io/PortfolioSite/" className='icons' target="_blank"><FaIcons.FaAddressCard/></a>
                     </div>
                 </div>
                 <div className='developer-info'>
                     <span>Marco Torre</span>
                     <div className='icons-container'>
-                        <a href="https://www.linkedin.com/in/marco-torre-388286138/" className='icons'><FaIcons.FaLinkedin/></a>
-                        <a href="https://github.com/OcramT" className='icons'><FaIcons.FaGithub/></a>
-                        <a href="https://angel.co/u/marco-torre-1" className='icons'><FaIcons.FaAngellist /></a>
-                        <a href="https://www.marcotorre.io/" className='icons'><FaIcons.FaAddressCard/></a>
+                        <a href="https://www.linkedin.com/in/marco-torre-388286138/" className='icons' target="_blank"><FaIcons.FaLinkedin/></a>
+                        <a href="https://github.com/OcramT" className='icons' target="_blank"><FaIcons.FaGithub/></a>
+                        <a href="https://angel.co/u/marco-torre-1" className='icons' target="_blank"><FaIcons.FaAngellist /></a>
+                        <a href="https://www.marcotorre.io/" className='icons' target="_blank"><FaIcons.FaAddressCard/></a>
                     </div>
                 </div>
                 <div className='developer-info'>
                     <span>Brad Trick</span>
                     <div className='icons-container'>
-                        <a href="https://www.linkedin.com/in/bradley-trick/" className='icons'><FaIcons.FaLinkedin/></a>
-                        <a href="https://github.com/brtrick" className='icons'><FaIcons.FaGithub/></a>
-                        <a href="https://angel.co/u/bradley-trick" className='icons'><FaIcons.FaAngellist /></a>
-                        <a href="https://www.github.io/brtrick/" className='icons'><FaIcons.FaAddressCard/></a>
+                        <a href="https://www.linkedin.com/in/bradley-trick/" className='icons' target="_blank"><FaIcons.FaLinkedin/></a>
+                        <a href="https://github.com/brtrick" className='icons' target="_blank"><FaIcons.FaGithub/></a>
+                        <a href="https://angel.co/u/bradley-trick" className='icons' target="_blank"><FaIcons.FaAngellist /></a>
+                        <a href="https://www.github.io/brtrick/" className='icons' target="_blank"><FaIcons.FaAddressCard/></a>
                     </div>
                 </div>
                 <div className='developer-info'>
                     <span>Brekke Green</span>
                     <div className='icons-container'>
-                        <a href="https://github.com/Brekke-Green" className='icons'><FaIcons.FaLinkedin/></a>
-                        <a href="https://github.com/Brekke-Green" className='icons'><FaIcons.FaGithub/></a>
-                        <a href="https://angel.co/u/brekke-andrew-green" className='icons'><FaIcons.FaAngellist /></a>
-                        <a href="https://brekke-green.github.io/" className='icons'><FaIcons.FaAddressCard/></a>
+                        <a href="https://www.linkedin.com/in/brekke-andrew-green/" className='icons' target="_blank"><FaIcons.FaLinkedin/></a>
+                        <a href="https://github.com/Brekke-Green" className='icons' target="_blank"><FaIcons.FaGithub/></a>
+                        <a href="https://angel.co/u/brekke-andrew-green" className='icons' target="_blank"><FaIcons.FaAngellist /></a>
+                        <a href="https://brekke-green.github.io/" className='icons' target="_blank"><FaIcons.FaAddressCard/></a>
                     </div>
                 </div>
             </div>
