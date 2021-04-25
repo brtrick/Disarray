@@ -39,9 +39,19 @@ When forming words, no letter tile can be used more than once in a single word, 
 
 ## Contributors (and their primary responsibilities)  
 <!-- ### ![Alejandro Weil](README_assets/Alejandro.jpg)**Alejandro Weil**  -->
-### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil**
+### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil** 
+[<img src="README_assets/linkedin.png">][1]
+[<img src="README_assets/github.png">][2]
+[<img src="README_assets/AngelList.png" width='15px'>][3]
+[<img src="README_assets/site.png">][4]
+
 <!-- ### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**   -->
 ### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick**
+[<img src="README_assets/linkedin.png">][5]
+[<img src="README_assets/github.png">][6]
+[<img src="README_assets/AngelList.png" width='15px'>][7]
+[<img src="README_assets/site.png">][8]
+
 Brad implemented the game server and [socket.io](https://socket.io/) sockets that coordinate the flow of game elements across multiple clients on the web. The server and clients communicate through defined message types. For example, when the server receives a `chat` message from a client, it broadcasts the accompanying message to the appropriate `room`, either the other players in the game or, if the user is not currently in a game, the site more broadly: 
 ```js
 //socket.js (Client)
@@ -76,6 +86,34 @@ handleMouseLeave(e) {
 ```
 <!-- ### ![Brekke Green](README_assets/Brekke.jpg)**Brekke Andrew Green**  -->
 ### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** 
+[<img src="README_assets/linkedin.png">][9]
+[<img src="README_assets/github.png">][10]
+[<img src="README_assets/AngelList.png" width='15px'>][11]
+[<img src="README_assets/site.png">][12]
+
 <!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
 ### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre**
+[<img src="README_assets/linkedin.png">][13]
+[<img src="README_assets/github.png">][14]
+[<img src="README_assets/AngelList.png" width='15px'>][15]
+[<img src="README_assets/site.png">][16]
 
+[1]: https://www.linkedin.com/in/alejandro-weil-b9275720b/
+[2]: https://github.com/aweil13
+[3]: https://angel.co/u/alejandro-weil
+[4]: https://aweil13.github.io/PortfolioSite/
+
+[5]: https://www.linkedin.com/in/bradley-trick/
+[6]: https://github.com/brtrick
+[7]: https://angel.co/u/bradley-trick
+[8]: https://www.github.io/brtrick/
+
+[9]: https://www.linkedin.com/in/brekke-andrew-green/
+[10]: https://github.com/Brekke-Green
+[11]: https://angel.co/u/brekke-andrew-green
+[12]: https://brekke-green.github.io/
+
+[13]: https://www.linkedin.com/in/marco-torre-388286138/
+[14]: https://github.com/OcramT
+[15]: https://angel.co/u/marco-torre-1
+[16]: https://www.marcotorre.io/
