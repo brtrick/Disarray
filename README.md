@@ -89,7 +89,7 @@ handleMouseLeave(e) {
 <!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
 ### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** [<img src="README_assets/linkedin-gray.svg" width='15px'>][13] [<img src="README_assets/github-gray.svg" width='16px'>][14] [<img src="README_assets/angellist-gray.svg" width='15px'>][15] [<img src="README_assets/portfolio-gray.svg" width='18px'>][16]
 
-Marco built custom user authorization for Disarray and created the visual style of the app using HTML5 and Cascading Style Sheets (CSS). Using various box-shadow effects to create the three-dimensional look of each die was a partiuclarly fun challenge.
+Marco built custom user authorization for Disarray and created the visual style of the app using HTML5 and Cascading Style Sheets (CSS). Using various box-shadow effects to create the three-dimensional look of each die was a particularly fun challenge.
 
 Additionally, Marco further leveraged the versatility of CSS and utilized media queries to dynamically scale the game to various screen sizes.
 
