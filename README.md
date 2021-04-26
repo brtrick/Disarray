@@ -18,6 +18,11 @@ Players have a minute and a half per round to find as many words as they can in 
 
 ![Round Results](README_assets/roundResultsModal.PNG)
 
+The results at the end of each round are keyed by color:
+* Green: Valid word with awarded points in brackets
+* Orange: Valid word awarded no points because it was found by at least one other player
+* Red (crossed off): Invalid word
+
 The player with the highest score after 3 rounds wins!
 
 ![End of Game Results](README_assets/endOfGameModal.PNG)
@@ -48,7 +53,7 @@ When forming words, no letter tile can be used more than once in a single word, 
 
 Brad implemented the game server and [socket.io](https://socket.io/) sockets that coordinate the flow of game elements across multiple clients on the web. The server and clients communicate through defined message types. For example, when the server receives a `chat` message from a client, it broadcasts the accompanying message to the appropriate `room`, either the other players in the game or, if the user is not currently in a game, the site more broadly: 
 ```js
-//socket.js (Client)
+//board.jsx (Client)
 this.socket.emit('chat', {
         gameId: this.currentGame, 
         username: this.props.username, 
@@ -64,7 +69,7 @@ socket.on("chat", ({gameId, username, msg}) => {
 });
 ```
 
-Brad's main other responsibility was allowing users to enter words from the board. Event handlers monitor `mouseenter`, `mouseleave`, `mousedown`, and `mouseup` on the board tiles and store the results in the React state. For example, the handler for mouseleave submits the current word if the mouse leaves the board while creating a word through dragging:
+Brad's main other responsibility was enabling users to enter words from the board. Event handlers monitor `mouseenter`, `mouseleave`, `mousedown`, and `mouseup` on the board tiles and store the results in the React state. For example, the handler for mouseleave submits the current word if the mouse leaves the board while creating a word through dragging:
 ```js
 handleMouseLeave(e) {
     const index = parseInt(e.currentTarget.dataset.index);
