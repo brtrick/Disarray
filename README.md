@@ -4,6 +4,8 @@
 
 DisArray is a fast-paced, multi-player game inspired by Boggle! It is built with the MERN stack (MongoDB | Express | React | Node.js) and hosted on Heroku. Technologies include: Socket.IO, MongoDB, Mongoose, Express.js, React/ReactHooks, Redux, Node.js, HTML5, CSS3, Webpack, Heroku, Git, and Github.
 
+# [<center> Check Out the Live App!][17]
+
 ## Game Play
 Players have a minute and a half per round to find as many words as they can in the given letter tiles. At the end of each round, the words found are scored as follows: 
 * non-words: 0 points
@@ -101,3 +103,5 @@ handleMouseLeave(e) {
 [14]: https://github.com/OcramT
 [15]: https://angel.co/u/marco-torre-1
 [16]: https://www.marcotorre.io/
+
+[17]: https://disarray-app.herokuapp.com/#/
