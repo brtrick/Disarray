@@ -106,6 +106,29 @@ handleMouseLeave(e) {
 <!-- ### ![Brekke Green](README_assets/Brekke.jpg)**Brekke Andrew Green**  -->
 ### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** [<img src="README_assets/linkedin-gray.svg" width='15px'>][9] [<img src="README_assets/github-gray.svg" width='16px'>][10] [<img src="README_assets/angellist-gray.svg" width='15px'>][11] [<img src="README_assets/portfolio-gray.svg" width='18px'>][12]
 
+Brekke constructed the game logic using OOP strategies; he created classes for the game, player, board, dice, and wordlist elements. The users wordlists are collected on the frontend and then sent to the game class via Socket.IO. Once all the players' played wordlists are received by the game class, a list of duplicate words is compiled and used to calculate the individual players score (see 'Game Play' section above). Instances of the game class are stored on the game server and manipulated through the sockets to handle scoring between rounds and at the conclusion of the game:
+
+```js
+socket.on("finish-round", ({id, username, foundWords}) => {
+    this.games[id].receiveWords({[username]: foundWords});
+    if (this.games[id].listsReceived === this.games[id].players.length) {
+        //End game if 3 rounds have been played or if this was a practice round
+        if (this.games[id].roundsPlayed === 3 || this.games[id].players.length === 1) {
+            this.io.to(id).emit("endGame", this.games[id].roundResults);
+            this.games[id].players.forEach(({socket}) => {
+                socket.join("site");
+                socket.leave(id);
+                delete this.socketsInGames[socket.id]; 
+                delete this.games[id]; 
+            });
+        } else {
+            this.io.to(id).emit("roundResults", this.games[id].roundResults[this.games[id].roundsPlayed-1]);
+            this.games[id].resetRoundVars();
+        }
+    }
+});
+```
+
 <!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
 ### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** [<img src="README_assets/linkedin-gray.svg" width='15px'>][13] [<img src="README_assets/github-gray.svg" width='16px'>][14] [<img src="README_assets/angellist-gray.svg" width='15px'>][15] [<img src="README_assets/portfolio-gray.svg" width='18px'>][16]
 
