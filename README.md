@@ -87,7 +87,7 @@ handleMouseLeave(e) {
 ### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** [<img src="README_assets/linkedin-gray.svg" width='15px'>][9] [<img src="README_assets/github-gray.svg" width='16px'>][10] [<img src="README_assets/angellist-gray.svg" width='15px'>][11] [<img src="README_assets/portfolio-gray.svg" width='18px'>][12]
 
 <!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
-### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** [<img src="README_assets/linkedin-gray.svg" width='15px'>][13] [<img src="README_assets/github-gray.svg" width='16px'>][14] [<img src="README_assets/angellist-gray.svg" width='15px'>][15] [<img src="README_assets/portfolio-gray.svg" width='18px'>][16]
+### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** <a href="https://www.linkedin.com/in/marco-torre-388286138/"><img src="README_assets/linkedin-gray.svg" width='15px'></a> <a href="https://github.com/OcramT" target="_blank"><img src="README_assets/github-gray.svg" width='16px'></a> <a href="https://angel.co/u/marco-torre-1" target="_blank"><img src="README_assets/angellist-gray.svg" width='15px'></a> <a href="https://www.marcotorre.io/" target="_blank"><img src="README_assets/linkedin-gray.svg" width='15px'></a>
 
 [1]: https://www.linkedin.com/in/alejandro-weil-b9275720b/
 [2]: https://github.com/aweil13
@@ -104,10 +104,10 @@ handleMouseLeave(e) {
 [11]: https://angel.co/u/brekke-andrew-green
 [12]: https://brekke-green.github.io/
 
-[13]: https://www.linkedin.com/in/marco-torre-388286138/
-[14]: https://github.com/OcramT
-[15]: https://angel.co/u/marco-torre-1
-[16]: https://www.marcotorre.io/
+
+
+
+
 
 [17]: https://disarray-app.herokuapp.com/#/
 
