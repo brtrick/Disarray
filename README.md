@@ -104,5 +104,5 @@ handleMouseLeave(e) {
 [15]: https://angel.co/u/marco-torre-1
 [16]: https://www.marcotorre.io/
 
-[17]: <a href="https://disarray-app.herokuapp.com/#/" target="_blank"/>
+[17]: https://disarray-app.herokuapp.com/#/
 
