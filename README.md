@@ -66,6 +66,8 @@ Conditional update to leaderboard based on if user won or not:
                 this.props.receiveCurrentUser(this.props.user);
             }
             setTimeout(this.props.fetchLeaderboard, 2000);
+```
+
 <!-- ### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**   -->
 ### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick** [<img src="README_assets/linkedin-gray.svg" width='15px'>][5] [<img src="README_assets/github-gray.svg" width='16px'>][6] [<img src="README_assets/angellist-gray.svg" width='15px'>][7] [<img src="README_assets/portfolio-gray.svg" width='18px'>][8]
 
