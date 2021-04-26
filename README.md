@@ -48,6 +48,24 @@ When forming words, no letter tile can be used more than once in a single word, 
 <!-- ### ![Alejandro Weil](README_assets/Alejandro.jpg)**Alejandro Weil**  -->
 ### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil** [<img src="README_assets/linkedin-gray.svg" width='15px'>][1] [<img src="README_assets/github-gray.svg" width='16px'>][2] [<img src="README_assets/angellist-gray.svg" width='15px'>][3] [<img src="README_assets/portfolio-gray.svg" width='18px'>][4]
 
+Alejandro implemented the Backend database for user information using mongoDB, mongoose, and express. Users can create an account which will allow them to have their statistics(wins, losses) tracked and if they get enough wins, displayed on the live updating leaderboard. He also implemented the modals present in the app, using react redux to manipulate state to determine when to display modals or not. 
+Conditional update to leaderboard based on if user won or not:
+
+```js
+//board.jsx endGame
+ let breadWinnerArr = []
+            breadWinner.forEach(i => {
+                breadWinnerArr.push(playerNames[i])
+            })    
+            if (this.props.id) {
+                if (breadWinnerArr.includes(this.props.username)) {
+                    this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
+                } else { 
+                    this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
+                }
+                this.props.receiveCurrentUser(this.props.user);
+            }
+            setTimeout(this.props.fetchLeaderboard, 2000);
 <!-- ### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**   -->
 ### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick** [<img src="README_assets/linkedin-gray.svg" width='15px'>][5] [<img src="README_assets/github-gray.svg" width='16px'>][6] [<img src="README_assets/angellist-gray.svg" width='15px'>][7] [<img src="README_assets/portfolio-gray.svg" width='18px'>][8]
 
