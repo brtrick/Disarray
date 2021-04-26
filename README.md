@@ -89,6 +89,15 @@ handleMouseLeave(e) {
 <!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
 ### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** [<img src="README_assets/linkedin-gray.svg" width='15px'>][13] [<img src="README_assets/github-gray.svg" width='16px'>][14] [<img src="README_assets/angellist-gray.svg" width='15px'>][15] [<img src="README_assets/portfolio-gray.svg" width='18px'>][16]
 
+Marco built custom user authorization for Disarray and created the visual style of the app using HTML5 and Cascading Style Sheets (CSS). Using various box-shadow effects to create the three-dimensional look of each die was a partiuclarly fun challenge.
+
+Additionally, Marco further leveraged the versatility of CSS and utilized media queries to dynamically scale the game to various screen sizes.
+![Scaling](README_assets/site-scaling-min.gif)
+
+This included adding a custom dropdown menu and icon whenever the navigation bar is sized below a specified width.
+![Scaling](README_assets/burger-menu-min.gif)
+
+
 [1]: https://www.linkedin.com/in/alejandro-weil-b9275720b/
 [2]: https://github.com/aweil13
 [3]: https://angel.co/u/alejandro-weil
