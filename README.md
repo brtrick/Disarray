@@ -18,6 +18,11 @@ Players have a minute and a half per round to find as many words as they can in 
 
 ![Round Results](README_assets/roundResultsModal.PNG)
 
+The results at the end of each round are keyed by color:
+* Green: Valid word with awarded points in brackets
+* Orange: Valid word awarded no points because it was found by at least one other player
+* Red (crossed off): Invalid word
+
 The player with the highest score after 3 rounds wins!
 
 ![End of Game Results](README_assets/endOfGameModal.PNG)
