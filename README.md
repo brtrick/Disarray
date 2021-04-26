@@ -1,4 +1,4 @@
-# Disarray
+# <p align="center"><img src="README_assets/DisarrayLogo.png" width="250"></p>
 
 ![DisArray](README_assets/DisarrayGamePage.png)
 
