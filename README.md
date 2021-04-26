@@ -4,6 +4,8 @@
 
 DisArray is a fast-paced, multi-player game inspired by Boggle! It is built with the MERN stack (MongoDB | Express | React | Node.js) and hosted on Heroku. Technologies include: Socket.IO, MongoDB, Mongoose, Express.js, React/ReactHooks, Redux, Node.js, HTML5, CSS3, Webpack, Heroku, Git, and Github.
 
+# [<center> Check Out the Live App!][17]
+
 ## Game Play
 Players have a minute and a half per round to find as many words as they can in the given letter tiles. At the end of each round, the words found are scored as follows: 
 * non-words: 0 points
@@ -39,18 +41,10 @@ When forming words, no letter tile can be used more than once in a single word, 
 
 ## Contributors (and their primary responsibilities)  
 <!-- ### ![Alejandro Weil](README_assets/Alejandro.jpg)**Alejandro Weil**  -->
-### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil** 
-[<img src="README_assets/linkedin.png">][1]
-[<img src="README_assets/github.png">][2]
-[<img src="README_assets/AngelList.png" width='15px'>][3]
-[<img src="README_assets/site.png">][4]
+### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil** [<img src="README_assets/linkedin-gray.svg" width='15px'>][1] [<img src="README_assets/github-gray.svg" width='16px'>][2] [<img src="README_assets/angellist-gray.svg" width='15px'>][3] [<img src="README_assets/portfolio-gray.svg" width='18px'>][4]
 
 <!-- ### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**   -->
-### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick**
-[<img src="README_assets/linkedin.png">][5]
-[<img src="README_assets/github.png">][6]
-[<img src="README_assets/AngelList.png" width='15px'>][7]
-[<img src="README_assets/site.png">][8]
+### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick** [<img src="README_assets/linkedin-gray.svg" width='15px'>][5] [<img src="README_assets/github-gray.svg" width='16px'>][6] [<img src="README_assets/angellist-gray.svg" width='15px'>][7] [<img src="README_assets/portfolio-gray.svg" width='18px'>][8]
 
 Brad implemented the game server and [socket.io](https://socket.io/) sockets that coordinate the flow of game elements across multiple clients on the web. The server and clients communicate through defined message types. For example, when the server receives a `chat` message from a client, it broadcasts the accompanying message to the appropriate `room`, either the other players in the game or, if the user is not currently in a game, the site more broadly: 
 ```js
@@ -85,18 +79,10 @@ handleMouseLeave(e) {
 }
 ```
 <!-- ### ![Brekke Green](README_assets/Brekke.jpg)**Brekke Andrew Green**  -->
-### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** 
-[<img src="README_assets/linkedin.png">][9]
-[<img src="README_assets/github.png">][10]
-[<img src="README_assets/AngelList.png" width='15px'>][11]
-[<img src="README_assets/site.png">][12]
+### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** [<img src="README_assets/linkedin-gray.svg" width='15px'>][9] [<img src="README_assets/github-gray.svg" width='16px'>][10] [<img src="README_assets/angellist-gray.svg" width='15px'>][11] [<img src="README_assets/portfolio-gray.svg" width='18px'>][12]
 
 <!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
-### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre**
-[<img src="README_assets/linkedin.png">][13]
-[<img src="README_assets/github.png">][14]
-[<img src="README_assets/AngelList.png" width='15px'>][15]
-[<img src="README_assets/site.png">][16]
+### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** [<img src="README_assets/linkedin-gray.svg" width='15px'>][13] [<img src="README_assets/github-gray.svg" width='16px'>][14] [<img src="README_assets/angellist-gray.svg" width='15px'>][15] [<img src="README_assets/portfolio-gray.svg" width='18px'>][16]
 
 [1]: https://www.linkedin.com/in/alejandro-weil-b9275720b/
 [2]: https://github.com/aweil13
@@ -117,3 +103,5 @@ handleMouseLeave(e) {
 [14]: https://github.com/OcramT
 [15]: https://angel.co/u/marco-torre-1
 [16]: https://www.marcotorre.io/
+
+[17]: https://disarray-app.herokuapp.com/#/
