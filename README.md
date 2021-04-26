@@ -106,9 +106,10 @@ handleMouseLeave(e) {
 <!-- ### ![Brekke Green](README_assets/Brekke.jpg)**Brekke Andrew Green**  -->
 ### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** [<img src="README_assets/linkedin-gray.svg" width='15px'>][9] [<img src="README_assets/github-gray.svg" width='16px'>][10] [<img src="README_assets/angellist-gray.svg" width='15px'>][11] [<img src="README_assets/portfolio-gray.svg" width='18px'>][12]
 
-Brekke constructed the game logic using OOP strategies; he created classes for the game, player, board, dice, and wordlist elements. The users wordlists are collected on the frontend and then sent to the game class via Socket.IO. Once all the players' played wordlists are received by the game class, a list of duplicate words is compiled and used to calculate the individual players score (see 'Game Play' section above). Instances of the game class are stored on the game server and manipulated through the sockets to handle scoring between rounds and at the conclusion of the game:
+Brekke constructed the game logic using OOP strategies; he created classes for the game, player, board, dice, and wordlist elements. The players' wordlists are collected on the frontend and then sent to the game class via socket.io. Once all the players' wordlists are received by the game class, a list of duplicate words is compiled and used to calculate the individual player's score (see 'Game Play' section above). Instances of the game class are stored on the game server and manipulated through the client's sockets to handle scoring between rounds and at the conclusion of the game:
 
 ```js
+// gameServer.js
 socket.on("finish-round", ({id, username, foundWords}) => {
     this.games[id].receiveWords({[username]: foundWords});
     if (this.games[id].listsReceived === this.games[id].players.length) {
