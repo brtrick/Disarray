@@ -1,7 +1,7 @@
 import '../../stylesheets/wordBank.css';
 import { useEffect, useRef } from 'react';
 
-function WordBank ({currentWord, foundWords, submit, setCurrentWord}) {
+function WordBank ({currentWord, foundWords, submit }) {
   const sortedFoundWords = Object.keys(foundWords).sort();
   const wordDisplayEl = useRef(null);
 
@@ -30,7 +30,7 @@ function WordBank ({currentWord, foundWords, submit, setCurrentWord}) {
                   <span className='word-display' ref={wordDisplayEl}>{currentWord}</span>
                   <button 
                     className={`clear-word${validClear ? '' : ' invalid'}`} 
-                    onClick={validClear ? ()=>submit(false) : undefined}
+                    onClick={validClear ? ()=>submit({ submit: false }) : undefined}
                   >
                     X
                   </button>
