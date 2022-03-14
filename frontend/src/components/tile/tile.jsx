@@ -4,12 +4,24 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetSelected } from '../../actions/board_actions';
 
-function Tile ({ letter, position, boardOps, currentGameActive }) {
+function Tile ({ letter, position, boardOps }) {
+  const [gameActive, setGameActive] = useState(false);
   const [selected, setSelected] = useState(false); 
   const dispatch = useDispatch();
 
   const reset = useSelector (state => state.board.resetSelected);
-  // const gameActive = useSelector (state => state.game.gameActive); 
+  const socket = useSelector (state => state.socket.socket);
+
+  useEffect( () => {
+    if (!socket) return;
+    socket.on("startGame", () => setGameActive(true));
+    socket.on("endGame", () => setGameActive(false));
+    return () => {
+      socket.off("startGame", () => setGameActive(true));
+      socket.off("endGame", () => setGameActive(false));
+    }
+  }, [socket]);
+
   if (reset && selected) setSelected(false);
 
   const handleMouseLeave = e => {
@@ -31,7 +43,7 @@ function Tile ({ letter, position, boardOps, currentGameActive }) {
 
   return (
     <li  
-      {...(currentGameActive && {
+      {...(gameActive && {
           onMouseDown: (e) => boardOps.handleMouseEvent(e.type, letter, position, selected, setSelected),
           onMouseEnter: (e) => boardOps.handleMouseEvent(e.type, letter, position, selected, setSelected),
           onMouseUp: () => boardOps.handleMouseUp(position, selected),
