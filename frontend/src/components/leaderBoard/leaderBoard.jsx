@@ -2,7 +2,7 @@ import '../../stylesheets/reset.css';
 import '../../stylesheets/board.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLeaderboard } from '../../actions/game_actions';
+import { fetchLeaderboard } from '../../actions/gameActions';
 
 function LeaderBoard () {
   const dispatch = useDispatch();

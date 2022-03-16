@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import React from 'react';
-import {closeModal} from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modalActions';
 
 const EndGameModal = ({roundResults, closeModal}) => {
     let roundScores = roundResults.roundResults[0]['currentScores']

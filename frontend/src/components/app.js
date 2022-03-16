@@ -1,12 +1,12 @@
 import React from 'react';
 import { AuthRoute } from '../util/route_util';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import NavBarContainer from './nav/navbar_container';
+import NavBarContainer from './nav/navbarContainer';
 
-import MainPage from './main/main_page';
-import LoginFormContainer from './session/login_form_container';
-import SignupFormContainer from './session/signup_form_container';
-import BoardContainer from './board/board_container';
+import MainPage from './main/mainPage';
+import LoginFormContainer from './session/loginFormContainer';
+import SignupFormContainer from './session/signupFormContainer';
+import Game from './game/game';
 import Modal from './modal/modal';
 import NewGameModal from './newGameModal/newGameModal';
 
@@ -18,10 +18,10 @@ const App = () => {
         <NavBarContainer />
         <Switch>
             <Route exact path="/" component={MainPage} />
-            <Route path="/board" component={BoardContainer}/>
+            <Route path="/game" component={Game}/>
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            <Redirect to="/board" />
+            <Redirect to="/game" />
         </Switch>
     </div>
 )};

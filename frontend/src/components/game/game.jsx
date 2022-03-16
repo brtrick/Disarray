@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { receiveCurrentUser, update } from '../../actions/session_actions';
-import { fetchLeaderboard } from '../../actions/game_actions';
-import { openModal } from '../../actions/modal_actions';
+import { receiveCurrentUser, update } from '../../actions/sessionActions';
+import { fetchLeaderboard } from '../../actions/gameActions';
+import { openModal } from '../../actions/modalActions';
 import '../../stylesheets/reset.css';
 import '../../stylesheets/board.css';
 import RoundTimer from "../timers/roundTimer";

@@ -1,5 +1,5 @@
 import React from 'react';
-import {closeModal} from '../../actions/modal_actions';
+import {closeModal} from '../../actions/modalActions';
 import {connect} from 'react-redux';
 import WordRulesContainer from '../rules/wordRulesContainer';
 import GameRulesContainer from '../rules/gameRulesContainer';

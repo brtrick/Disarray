@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RulesButtons from './rulesButtons';
-import {openModal} from '../../actions/modal_actions';
+import {openModal} from '../../actions/modalActions';
 
 const mSTP = () => ({
     

@@ -2,7 +2,7 @@ import '../../stylesheets/reset.css';
 import '../../stylesheets/tile.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetSelected } from '../../actions/board_actions';
+import { resetSelected } from '../../actions/boardActions';
 
 function Tile ({ letter, position, boardOps }) {
   const [gameActive, setGameActive] = useState(false);

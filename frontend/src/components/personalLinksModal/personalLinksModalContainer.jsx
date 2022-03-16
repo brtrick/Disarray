@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {closeModal} from '../../actions/modal_actions';
+import {closeModal} from '../../actions/modalActions';
 import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import '../../stylesheets/personallinks_modal.css';
