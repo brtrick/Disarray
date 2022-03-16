@@ -6,8 +6,7 @@ import { openModal } from '../../actions/modalActions';
 import '../../stylesheets/reset.css';
 import '../../stylesheets/board.css';
 import RoundTimer from "../timers/roundTimer";
-// import errorBoopSound from '../../audio/error_boop.wav';
-import RulesButtons from '../rules/rulesButtonsContainer';
+import RulesButtons from '../rulesButtons/rulesButtons';
 import ChatBox from '../chatBox/chatBox';
 import LeaderBoard from '../leaderBoard/leaderBoard';
 import Board from '../board/board'
