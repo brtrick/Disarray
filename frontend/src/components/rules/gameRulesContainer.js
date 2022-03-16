@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modalActions';
 import GameRules from './gameRules';
 
 const mSTP = state => {

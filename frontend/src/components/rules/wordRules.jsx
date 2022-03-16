@@ -13,7 +13,7 @@ class WordRules extends React.Component {
                         <span className='bullet'>1.</span> There are two ways to enter a word: 
                     </li>
                         <ul className="ways-list">
-                            <li><span className='bullet'>A.</span> Click on each tile individually, in order. When the word is fully spelled, click "Submit Word".</li>
+                            <li><span className='bullet'>A.</span> Click on each tile individually, in order. When the word is fully spelled, click the green ✔ in the Word Bank.</li>
                             <li><span className='bullet'>B.</span> Press the mouse button down over a word's first letter and drag the cursor over the subsequent letters. Release the mouse button to submit.</li>
                         </ul>
                     <li>

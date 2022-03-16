@@ -62,19 +62,6 @@
     justify-content: center;
 }
 
-.timer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    padding: 5px;
-    height: 50px;
-    width: 200px;
-    margin: 10px;
-    color: rgb(26,203,255);
-}
-
 .timer {
     display: flex;
     justify-content: center;
@@ -112,45 +99,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.tile {
-    border-radius: 20px;
-    margin: 5px;
-    height: 105px;
-    width: 105px;
-    box-shadow: 0 0 8px 2px;             
-    background-color:rgb(122, 91, 184);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-
-.selected {
-    box-shadow: 0 0 8px 8px rgb(26, 171, 149);
-}
-
-.selected-letter {
-    color: rgb(26, 171, 149);
-}
-
-.letter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    font-size: 45px;
-    border-radius: 50%;
-    width: 95%;
-    height: 95%;
-    color: whitesmoke;
-    box-shadow: 0 0 10px 2px rgb(146, 111, 216);
-    background-color: mediumpurple;
 }
 
 .game, .score-board {
@@ -209,45 +157,6 @@
     color: tomato;
 }
 
-.words {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-basis: 240px;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-.word-box {
-    display: flex;
-    align-items:flex-start;
-    flex-flow: column wrap;
-    min-height: 330px;
-    max-height: 330px;
-    min-width: 240px;
-    max-width: 240px;
-    margin-top: 20px;
-}
-
-.word-box li {
-    text-transform:lowercase;
-    color: rgb(26, 171, 149);
-    flex-shrink: 0.5;
-    min-width: 20%;
-    max-width: 20%;
-    font-size: clamp(0.6em, -0.4000em + 8.0000vw, 0.8em);
-    margin: 4px 4px 4px 4px;
-    transform: scale(0.8);
-}
-
-.active-word {
-    width: 90%;
-    color: rgb(14,188,246);
-    font-size: 16px;
-    border-bottom: solid slategray;
-}
-
 .leader-header {
     justify-content: space-between;
     width: 90%;
@@ -258,46 +167,13 @@
 
 .lower-wrapper {
     width: 80%;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .lower-wrapper > * {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.chat {
-    flex-direction: column;
-    border-radius: 10px;
-    align-items: center;
-    width: 30%;
-    height: 90%;
-    margin: 80px 10px 0px 10px;
-    background-color: rgb(64, 103, 136);
-}
-
-.chat-box {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: flex-start;
-    height: 80%;
-    width: 95%;
-    border-radius: 10px;
-    margin: auto;
-    background-color: rgba(68, 77, 85, 0.712);
-    overflow: auto;
-}
-
-.chat-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 95%;
-    height: 15%;
 }
 
 .lower-button {

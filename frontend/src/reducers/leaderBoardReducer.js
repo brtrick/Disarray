@@ -1,4 +1,4 @@
-import {RECEIVE_CURRENT_LEADERBOARD} from "../actions/game_actions";
+import {RECEIVE_CURRENT_LEADERBOARD} from "../actions/gameActions";
 
 
 const initialState = {};

@@ -60,6 +60,7 @@ class NavBar extends React.Component {
                             <div className='last-two'>
                                 <span className='a'>a</span>
                                 <span className='y'>y</span>
+                                <span className='array'>{' 2.0'}</span>
                             </div>
                         </div>
                     </Link>                

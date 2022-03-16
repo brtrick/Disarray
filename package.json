@@ -1,11 +1,11 @@
 {
   "name": "disarray",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "10.13.0",
-    "npm": "6.4.1"
+    "node": "16.13.2",
+    "npm": "8.1.2"
   },
   "scripts": {
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",

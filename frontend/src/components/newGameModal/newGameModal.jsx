@@ -4,7 +4,7 @@ import '../../stylesheets/modal.css';
 import '../../stylesheets/endgame_modal.css'
 import '../../stylesheets/reset.css';
 import NewGameModalContainer from './newGameModalContainer';
-import NewRoundModalContainer from '../newRoundModal/newRoundModalContainer';
+import NewRoundModalContainer from '../newRoundModal/newRoundModal';
 import EndGameModalContainer from '../endGameModal/endGameModalContainer';
 
 const NewGameModal = ({modal}) => {
