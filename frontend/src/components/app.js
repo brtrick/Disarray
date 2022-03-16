@@ -7,14 +7,12 @@ import MainPage from './main/mainPage';
 import LoginFormContainer from './session/loginFormContainer';
 import SignupFormContainer from './session/signupFormContainer';
 import Game from './game/game';
-import Modal from './modal/modal';
-import NewGameModal from './newGameModal/newGameModal';
+import Modal from './modals/modal';
 
 const App = () => {
     return (
     <div>
-        <Modal/>
-        <NewGameModal />
+        <Modal />
         <NavBarContainer />
         <Switch>
             <Route exact path="/" component={MainPage} />
