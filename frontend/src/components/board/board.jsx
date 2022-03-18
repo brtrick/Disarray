@@ -17,9 +17,9 @@ function Board ({ finishRound }) {
   const [foundWords, setFoundWords] = useState ({});
   
   const moves = useRef([]);
-  const mouseDown = useRef(false);
-  const mouseDownTile = useRef(-1);
-  const mouseDownMoves = useRef(0);
+  const pointerDown = useRef(false);
+  const pointerDownTile = useRef(-1);
+  const pointerDownMoves = useRef(0);
   
   const errorBoop = useMemo (() => new Audio(errorBoopSound), []);
   const dispatch = useDispatch();
@@ -54,23 +54,23 @@ function Board ({ finishRound }) {
     }
   }, [socket]);
 
-  const handleMouseLeaveBoard = () => {
-    if (!mouseDown.current) return;
+  const handlePointerLeaveBoard = () => {
+    if (!pointerDown.current) return;
     submitAndReset();
   }
 
-  const handleMouseLeaveTile = setSelected => {
-    if (!mouseDown.current) return;
+  const handlePointerLeaveTile = setSelected => {
+    if (!pointerDown.current) return;
     setSelectedForPrevTile.current = setSelected;
   }
 
-  const handleMouseEvent = (type, letter, index, selected, setSelected) => {
-    if (type === "mouseenter" && !mouseDown.current) return;
+  const handlePointerEvent = (type, letter, index, selected, setSelected) => {
+    if (type === "pointerenter" && !pointerDown.current) return;
     
-    if (type === "mousedown") {
-        mouseDown.current = true;
-        mouseDownTile.current = index;
-        mouseDownMoves.current = moves.current.length;    
+    if (type === "pointerdown") {
+        pointerDown.current = true;
+        pointerDownTile.current = index;
+        pointerDownMoves.current = moves.current.length;    
     }
 
     const lastMove = (moves.current.length > 0) ? moves.current[moves.current.length-1] : -1;
@@ -98,7 +98,7 @@ function Board ({ finishRound }) {
         curWord += letter.toLowerCase();
     }
     else {
-        if (type === "mousedown") mouseDown.current = false;
+        if (type === "pointerdown") pointerDown.current = false;
         //blare obnoxious sound to indicate wrong move
         errorBoop.play()
         return;
@@ -107,18 +107,18 @@ function Board ({ finishRound }) {
     setCurrentWord(curWord);
   }
 
-  const handleMouseUp = (index, selected) => {
-    if (!mouseDown.current) return; // ignore if invalid beginning
+  const handlePointerUp = (index, selected) => {
+    if (!pointerDown.current) return; // ignore if invalid beginning
     
-    // Treat as click if same tile as mouseDown
-    // Because moves are processed on mouseDown, moves will be 1 less if tile was originally 
+    // Treat as click if same tile as pointerDown
+    // Because moves are processed on pointerDown, moves will be 1 less if tile was originally 
     // selected and 1 more if originally unselected
-    if (index === mouseDownTile.current && 
-        ((moves.current.length === mouseDownMoves.current + (selected ? 1 : -1)) ||
-          ((moves.current.length === mouseDownMoves.current - 1) && selected))) { //case of click on previous move to erase last move
-            mouseDownMoves.current = 0;
-            mouseDownTile.current = -1;
-            mouseDown.current = false;
+    if (index === pointerDownTile.current && 
+        ((moves.current.length === pointerDownMoves.current + (selected ? 1 : -1)) ||
+          ((moves.current.length === pointerDownMoves.current - 1) && selected))) { //case of click on previous move to erase last move
+            pointerDownMoves.current = 0;
+            pointerDownTile.current = -1;
+            pointerDown.current = false;
             return;
     }
     submitAndReset();
@@ -147,9 +147,9 @@ function Board ({ finishRound }) {
     // Reset word
     setCurrentWord("");
     dispatch(resetSelected(true));
-    mouseDownMoves.current = 0;
-    mouseDownTile.current = -1;
-    mouseDown.current = false;
+    pointerDownMoves.current = 0;
+    pointerDownTile.current = -1;
+    pointerDown.current = false;
     moves.current = [];
   }, [dispatch, currentWord, errorBoop, finishRound, foundWords]);
   
@@ -160,8 +160,8 @@ function Board ({ finishRound }) {
     }
   }, [timeUp, submitAndReset, finishRound, foundWords, dispatch]);
 
-  const boardOps = { handleMouseLeaveBoard, handleMouseLeaveTile, 
-                     handleMouseEvent, handleMouseUp };
+  const boardOps = { handlePointerLeaveBoard, handlePointerLeaveTile, 
+                     handlePointerEvent, handlePointerUp };
   const boardTiles = board.map((letter, index) => {
     return <Tile key={`tile-${index}`} letter={letter} position={index} boardOps={boardOps} />
   });

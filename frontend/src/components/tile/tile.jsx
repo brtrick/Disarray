@@ -24,16 +24,16 @@ function Tile ({ letter, position, boardOps }) {
 
   if (reset && selected) setSelected(false);
 
-  const handleMouseLeave = e => {
+  const handlePointerLeave = e => {
     if (([0,   4,  8, 12].includes(position) && (e.nativeEvent.offsetX < 0)) || //exit left side
         ([0,   1,  2,  3].includes(position) && (e.nativeEvent.offsetY < 0)) || //exit top
         ([3,   7, 11, 15].includes(position) && (e.nativeEvent.offsetX >  e.currentTarget.offsetWidth)) || //exit right
         ([12, 13, 14, 15].includes(position) && (e.nativeEvent.offsetY >= e.currentTarget.offsetHeight))) //exit bottom
     {
-      boardOps.handleMouseLeaveBoard();
+      boardOps.handlePointerLeaveBoard();
     }
     else
-      boardOps.handleMouseLeaveTile(setSelected);
+      boardOps.handlePointerLeaveTile(setSelected);
   }
 
   useEffect(() => {
@@ -44,10 +44,10 @@ function Tile ({ letter, position, boardOps }) {
   return (
     <li  
       {...(gameActive && {
-          onMouseDown: (e) => boardOps.handleMouseEvent(e.type, letter, position, selected, setSelected),
-          onMouseEnter: (e) => boardOps.handleMouseEvent(e.type, letter, position, selected, setSelected),
-          onMouseUp: () => boardOps.handleMouseUp(position, selected),
-          onMouseLeave: handleMouseLeave
+          onPointerDown: (e) => boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected),
+          onPointerEnter: (e) => boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected),
+          onPointerUp: () => boardOps.handlePointerUp(position, selected),
+          onPointerLeave: handlePointerLeave
       })}
       className={'tile' + (selected ? ' selected' : '')}
     >
