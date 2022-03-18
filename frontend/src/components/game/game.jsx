@@ -184,6 +184,7 @@ function Game () {
         <div className='lower-wrapper'>
             <button className={`submit lower-button practice${currentGame ? ' invalid' : ''}`}
                     onClick={currentGame ? undefined : startPractice}>Practice Game</button>
+            <button className='join-game lower-button submit' onClick={joinGame}>Join Game</button>
         </div>
       </div>
       <ChatBox gameId={currentGame} username={username}/>
