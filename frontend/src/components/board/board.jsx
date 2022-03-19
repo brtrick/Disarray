@@ -66,6 +66,7 @@ function Board ({ finishRound }) {
   }
 
   const handlePointerEvent = (type, letter, index, selected, setSelected) => {
+    console.log(type + letter + index + selected);
     if ((type === "pointerenter" || type === "touchmove") && !pointerDown.current) return;
     if (type === "touchmove") {
       if(moves.current[moves.current.length-1] === index || touchMoveTile.current === index)

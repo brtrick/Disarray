@@ -25,6 +25,7 @@ function Tile ({ letter, position, boardOps }) {
   if (reset && selected) setSelected(false);
 
   const handlePointerLeave = e => {
+    e.preventDefault();
     e.stopPropagation();
     if (([0,   4,  8, 12].includes(position) && (e.nativeEvent.offsetX < 0)) || //exit left side
         ([0,   1,  2,  3].includes(position) && (e.nativeEvent.offsetY < 0)) || //exit top
@@ -45,12 +46,12 @@ function Tile ({ letter, position, boardOps }) {
   return (
     <li  
       {...(gameActive && {
-          onTouchStart: (e) => {e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
-          onPointerDown: (e) => {e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
-          onTouchMove: (e) => {e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
-          onPointerEnter: (e) => {e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
-          onTouchEnd: (e) => {e.stopPropagation(); boardOps.handlePointerUp(position, selected)},
-          onPointerUp: (e) => {e.stopPropagation(); boardOps.handlePointerUp(position, selected)},
+          onTouchStart: (e) => {e.preventDefault(); e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
+          onPointerDown: (e) => {e.preventDefault(); e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
+          onTouchMove: (e) => {e.preventDefault(); e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
+          onPointerEnter: (e) => {e.preventDefault(); e.stopPropagation(); boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected)},
+          onTouchEnd: (e) => {e.preventDefault(); e.stopPropagation(); boardOps.handlePointerUp(position, selected)},
+          onPointerUp: (e) => {e.preventDefault(); e.stopPropagation(); boardOps.handlePointerUp(position, selected)},
           onPointerLeave: handlePointerLeave
       })}
       className={'tile' + (selected ? ' selected' : '')}
