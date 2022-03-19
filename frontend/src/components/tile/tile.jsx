@@ -44,8 +44,11 @@ function Tile ({ letter, position, boardOps }) {
   return (
     <li  
       {...(gameActive && {
+          onTouchStart: (e) => boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected),
           onPointerDown: (e) => boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected),
+          onTouchMove: (e) => boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected),
           onPointerEnter: (e) => boardOps.handlePointerEvent(e.type, letter, position, selected, setSelected),
+          onTouchEnd: () => boardOps.handlePointerUp(position, selected),
           onPointerUp: () => boardOps.handlePointerUp(position, selected),
           onPointerLeave: handlePointerLeave
       })}
