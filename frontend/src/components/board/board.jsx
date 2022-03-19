@@ -179,7 +179,8 @@ function Board ({ finishRound }) {
     <>
       <div className='board-wrapper'>
         <h2>
-          <ul className='tile-wrapper' onTouchMove={handlePointerLeaveBoard}>
+          {/* <ul className='tile-wrapper' onTouchMove={handlePointerLeaveBoard}> */}
+          <ul className='tile-wrapper' >
             {boardTiles}
           </ul>    
         </h2>
