@@ -20,7 +20,6 @@ function Board ({ finishRound }) {
   const pointerDown = useRef(false);
   const pointerDownTile = useRef(-1);
   const pointerDownMoves = useRef(0);
-  const touchMoveTile = useRef(-1);
   
   const errorBoop = useMemo (() => new Audio(errorBoopSound), []);
   const dispatch = useDispatch();
@@ -66,16 +65,10 @@ function Board ({ finishRound }) {
   }
 
   const handlePointerEvent = (type, letter, index, selected, setSelected) => {
-    console.log(type + letter + index + selected);
-    if ((type === "pointerenter" || type === "touchmove") && !pointerDown.current) return;
-    if (type === "touchmove") {
-      if(moves.current[moves.current.length-1] === index || touchMoveTile.current === index)
-        return;
-      else
-        touchMoveTile.current = index;
-    }
+    if (type === "pointerenter" && !pointerDown.current) return;
 
-    if (type === "pointerdown" || type === "touchstart") {
+    if (type === "pointerdown") {
+        if (pointerDown.current && moves.current.length === 1) return;
         pointerDown.current = true;
         pointerDownTile.current = index;
         pointerDownMoves.current = moves.current.length;    
@@ -92,8 +85,8 @@ function Board ({ finishRound }) {
     }
 
     //undo the last selection on drag
-    else if (index === moves.current[moves.current.length-2]) {
-      // setSelectedForPrevTile.current(false);
+    else if (index === moves.current[moves.current.length-2] && moves.current[moves.current.length-1] === lastMove) {
+      setSelectedForPrevTile.current(false);
       setSelectedForPrevTile.current = null;
       moves.current.pop();
       curWord = curWord.slice(0, -1);
@@ -127,7 +120,6 @@ function Board ({ finishRound }) {
             pointerDownMoves.current = 0;
             pointerDownTile.current = -1;
             pointerDown.current = false;
-            touchMoveTile.current = -1;
             return;
     }
     submitAndReset();
@@ -167,7 +159,7 @@ function Board ({ finishRound }) {
       dispatch(setTimeUp(false));
       submitAndReset({ timeUp: true });
     }
-  }, [timeUp, submitAndReset, finishRound, foundWords, dispatch]);
+  }, [timeUp, submitAndReset, dispatch]);
 
   const boardOps = { handlePointerLeaveBoard, handlePointerLeaveTile, 
                      handlePointerEvent, handlePointerUp };
@@ -179,7 +171,6 @@ function Board ({ finishRound }) {
     <>
       <div className='board-wrapper'>
         <h2>
-          {/* <ul className='tile-wrapper' onTouchMove={handlePointerLeaveBoard}> */}
           <ul className='tile-wrapper' >
             {boardTiles}
           </ul>    
