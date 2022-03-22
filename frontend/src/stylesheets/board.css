@@ -184,6 +184,8 @@
     height: 50px;
 }
 
+
+
 @media screen and (max-width: 1450px) {
     .main-wrapper {
         display: flex;
@@ -255,14 +257,16 @@
     .info-wrapper {
         margin-top: 200px;
         min-width: 525px;
-        /* height: 95%; */
-        /* overflow: scroll; */
+        height: 800px;
+        overflow: scroll;
     }
 
     .game-wrapper {
         display: flex;
-        flex-direction: column-reverse;
-        height: 100%;
+        /* flex-direction: column-reverse; */
+        flex-direction: column;
+        height: 800px;
+        /* height: 100%; */
         max-width: 100%;
         overflow: auto;
         /* margin-top: 0px; */
@@ -270,6 +274,7 @@
 
     .game {
         width: 95%;
+        height: 500px;
         margin: 10px;
         overflow: scroll;
     }
@@ -292,6 +297,11 @@
         overflow: scroll;
     }
 
+    .side-content {
+      min-width: 500px;
+      height: 300px;
+    }
+
     .timer {
         display: flex;
         justify-content: center;
@@ -304,7 +314,7 @@
         /* height: px; */
     }
 
-    .chat {
+    /* .chat {
         min-width: 500px;
         height: 300px;
     }
@@ -313,6 +323,10 @@
         width: 95%;
         height: 75%;
         margin-top: 10px;
+    } */
+
+    .chat {
+      display: none;
     }
 
     .lower-wrapper {
@@ -337,7 +351,7 @@
     }
 
     .game-wrapper {
-        height: 500px;
+        height: 1000px;
     }
 
     .info-wrapper {
