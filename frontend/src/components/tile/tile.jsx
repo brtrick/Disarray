@@ -82,7 +82,7 @@ function Tile ({ letter, position, boardOps }) {
     const tile = tileRef.current;
     const pointerEvents = ["pointerdown", "pointerenter", "pointerup", "pointerleave"];
     pointerEvents.forEach ((pointerEvent) => {
-      tile.addEventListener(pointerEvent, handlePointer);
+      tile.addEventListener(pointerEvent, handlePointer, { passive: false });
     })
 
     return (() => {
