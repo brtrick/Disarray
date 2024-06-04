@@ -8,11 +8,12 @@ const socketReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_SOCKET:
       return { ...state, socket: action.socket };    
-    case RECEIVE_MESSAGE:
+    case RECEIVE_MESSAGE: {
       const newState = state?.messages ?
         { ...state, messages: [...state.messages, action.message] } :    
         { ...state, messages: [action.message] };
-      return newState;    
+      return newState;
+    }
     default:
       return state;
   }
