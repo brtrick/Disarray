@@ -32,7 +32,11 @@ function Game () {
   const username = user.username;
 
   useEffect(() => {
-    const socket = io();
+    let socket;
+    if (import.meta.env.MODE === "production")
+      socket = io();
+    else
+      socket = io("http://localhost:5000");
     dispatch(receiveSocket(socket));
     
     return () => socket.disconnect();
@@ -136,6 +140,16 @@ function Game () {
 
   useEffect(() => {
     if (!socket) return;
+    socket.on("connect_error", (err) => {
+      // the reason of the error, for example "xhr poll error"
+      console.log(err.message);
+
+      // some additional description, for example the status code of the initial HTTP response
+      console.log(err.description);
+
+      // some additional context, for example the XMLHttpRequest object
+      console.log(err.context);
+    });
     socket.on("startGame", receiveGame);
     socket.on("roundResults", roundEnd);
     socket.on("endGame", endGame);
@@ -169,7 +183,7 @@ function Game () {
             </div>
             <div className='timer'>
             {(currentGameActive && (!modal || modal.type === "personal-links") && <RoundTimer timeUp={timeUp} />)}
-            {(!currentGameActive && currentGame && (<p>Time's Up!</p>))}
+            {(!currentGameActive && currentGame && (<p>Time&apos;s Up!</p>))}
             </div>
             <div className='spacer'>
                 <button className='join-game submit game-rules-link' onClick={joinGame}>Join Game</button>
@@ -182,8 +196,9 @@ function Game () {
         </div>
         
         <div className='lower-wrapper'>
-            <button className={`submit lower-button practice${currentGame ? ' invalid' : ''}`}
-                    onClick={currentGame ? undefined : startPractice}>Practice Game</button>
+          <button className={`submit lower-button practice${currentGame ? ' invalid' : ''}`}
+                  onClick={currentGame ? undefined : startPractice}>Practice Game</button>
+          <button className='join-game lower-button submit' onClick={joinGame}>Join Game</button>
         </div>
       </div>
       <ChatBox gameId={currentGame} username={username}/>

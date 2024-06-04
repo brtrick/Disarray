@@ -1,91 +1,69 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../actions/sessionActions';
 import '../../stylesheets/session_form.css';
 
-class LoginForm extends React.Component {
-    constructor(props) {
-        super(props);
+function LoginForm () {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
-        this.state = {
-            username: '',
-            password: '',
-            errors: {}
-        };
+  const errors = useSelector(state => state.errors.session);
+  
+  const update = (setter) => e => setter(e.currentTarget.value);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      username,
+      password
+    };
+    return dispatch(login(user));
+  }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.currentUser === true) {
-            this.props.history.push('/');
-        }
+  const renderErrors = () => {
+    return (
+      <ul className='errors'>
+        {Object.keys(errors).map((error, i) => (
+          <li key={`error-${i}`}>
+            {errors[error]}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
-        this.setState({ errors: nextProps.errors })
-    }
-
-    update(field) {
-        return e => this.setState({
-            [field]: e.currentTarget.value
-        });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-
-        let user = {
-            username: this.state.username,
-            password: this.state.password
-        };
-
-        this.props.login(user);
-    }
-
-    renderErrors() {
-        return (
-            <ul className='errors'>
-                {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.state.errors[error]}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
-    render() {
-        return (
-            <main className='main-wrapper'>
-                <div className='form-wrapper'>
-                    <h2 className='form-header'>Login</h2>
-                    <form className="form" onSubmit={this.handleSubmit}>
-                        <div className='input-wrapper'>
-                            <div className='fields'>
-                            <input 
-                                className='form-input'
-                                type="text"
-                                value={this.state.username}
-                                onChange={this.update('username')}
-                                placeholder="Username"
-                            />
-                        
-                            <input 
-                                className='form-input'
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                                placeholder="Password"
-                            />
-                            </div>
-                            <input className='submit'
-                            type="submit" value="Submit" />
-                        </div>
-                        <div>{this.renderErrors()}</div>
-                    </form>
-                </div>
-            </main>
-        );
-    }
+  return (
+    <main className='main-wrapper'>
+      <div className='form-wrapper'>
+        <h2 className='form-header'>Login</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className='input-wrapper'>
+            <div className='fields'>
+            <input 
+              className='form-input'
+              type="text"
+              value={username}
+              onChange={update(setUsername)}
+              placeholder="Username"
+            />
+        
+            <input 
+              className='form-input'
+              type="password"
+              value={password}
+              onChange={update(setPassword)}
+              placeholder="Password"
+            />
+            </div>
+            <input className='submit'
+            type="submit" value="Submit" />
+          </div>
+          <div>{renderErrors()}</div>
+        </form>
+      </div>
+    </main>
+  );
 }
 
-export default withRouter(LoginForm);
+export default LoginForm;

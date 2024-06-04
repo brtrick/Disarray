@@ -10,7 +10,7 @@
 
 .word-box {
   display: flex;
-  align-items: space-between;
+  align-items: start;
   flex-flow: column wrap;
   min-height: 330px;
   max-height: 330px;

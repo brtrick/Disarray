@@ -18,7 +18,7 @@ function GameRulesModal () {
           <span className='bullet'>3.</span> No letter cube can be used more than once in a single word.
         </li>
         <li>
-          <span className='bullet'>4.</span> A word that appears on more than one player's list scores no points for that round.
+          <span className='bullet'>4.</span> A word that appears on more than one player&apos;s list scores no points for that round.
         </li>
         <li>
           <span className='bullet'>5.</span> The player with the highest cumulative score after 3 rounds wins!

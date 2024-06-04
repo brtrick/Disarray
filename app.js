@@ -12,14 +12,14 @@ const leaderboard = require("./routes/api/leaderboard");
 const GameServer = require("./gameServer/gameServer");
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('frontend/build'));
+  app.use(express.static('frontend/dist'));
   app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
   })
 }
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, {})
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 

@@ -2,6 +2,7 @@ import '../../stylesheets/reset.css';
 import '../../stylesheets/board.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectLeaderBoardArray } from '../../selectors/leaderBoardSelectors';
 import { fetchLeaderboard } from '../../actions/gameActions';
 
 function LeaderBoard () {
@@ -11,7 +12,7 @@ function LeaderBoard () {
     dispatch(fetchLeaderboard());  
   }, [dispatch]);
   
-  const leaderBoard = useSelector(state => Object.values(state.leaderboard));
+  const leaderBoard = useSelector(selectLeaderBoardArray);
   if (!leaderBoard) return null;
   
   return (
