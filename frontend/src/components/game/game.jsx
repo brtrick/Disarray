@@ -186,7 +186,8 @@ function Game () {
             {(!currentGameActive && currentGame && (<p>Time&apos;s Up!</p>))}
             </div>
             <div className='spacer'>
-                <button className='join-game submit game-rules-link' onClick={joinGame}>Join Game</button>
+                <button className={`join-game submit game-rules-link${currentGame ? ' invalid' : ''}`} 
+                        onClick={currentGame ? undefined : joinGame}>Join Game</button>
             </div>
         </div>
         
@@ -201,7 +202,8 @@ function Game () {
                     onClick={currentGame ? undefined : startPractice}>Practice Game</button>
           </div>
           <div className='spacer'>
-            <button className='join-game lower-button submit' onClick={joinGame}>Join Game</button>
+            <button className={`join-game lower-button submit${currentGame ? ' invalid' : ''}`} 
+                    onClick={currentGame ? undefined : joinGame}>Join Game</button>
           </div>
         </div>
       </div>
