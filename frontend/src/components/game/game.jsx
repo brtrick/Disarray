@@ -196,9 +196,13 @@ function Game () {
         </div>
         
         <div className='lower-wrapper'>
-          <button className={`submit lower-button practice${currentGame ? ' invalid' : ''}`}
-                  onClick={currentGame ? undefined : startPractice}>Practice Game</button>
-          <button className='join-game lower-button submit' onClick={joinGame}>Join Game</button>
+          <div className='spacer'>
+            <button className={`submit lower-button practice${currentGame ? ' invalid' : ''}`}
+                    onClick={currentGame ? undefined : startPractice}>Practice Game</button>
+          </div>
+          <div className='spacer'>
+            <button className='join-game lower-button submit' onClick={joinGame}>Join Game</button>
+          </div>
         </div>
       </div>
       <ChatBox gameId={currentGame} username={username}/>

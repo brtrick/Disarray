@@ -179,6 +179,9 @@
 .lower-button {
     align-self: baseline;
     color: rgb(14,188,246);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 12px;
     width: 130px;
     height: 50px;
