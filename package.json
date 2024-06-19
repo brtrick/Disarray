@@ -8,7 +8,7 @@
     "npm": "10.7.0"
   },
   "scripts": {
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
+    "heroku-postbuild-old": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
     "start": "node app.js",
     "server": "nodemon app.js",
     "frontend-install": "npm install --prefix frontend",
@@ -20,7 +20,6 @@
     "url": "git+https://github.com/aweil13/Disarray.git"
   },
   "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/aweil13/Disarray/issues"
   },
