@@ -43,4 +43,3 @@ app.use("/api/leaderboard", leaderboard)
 const port = process.env.PORT || 5000;
 
 const gameServer = new GameServer(app, port);
-// app.listen(port, () => console.log(`Server is running on port ${port}`))

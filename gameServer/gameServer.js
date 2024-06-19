@@ -75,7 +75,6 @@ class GameServer {
             });
 
             socket.on("start-practice", ({username}) => {
-              console.log("Start practice")
                 const game = new Game(new Player(username, socket));
                 this.games[game.id] = game;
                 socket.join(game.id);

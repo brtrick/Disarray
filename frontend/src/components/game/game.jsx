@@ -18,12 +18,9 @@ function Game () {
   const [players, setPlayers] = useState([]);
   const [currentGameActive, setCurrentGameActive] = useState (false);
   const [roundNumber, setRoundNumber] = useState (1);
-  // const [roundModal, setRoundModal] = useState (false);
-  
   const [currentGame, setCurrentGame] = useState(null);
   const [practicing, setPracticing] = useState(false);
     
-  // const errorBoop = new Audio(errorBoopSound);
   const dispatch = useDispatch();
 
   const modal = useSelector(state => state.ui.modal);
@@ -56,9 +53,6 @@ function Game () {
         roundNumber
     }));
     
-    // setWinners(winners);
-    // setWordResults(wordResults);
-    // setCurrentScores(currentScores);
     setCurrentGameActive(true);
     setRoundNumber(rNum => rNum + 1);
   }, [dispatch, roundNumber]);
@@ -141,14 +135,7 @@ function Game () {
   useEffect(() => {
     if (!socket) return;
     socket.on("connect_error", (err) => {
-      // the reason of the error, for example "xhr poll error"
       console.log(err.message);
-
-      // some additional description, for example the status code of the initial HTTP response
-      console.log(err.description);
-
-      // some additional context, for example the XMLHttpRequest object
-      console.log(err.context);
     });
     socket.on("startGame", receiveGame);
     socket.on("roundResults", roundEnd);
