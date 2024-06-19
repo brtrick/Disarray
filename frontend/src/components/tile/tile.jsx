@@ -38,7 +38,7 @@ function Tile ({ letter, position, boardOps }) {
       boardOps.handlePointerLeaveBoard();
     }
     else
-      boardOps.handlePointerLeaveTile(setSelected);
+      boardOps.handlePointerLeaveTile(position, setSelected);
   }
 
   const handlePointer = e => {
