@@ -2,12 +2,19 @@
 
 ![DisArray](README_assets/DisarrayGamePage.png)
 
-DisArray is a fast-paced, multi-player game inspired by Boggle! It is built with the MERN stack (MongoDB | Express | React | Node.js) and hosted on Heroku. Technologies include: Socket.IO, MongoDB, Mongoose, Express.js, React/ReactHooks, Redux, Node.js, HTML5, CSS3, Webpack, Heroku, Git, and Github.
+DisArray is a fast-paced, multi-player game inspired by Boggle! It is built with
+the MERN stack (MongoDB | Express | React | Node.js) and hosted on Heroku.
+Technologies include: Socket.IO, MongoDB, Mongoose, Express.js,
+React/ReactHooks, Redux, Node.js, HTML5, CSS3, Webpack, Heroku, Git, and Github.
 
-# <p align="center"> [Check Out the Live App!][17] </p>
+**<p align="center">[Check Out the Live App!][17] <br/>Version 2 now live!</p>**
 
 ## Game Play
-Players have a minute and a half per round to find as many words as they can in the given letter tiles. At the end of each round, the words found are scored as follows:
+
+Players have a minute and a half per round to find as many words as they can in
+the given letter tiles. At the end of each round, the words found are scored as
+follows:
+
 * non-words: 0 points
 * words found by more than one player: 0 points
 * 3-4 letters: 1 point
@@ -21,7 +28,8 @@ Players have a minute and a half per round to find as many words as they can in 
 The results at the end of each round are keyed by color:
 
 * Green: Valid word with awarded points in brackets
-* Orange: Valid word awarded no points because it was found by at least one other player
+* Orange: Valid word awarded no points because it was found by at least one
+  other player
 * Red (crossed off): Invalid word
 
 The player with the highest score after 3 rounds wins!
@@ -30,92 +38,122 @@ The player with the highest score after 3 rounds wins!
 
 ## Word Entry
 
-When forming words, no letter tile can be used more than once in a single word, and consecutive letters must be adjacent in the grid. Players enter words in one of two ways:
+When forming words, no letter tile can be used more than once in a single word,
+and consecutive letters must be adjacent in the grid. Players enter words in one
+of two ways:
 
-* Click on each tile individually, in order. When the word is fully spelled, click "Submit Word".
+* Click on each tile individually, in order. When the word is fully spelled,
+  click "Submit Word" (v1) or the green checkmark (v2).
 
     ![Click Word](README_assets/ClickWord.gif)
-    <!-- <img src="README_assets/ClickWord.gif" width="200">  -->
 
-* Press the mouse button down over a word's first letter and drag the cursor over the subsequent letters. Release the mouse button to submit.
+* Press the mouse button down over a word's first letter and drag the cursor
+  over the subsequent letters. Release the mouse button to submit.
 
     ![Click Word](README_assets/DragWord.gif)
-     <!-- <img src="README_assets/DragWord.gif" width="200"> -->
 
-* To de-select the last letter selected, simply click it again (if clicking) / return to the previously selected letter (if dragging).
+* To de-select the last letter selected, simply click it again (if clicking) /
+  return to the previously selected letter (if dragging).
 
     ![Click Word](README_assets/DragReverse.gif)
-     <!-- <img src="README_assets/DragReverse.gif" width="200"> -->
 
-## Contributors (and their primary responsibilities)  
-<!-- ### ![Alejandro Weil](README_assets/Alejandro.jpg)**Alejandro Weil**  -->
+## Contributors (and their primary responsibilities)
+  
 ### <img src="README_assets/Alejandro.jpg" width="150px"> **Alejandro Weil** [<img src="README_assets/linkedin-gray.svg" width='15px'>][1] [<img src="README_assets/github-gray.svg" width='16px'>][2] [<img src="README_assets/angellist-gray.svg" width='15px'>][3] [<img src="README_assets/portfolio-gray.svg" width='18px'>][4]
 
-Alejandro implemented the Backend database for user information using mongoDB, mongoose, and express. Users can create an account which will allow them to have their statistics(wins, losses) tracked and if they get enough wins, displayed on the live updating leaderboard. He also implemented the modals present in the app, using react redux to manipulate state to determine when to display modals or not.
-Conditional update to leaderboard based on if user won or not:
+Alejandro implemented the Backend database for user information using mongoDB,
+mongoose, and express. Users can create an account which will allow them to have
+their statistics(wins, losses) tracked and if they get enough wins, displayed on
+the live updating leaderboard. He also implemented the modals present in the
+app, using react redux to manipulate state to determine when to display modals
+or not. Conditional update to leaderboard based on if user won or not:
 
 ```js
-//board.jsx endGame
- let breadWinnerArr = []
-            breadWinner.forEach(i => {
-                breadWinnerArr.push(playerNames[i])
-            })    
-            if (this.props.id) {
-                if (breadWinnerArr.includes(this.props.username)) {
-                    this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
-                } else { 
-                    this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
-                }
-                this.props.receiveCurrentUser(this.props.user);
-            }
-            setTimeout(this.props.fetchLeaderboard, 2000);
+// board.jsx endGame
+let breadWinnerArr = []
+breadWinner.forEach(i => {
+  breadWinnerArr.push(playerNames[i])
+})
+if (this.props.id) {
+  if (breadWinnerArr.includes(this.props.username)) {
+    this.props.updateUser({id: this.props.id, win: ++this.props.user.gamesWon, loss: this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
+  } else { 
+    this.props.updateUser({id: this.props.id, win: this.props.user.gamesWon, loss: ++this.props.user.gamesLost, game: ++this.props.user.gamesPlayed});
+  }
+  this.props.receiveCurrentUser(this.props.user);
+}
+setTimeout(this.props.fetchLeaderboard, 2000);
 ```
 
-<!-- ### ![Brad Trick](README_assets/Brad.jpg)**Brad Trick**   -->
-### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick** [<img src="README_assets/linkedin-gray.svg" width='15px'>][5] [<img src="README_assets/github-gray.svg" width='16px'>][6] [<img src="README_assets/angellist-gray.svg" width='15px'>][7] [<img src="README_assets/portfolio-gray.svg" width='18px'>][8]
+### <img src="README_assets/Brad.jpg" width="150px"> **Brad Trick** [<img src="README_assets/linkedin-gray.svg" width='15px'>][5] [<img src="README_assets/github-gray.svg" width='16px'>][6]
+<!-- [<img src="README_assets/angellist-gray.svg" width='15px'>][7]  -->
+<!-- [<img src="README_assets/portfolio-gray.svg" width='18px'>][8] -->
 
-Brad implemented the game server and [socket.io](https://socket.io/) sockets that coordinate the flow of game elements across multiple clients on the web. The server and clients communicate through defined message types. For example, when the server receives a `chat` message from a client, it broadcasts the accompanying message to the appropriate `room`, either the other players in the game or, if the user is not currently in a game, the site more broadly:
+Brad implemented the game server and [socket.io](https://socket.io/) sockets
+that coordinate the flow of game elements across multiple clients on the web.
+The server and clients communicate through defined message types. For example,
+when the server receives a `chat` message from a client, it broadcasts the
+accompanying message to the appropriate `room`, either the other players in the
+game or, if the user is not currently in a game, the site more broadly:
 
 ```js
-//board.jsx (Client)
+// board.jsx (Client)
 this.socket.emit('chat', {
-        gameId: this.currentGame, 
-        username: this.props.username, 
-        msg: this.state.chatMessage
+  gameId: this.currentGame, 
+  username: this.props.username, 
+  msg: this.state.chatMessage
 });
 
-//gameServer.js
+// gameServer.js
 socket.on("chat", ({gameId, username, msg}) => {
-    if (gameId)
-        socket.to(gameId).emit('chat', {username, msg});
-    else
-        socket.to("site").emit('chat', {username, msg});
+  if (gameId)
+    socket.to(gameId).emit('chat', {username, msg});
+  else
+    socket.to("site").emit('chat', {username, msg});
 });
 ```
 
-Brad's main other responsibility was enabling users to enter words from the board. Event handlers monitor `mouseenter`, `mouseleave`, `mousedown`, and `mouseup` on the board tiles and store the results in the React state. For example, the handler for mouseleave submits the current word if the mouse leaves the board while creating a word through dragging:
+Brad's main other responsibility on v1 was enabling users to enter words from
+the board. Event handlers monitor `mouseenter`, `mouseleave`, `mousedown`, and
+`mouseup` on the board tiles and store the results in the React state. For
+example, the handler for `mouseleave` submits the current word if the mouse
+leaves the board while creating a word through dragging:
 
 ```js
 handleMouseLeave(e) {
-    const index = parseInt(e.currentTarget.dataset.index);
-    if (!this.mouseDown) return;
-    if (([0,   4,  8, 12].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left
-        ([0,   1,  2,  3].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
-        ([3,   7, 11, 15].includes(index) && (e.nativeEvent.offsetX > e.currentTarget.offsetWidth)) || //exit right
-        ([12, 13, 14, 15].includes(index) && (e.nativeEvent.offsetY > e.currentTarget.offsetHeight))) //exit bottom
-    {
-            this.submitAndReset();
-    }
+  const index = parseInt(e.currentTarget.dataset.index);
+  if (!this.mouseDown) return;
+  if (([0,   4,  8, 12].includes(index) && (e.nativeEvent.offsetX < 0)) || //exit left
+      ([0,   1,  2,  3].includes(index) && (e.nativeEvent.offsetY < 0)) || //exit top
+      ([3,   7, 11, 15].includes(index) && (e.nativeEvent.offsetX > e.currentTarget.offsetWidth)) || //exit right
+      ([12, 13, 14, 15].includes(index) && (e.nativeEvent.offsetY > e.currentTarget.offsetHeight))) //exit bottom
+  {
+      this.submitAndReset();
+  }
 }
 ```
 
-<!-- ### ![Brekke Green](README_assets/Brekke.jpg)**Brekke Andrew Green**  -->
+Version 2 is also Brad's creation. Most of the changes are behind the scenes: he
+upgraded the frontend from React 17 class components to React 18 function
+components with hooks, from HashRouter in React Router v5 to createBrowserRouter
+in ReactRouter 6, and from create-react-app to Vite, improving the overall
+efficiency and maintainability of the application. A few of the changes do
+affect the user experience, however: 
+
 ### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** [<img src="README_assets/linkedin-gray.svg" width='15px'>][9] [<img src="README_assets/github-gray.svg" width='16px'>][10] [<img src="README_assets/angellist-gray.svg" width='15px'>][11] [<img src="README_assets/portfolio-gray.svg" width='18px'>][12]
 
-Brekke constructed the game logic using OOP strategies; he created classes for the game, player, board, dice, and wordlist elements. The players' wordlists are collected on the frontend and then sent to the game class via socket.io. Once all the players' wordlists are received by the game class, a list of duplicate words is compiled and used to calculate the individual player's score (see 'Game Play' section above). Instances of the game class are stored on the game server and manipulated through the client's sockets to handle scoring between rounds and at the conclusion of the game:
+Brekke constructed the game logic using OOP strategies; he created classes for
+the game, player, board, dice, and wordlist elements. The players' wordlists are
+collected on the frontend and then sent to the game class via socket.io. Once
+all the players' wordlists are received by the game class, a list of duplicate
+words is compiled and used to calculate the individual player's score (see 'Game
+Play' section above). Instances of the game class are stored on the game server
+and manipulated through the client's sockets to handle scoring between rounds
+and at the conclusion of the game:
 
 ```js
 // gameServer.js
+
 socket.on("finish-round", ({id, username, foundWords}) => {
     this.games[id].receiveWords({[username]: foundWords});
     if (this.games[id].listsReceived === this.games[id].players.length) {
@@ -136,16 +174,20 @@ socket.on("finish-round", ({id, username, foundWords}) => {
 });
 ```
 
-<!-- ### ![Marco Torre](README_assets/Marco.jpg)**Marco Torre**   -->
 ### <img src="README_assets/Marco.jpg" width="150px"> **Marco Torre** [<img src="README_assets/linkedin-gray.svg" width='15px'>][13] [<img src="README_assets/github-gray.svg" width='16px'>][14] [<img src="README_assets/angellist-gray.svg" width='15px'>][15] [<img src="README_assets/portfolio-gray.svg" width='18px'>][16]
 
-Marco built custom user authorization for Disarray and created the visual style of the app using HTML5 and Cascading Style Sheets (CSS). Using various box-shadow effects to create the three-dimensional look of each die was a particularly fun challenge.
+Marco built custom user authorization for Disarray and created the visual style
+of the app using HTML5 and Cascading Style Sheets (CSS). Using various
+box-shadow effects to create the three-dimensional look of each die was a
+particularly fun challenge.
 
-Additionally, Marco further leveraged the versatility of CSS and utilized media queries to dynamically scale the game to various screen sizes.
+Additionally, Marco further leveraged the versatility of CSS and utilized media
+queries to dynamically scale the game to various screen sizes.
 
 <p align="center"><img src="README_assets/site-scaling-min.gif"></p>
 
-This included adding a custom dropdown menu and icon whenever the navigation bar is sized below a specified width.
+This included adding a custom dropdown menu and icon whenever the navigation bar
+is sized below a specified width.
 
 <p align="center"><img src="README_assets/burger-menu-min.gif"></p>
 
@@ -169,4 +211,4 @@ This included adding a custom dropdown menu and icon whenever the navigation bar
 [15]: https://angel.co/u/marco-torre-1
 [16]: https://www.marcotorre.io/
 
-[17]: https://disarray-app.herokuapp.com/#/
+[17]: https://disarray2-cd6e6a9e4246.herokuapp.com/

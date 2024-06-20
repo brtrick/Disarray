@@ -6,10 +6,10 @@ import { openModal } from '../../actions/modalActions';
 import '../../stylesheets/reset.css';
 import '../../stylesheets/board.css';
 import RoundTimer from "../timers/roundTimer";
-import RulesButtons from '../rulesButtons/rulesButtons';
+import { GameRulesButton, InputRulesButton } from '../rulesButtons/rulesButtons';
 import ChatBox from '../chatBox/chatBox';
 import LeaderBoard from '../leaderBoard/leaderBoard';
-import Board from '../board/board'
+import Board from '../board/board';
 import { receiveSocket, receiveSystemMessage } from '../../actions/socketActions';
 import { setTimeUp } from '../../actions/timerActions';
 import { io } from 'socket.io-client';
@@ -165,16 +165,14 @@ function Game () {
       <div className='info-wrapper'>
         <div className='upper-wrap'>
             <div className='rules-links-container'>
-                {(!currentGameActive) &&
-                <RulesButtons />}
+                {(!currentGameActive) && <GameRulesButton />}
             </div>
             <div className='timer'>
             {(currentGameActive && (!modal || modal.type === "personal-links") && <RoundTimer timeUp={timeUp} />)}
             {(!currentGameActive && currentGame && (<p>Time&apos;s Up!</p>))}
             </div>
-            <div className='spacer'>
-                <button className={`join-game submit game-rules-link${currentGame ? ' invalid' : ''}`} 
-                        onClick={currentGame ? undefined : joinGame}>Join Game</button>
+            <div className='rules-links-container'>
+              {(!currentGameActive) && <InputRulesButton />}
             </div>
         </div>
         
@@ -184,14 +182,14 @@ function Game () {
         </div>
         
         <div className='lower-wrapper'>
-          <div className='spacer'>
+          {/* <div className='spacer'> */}
             <button className={`submit lower-button practice${currentGame ? ' invalid' : ''}`}
                     onClick={currentGame ? undefined : startPractice}>Practice Game</button>
-          </div>
-          <div className='spacer'>
+          {/* </div> */}
+          {/* <div className='spacer'> */}
             <button className={`join-game lower-button submit${currentGame ? ' invalid' : ''}`} 
                     onClick={currentGame ? undefined : joinGame}>Join Game</button>
-          </div>
+          {/* </div> */}
         </div>
       </div>
       <ChatBox gameId={currentGame} username={username}/>
