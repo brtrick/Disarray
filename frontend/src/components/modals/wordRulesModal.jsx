@@ -19,7 +19,7 @@ function WordRulesModal () {
           <span className='bullet'>2.</span> You cannot select a letter that has already been selected for the current word.
         </li>
         <li>
-          <span className='bullet'>3.</span> You cannot select a letter that is not adjacent to the previously selected letter.
+          <span className='bullet'>3.</span> You can only select a letter that is adjacent to the previously selected letter.
         </li>
         <li>
           <span className='bullet'>4.</span> To de-select the last letter selected, simply click it again (if clicking) / return to the previously selected letter (if dragging).
