@@ -59,19 +59,19 @@ function Board ({ finishRound }) {
     submitAndReset();
   }
 
-  const handlePointerLeaveTile = setSelected => {
+  const handlePointerLeaveTile = (index, setSelected) => {
     if (!pointerDown.current) return;
-    setSelectedForPrevTile.current = setSelected;
+    if (index === moves.current[moves.current.length-1]) setSelectedForPrevTile.current = setSelected;
   }
 
   const handlePointerEvent = (type, letter, index, selected, setSelected) => {
     if (type === "pointerenter" && !pointerDown.current) return;
 
     if (type === "pointerdown") {
-        if (pointerDown.current && moves.current.length === 1) return;
-        pointerDown.current = true;
-        pointerDownTile.current = index;
-        pointerDownMoves.current = moves.current.length;    
+      if (pointerDown.current && moves.current.length === 1) return;
+      pointerDown.current = true;
+      pointerDownTile.current = index;
+      pointerDownMoves.current = moves.current.length;    
     }
 
     const lastMove = (moves.current.length > 0) ? moves.current[moves.current.length-1] : -1;
@@ -82,29 +82,35 @@ function Board ({ finishRound }) {
       setSelected(false);
       moves.current.pop();
       curWord = curWord.slice(0, -1);
+      // Remove second letter if tile was 'Qu'
+      if (curWord[curWord.length-1] == 'q')
+        curWord = curWord.slice(0, -1);
     }
 
-    //undo the last selection on drag
-    else if (index === moves.current[moves.current.length-2] && moves.current[moves.current.length-1] === lastMove) {
+    // undo the last selection on drag
+    else if (index === moves.current[moves.current.length-2] && moves.current[moves.current.length-1] === lastMove && setSelectedForPrevTile.current) {
       setSelectedForPrevTile.current(false);
       setSelectedForPrevTile.current = null;
       moves.current.pop();
       curWord = curWord.slice(0, -1);
+      // Remove second letter if tile was 'Qu'
+      if (curWord[curWord.length-1] == 'q')
+        curWord = curWord.slice(0, -1);
     }
 
     // select tile if first move or valid move to an unselected tile
     else if (lastMove === -1 || (validMove(lastMove, index) && !selected)) {
-        setSelected(true);
-        moves.current.push(index);
-        curWord += letter.toLowerCase();
+      setSelected(true);
+      moves.current.push(index);
+      curWord += letter.toLowerCase();
     }
     else {
-        if (type === "pointerdown") pointerDown.current = false;
-        //blare obnoxious sound to indicate wrong move
-        errorBoop.play()
-        return;
+      if (type === "pointerdown") pointerDown.current = false;
+      //blare obnoxious sound to indicate wrong move
+      errorBoop.play();
+      return;
     }
-    
+
     setCurrentWord(curWord);
   }
 

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <MainPage />
       },
       {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <Navigate to="/game" replace={true} />
+        element: <Navigate to="game" replace={true} />
       }
     ]
   }
