@@ -257,7 +257,7 @@
     overflow: scroll;
   }
 
-  .rules-links-container, .lower-wrapper, .spacer, .nav-wrapper, .burger {
+  .rules-links-container, .nav-wrapper, .burger {
     display: none;
   }
 
@@ -293,7 +293,7 @@
 
   .lower-wrapper {
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
   }
 }
 
