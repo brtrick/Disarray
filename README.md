@@ -137,8 +137,10 @@ Version 2 is also Brad's creation. Most of the changes are behind the scenes: he
 upgraded the frontend from React 17 class components to React 18 function
 components with hooks, from HashRouter in React Router v5 to createBrowserRouter
 in ReactRouter 6, and from create-react-app to Vite, improving the overall
-efficiency and maintainability of the application. A few of the changes do
-affect the user experience, however: 
+efficiency and maintainability of the application. As for user-facing changes,
+some of the game elements have been rearranged on the screen, the "Submit Word"
+button was changed to a green checkmark button in the word bank, and the
+practice / join buttons are now disabled during game play.
 
 ### <img src="README_assets/Brekke.jpg" width="150px"> **Brekke Andrew Green** [<img src="README_assets/linkedin-gray.svg" width='15px'>][9] [<img src="README_assets/github-gray.svg" width='16px'>][10] [<img src="README_assets/angellist-gray.svg" width='15px'>][11] [<img src="README_assets/portfolio-gray.svg" width='18px'>][12]
 
