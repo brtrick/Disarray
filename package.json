@@ -8,7 +8,6 @@
     "npm": "10.7.0"
   },
   "scripts": {
-    "heroku-postbuild-old": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
     "start": "node app.js",
     "server": "nodemon app.js",
     "frontend-install": "npm install --prefix frontend",
@@ -29,7 +28,6 @@
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "memfs": "^4.9.2",
     "mongoose": "^8.4.1",
     "n-readlines": "^1.0.1",
     "passport": "^0.7.0",
